@@ -210,14 +210,13 @@ ACTOR Clip1Drop: CustomInventory
     }
 }
 
-/*
-ACTOR ClipBox2 : Clip2 Replaces Clipbox
+ACTOR ClipBox2 : Clip2 //Replaces Clipbox
 {
 	Game Doom
 	SpawnID 139
 	Inventory.PickupMessage "Picked up a box of rifle ammunition."
 	Inventory.PickupSound "CBOXPICK"
-	Inventory.Amount 50 // 50% of the previous amount, since i buffed the accuracy of the minigun.
+	Inventory.Amount 100 // 50% of the previous amount, since i buffed the accuracy of the minigun.
 	Scale 0.9
 	States
 	{
@@ -226,7 +225,6 @@ ACTOR ClipBox2 : Clip2 Replaces Clipbox
 		Stop
 	}
 }
-*/
 
 ACTOR MinigunAmmo : Ammo//Clip2 Replaces Clipbox
 {
@@ -238,6 +236,26 @@ ACTOR MinigunAmmo : Ammo//Clip2 Replaces Clipbox
 	Inventory.MaxAmount 200
 	Ammo.BackpackAmount 100
 	Ammo.BackpackMaxAmount 400
+	Inventory.Icon "AMMOB0"
+	Scale 0.9
+	States
+	{
+	Spawn:
+		AMMO B -1
+		Stop
+	}
+}
+
+ACTOR MinigunAmmoBox : MinigunAmmo Replaces ClipBox//Clip2 Replaces Clipbox
+{
+    //Game Doom
+	//SpawnID 12300
+	Inventory.PickupMessage "Picked up a box of chaingun ammunition."
+	Inventory.PickupSound "CBOXPICK"
+	Inventory.Amount 100
+	//Inventory.MaxAmount 200
+	//Ammo.BackpackAmount 100
+	//Ammo.BackpackMaxAmount 400
 	Inventory.Icon "AMMOB0"
 	Scale 0.9
 	States

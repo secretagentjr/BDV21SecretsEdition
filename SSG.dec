@@ -48,7 +48,8 @@ ACTOR SSG : BrutalWeapon
 		If(CountInv("SSGAmmo") >=3 ) {return state("FixAmmo");}
 		Else {return state("");}
 		}
-	    SHTZ A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+	    TNT1 A 0 A_SetCrosshair(46)
+		SHTZ A 1 A_WeaponReady(WRF_ALLOWRELOAD)
         SHTZ A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         SHTZ A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		SHTZ A 0 A_JumpIfInventory("Salute1", 1, "Salute")
@@ -249,8 +250,8 @@ ACTOR SSG : BrutalWeapon
 		SHO9 A 0 A_firebullets (0,0,1,40,"shotpuff",FBF_NORANDOM,300)
         SHO9 A 0 BRIGHT A_playsound("SSHFIRE")
 		//TNT1 AAAAAAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
-		TNT1 AAAAAAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-19,19), 0, -1, 0, 0, random(-9,9))
-		TNT1 AAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-19,19), 0, -1, 0, 0, random(-9,9))
+		//TNT1 AAAAAAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-19,19), 0, -1, 0, 0, random(-9,9))
+		//TNT1 AAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-19,19), 0, -1, 0, 0, random(-9,9))
 		SHTZ A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
 		SHTZ A 0 A_FireBullets (5, 1, 5, 20, "ShotgunPuff", FBF_NORANDOM,8192,"PistolTracer",-5) // Zscripted Tracer so no lag.
 		SHTZ A 0 A_FireBullets (2.5, 2.5, 5, 20, "ShotgunPuff2", FBF_NORANDOM,8192,"PistolTracer",-5)
@@ -288,8 +289,8 @@ AltFire:
 		SHTZ A 0 A_GiveInventory("SSGAlt",1)
         SHTZ A 0 A_ALertMonsters
 		//SHTZ AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 2, 0, 0, 0)
-		TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
-		TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
+		//TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
+		//TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
 		TNT1 A 0 A_PlaySound("SGFIRE")
         //SHTU A 1 BRIGHT //A_PlaySound("weapons/ssg/Altfire")
 		SHTZ A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
@@ -315,8 +316,8 @@ AltFire:
 		//SHTZ A 0 A_GiveInventory("SSGAlt",1)
         SHTZ A 0 A_ALertMonsters
 		//SHTZ AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, -2, 0, 0, 0)
-		TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
-		TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
+		//TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
+		//TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
         TNT1 A 0 A_PlaySound("SGFIRE")
 		//SHTU B 1 BRIGHT //A_PlaySound("weapons/sg")
 		SHTZ A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)

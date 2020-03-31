@@ -15,6 +15,7 @@ Ended up not implementing
 //Base Zscript Conversion
 //vsonnier
 
+PDA Sprites by MrTypical
 
 
 == MenuTips ==
