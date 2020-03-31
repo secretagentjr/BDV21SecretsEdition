@@ -1,0 +1,12 @@
+Slide		"Sounds/Slide.ogg"
+WallSlide	"Sounds/WallSlide.ogg"
+Climb		"Sounds/Climb.ogg"
+
+HookWall	"Sounds/HookWall.ogg"
+HookMeat	"Sounds/HookMeat.ogg"
+HookFailed	"Sounds/HookFailed.ogg"
+HookLaunch	"Sounds/HookLaunch.ogg"
+
+$playersound	Player	male	*jump	"Sounds/DSKJump.ogg"
+$playersound	Player	male	*land	"Sounds/Land.ogg"
+$playersound	Player	male	*grunt	"Sounds/Land.ogg"

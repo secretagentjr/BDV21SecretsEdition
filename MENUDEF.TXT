@@ -1,0 +1,753 @@
+
+ListMenu "MainMenu"
+{
+IfGame(Doom, Chex)
+	{
+		StaticPatch 94, 2, "M_DOOM"
+		Position 97, 72
+		IfOption(ReadThis)
+		{
+			Position 97, 64
+		}
+	}
+	IfGame(Strife)
+	{
+		StaticPatch 84, 2, "M_STRIFE"
+		Position 97, 45
+	}
+	IfGame(Heretic)
+	{
+		StaticPatch 88, 0, "M_HTIC"
+		StaticPatch 40, 10, "M_SKL01"
+		StaticPatch 232, 10, "M_SKL00"
+		Position 110, 56
+	}
+	IfGame(Hexen)
+	{
+		StaticPatch 88, 0, "M_HTIC"
+		StaticPatch 37, 80, "FBULB0"
+		StaticPatch 278, 80, "FBULA0"
+		Position 110, 56
+	}
+	
+	IfGame(Doom, Strife, Chex)
+	{
+		TextItem "New Game", "n", "PlayerclassMenu"
+		ifOption(SwapMenu)
+		{
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+			TextItem "Options", "o", "OptionsMenu"/////////////
+			TextItem "Brutal Doom Options", "b", "BrutalMenu"
+			TextItem "Credits", "c", "BrutalCreditsMenu"
+		}
+		else
+		{
+			TextItem "Options", "o", "OptionsMenu"/////////////////////
+			TextItem "Brutal Doom Options", "b", "BrutalMenu"
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+			TextItem "Credits", "c", "BrutalCreditsMenu"
+		}
+		ifOption(ReadThis)
+		{
+			TextItem "Read This!","r", "ReadThisMenu"
+		}
+		TextItem "Quit Game", "q", "QuitMenu"
+	}
+	
+	IfGame(Heretic, Hexen)
+	{
+		TextItem "$MNU_NEWGAME", "n", "PlayerclassMenu"
+		TextItem "$MNU_OPTIONS", "o", "OptionsMenu"/////////////////////
+		TextItem "Brutal Doom Options", "b", "BrutalMenu"
+		TextItem "Credits", "c", "BrutalCreditsMenu"
+		TextItem "$MNU_GAMEFILES", "g", "GameFilesMenu"
+		TextItem "$MNU_INFO", "i", "ReadThisMenu"
+		TextItem "$MNU_QUITGAME", "q", "QuitMenu"
+	}
+}
+
+ListMenu "PlayerclassMenu"
+{
+	StaticTextCentered 160, 15, "Select Game Mode"
+	Position 30, 50
+	// The rest of this menu will be set up based on the actual player definitions.
+}
+
+OptionMenu "BrutalMenu"
+{
+	Title "BRUTAL DOOM OPTIONS"
+	Submenu "BD Performance Options",		"BrutalDoomOptionsPerformance"
+	Submenu "BD Level Options",			"BrutalDoomOptionsLevel"
+	Submenu "BD Doom Gameplay Options",			"BrutalDoomOptionsGame"
+	Submenu "BD Player Options",			"BrutalDoomOptionsPlayer"
+	Command "Go to Weapons Testing Map",			"map test"
+	Option "Disable Weapon Sway",				"disable_weaponsway", "OnOff"
+	StaticText "Disables weapon swaying when quickly looking around"
+	StaticText " "
+}
+
+
+
+
+OptionMenu "BrutalCreditsMenu"
+{
+	Title "CREDITS"
+	Submenu "Credits - Resources",			"BDCredits1"
+	Submenu "Credits - Special Thanks",			"BDCredits2"
+}
+
+
+OptionMenu "BrutalDoomOptionsPerformance"
+{
+
+  
+  
+   Title "Performance Options"
+   StaticText "All changes made here have immediate effect."
+   StaticText " "
+	
+  Option "Please, select engine you are using.", "isrunningzandronum", "SelectEngineType"
+  StaticText "Due the way CVARs works, you must inform the game" 
+  StaticText "if you are a client or a server with this option"
+  StaticText " so you can control settings such as blood amount."
+  StaticText "If you are playing alone, always use 'singleplayer'."
+  StaticText "If you are hosting a server, always use 'multiplayer'."
+  StaticText " "
+  
+  Option "Max Wall Decals", "cl_maxdecals", "maxdecals"
+  Option "Max Gibs and Blood Pools", "sv_corpsequeuesize", "maxgibs"
+  StaticText " "
+  
+
+  Option "Blood Amount (Server/Singleplayer)", "zdoombrutalblood", "BrutalBlood"
+  Option "Blood Amount (Client/Multiplayer)", "bd_bloodamount", "BrutalBlood"
+  StaticText "How much blood you want to see?"
+  StaticText " "
+  Option "Enable Janitor  (Server/Singleplayer)", "zdoombrutaljanitor", "YesOrNo"
+  Option "Enable Janitor (Client/Multiplayer)", "bd_lowgraphicsmode", "YesOrNo"
+  StaticText "Makes gibs disappear after 30 seconds."
+  StaticText " "
+  
+  Option "Spent Casings stays on floor forever", "bd_infinitecasings", "YesOrNo"
+  Option "Water Ripple Effects", "bd_disablewaterripples2", "YesOrNoFalse"
+  StaticText " "
+  
+
+}
+
+
+OptionMenu "BrutalDoomOptionsLevel"
+{
+
+  
+  
+   Title "Level Options"
+   StaticText "All changes made here will take effect on next level"
+   StaticText "or when you start a new game."
+   StaticText " "
+   
+  Option "Vanilla Monsters", "bd_classicmonsters", "YesOrNo"
+  StaticText "Disables new enemy AI and new attacks."
+  StaticText " "
+  
+  Option "Advanced Decorative Objects", "bd_disabledecorations", "DisabledOption"
+  StaticText "Fancy particle effects for torches and lamps."
+  StaticText " "
+  
+  Option "Level Enhancement System", "bd_disablemapenhancements", "DisabledOption"
+  StaticText "Improves several maps with better textures,"
+  StaticText  "new decorations and sometimes new enemies."
+  StaticText " "
+  
+  
+   Option "Level Enhancement System - Disable Voxels", "bd_voxeldec", "YesorNoFalse"
+  StaticText "Disable voxel decorations to prevent crashes on Android."
+  StaticText " "
+  
+  Option "New Weapons", "bd_disablenewguns", "DisabledOption"
+  StaticText "Selects if the new weapons should be spawned or not."
+  StaticText "(Submachinegun, Assault Shotgun, Railgun, etc.)"
+  StaticText " "
+  
+  Option "New Enemies", "bd_disablenewenemies", "DisabledOption"
+  Option "Footstep Sounds", "bd_footstepsounds", "YesOrNo"
+  Option "Spawn New Armor", "bd_disablenewarmor", "DisabledOption"
+  Option "Spawn SoulSphere Upgrade", "bd_disablesoulspherepowerup", "DisabledOption"
+  Option "Spawn Megasphere Upgrade", "bd_disablemegaspherepowerup", "DisabledOption"
+  Option "Spawn New Automap", "bd_disablenewautomap", "DisabledOption"
+  Option "Spawn New Health", "bd_disableRandomizerHealth", "DisabledOption"
+  Option "Spawn New Bonuses", "bd_disableNewBonuses", "DisabledOption"
+  Option "Spawn New Backpack", "bd_disablePBackpack", "DisabledOption"
+  Option "Spawn Demon Spheres", "bd_disabledemonspheres", "YesOrNoFalse"
+ // StaticText "Following CVARs still doesn't works:"
+  //Option "Cruelty Bonuses", "bd_disablecrueltybonus", "DisabledOption"
+ // Option "Bloody Screen Effects", "bd_disablebloodyscreen", "DisabledOption"
+  Option "Rescuable Marines", "bd_disablefriendlymarines", "YesOrNoFalse"
+  Option "Rocket Ammo is shootable", "bd_shootablerocketammo", "YesOrNo"
+}
+
+
+
+
+OptionMenu "BrutalDoomOptionsGame"
+{
+
+  
+  
+   Title "Gameplay Options"
+   StaticText "All changes made here have imediate effect."
+   StaticText " "
+   
+   //Option "Expanding BackpackAmmo", "bd_blackholebackpack", "YesOrNo"
+   Option "Health Increase From Backpack", "bd_serum", "YesOrNo"
+   //Option "TacticalReloading", "bd_tacticalreloadanim", "YesOrNo"
+   //StaticText "Disable the tactical reloading animation for faster reloading."
+   
+   //Option "Rocket Launcher has backblast", "bd_rocketbackblast", "YesOrNo"
+  //StaticText " "
+   
+   
+   Command "Enable Reloading for all weapons",			"take turboreload"
+   Command "Disable Reloading for all weapons",			"give turboreload"
+   
+   Command "Enable Auto-Reload",			"take NoAutoReload"
+   Command "Disable Auto-Reload",			"give NoAutoReload"
+   StaticText " "
+
+}
+
+
+OptionMenu "BrutalDoomOptionsPlayer"
+{
+
+  
+  
+   Title "Player Options"
+   StaticText "All changes made here requires the level to"
+   StaticText "be restarted or take effect on next level."
+   StaticText " "
+   
+   
+   Option "Player Gender", "gender", "genderOption"
+   StaticText "Only works on Zandronum"
+   StaticText " "
+   
+   Option "HUD Type", "bd_sbartype", "HUDType"
+   StaticText " "
+   
+   Option "HUD Size", "screenblocks", "screenblocksize"
+   StaticText " "
+   
+   Option "Show enemy health", "bd_disablescanner", "YesorNoFalse"
+   StaticText " "
+   StaticText " "
+   StaticText " "
+   
+   Command "Force HUD to Restart",			"pukename BDRespawn"
+   
+   
+   
+   StaticText " "
+   StaticText " "
+   StaticText " "
+   Option "Force GZDoom UI Scale", "uiscale", "uiscalesize"
+   StaticText "Change this if you are having trouble"
+   StaticText "with HUD scaling on GZDoom"
+   StaticText "(does nothing on Zandronum)"
+}
+
+OptionValue "BrutalBlood"
+{
+	1, "1) Low"
+	2, "2) Normal"
+	3, "3) Lots"
+	4, "4) Extreme"
+	666, "5) Comical"
+}
+
+OptionValue "YesOrNo"
+{
+	0, "No"
+	1, "Yes"
+}
+
+OptionValue "DisabledOption"
+{
+	0, "Enabled"
+	1, "Disabled"
+}
+
+
+
+
+
+OptionValue "YesOrNoFalse"
+{
+	1, "No"
+	0, "Yes"
+}
+
+
+
+OptionValue "SelectEngineType"
+{
+	1, "Multiplayer"
+	0, "Singleplayer"
+}
+
+OptionValue "genderoption"
+{
+	1, "Female"
+	0, "Male"
+}
+
+OptionValue "screenblocksize"
+{
+	10, "Classic HUD"
+	11, "Custom HUDs"
+	12, "No HUD"
+}
+
+
+OptionValue "HUDType"
+{
+	1, "Brutal Simple 16:9"
+	2, "Brutal Simple 4:3"
+	3, "Minimalist"
+	4, "Full Helmet"
+}
+
+OptionValue "UIScaleSize"
+{
+	1, "1"
+	2, "2"
+	3, "3"
+	4, "4"
+	5, "5"
+	6, "6"
+	7, "7"
+	8, "8"
+}
+
+OptionValue "maxdecals"
+{
+	1, "0"
+	128, "128"
+	512, "512"
+	1024, "1024"
+	2056, "2056"
+	5102, "5102"
+	9999, "9999"
+}
+
+
+OptionValue "maxgibs"
+{
+	1, "0"
+	64, "64"
+	100, "100"
+	500, "500"
+	1000, "1000"
+	2000, "2000"
+	5000, "5000"
+	10000, "10000"
+	25000, "25000"
+	50000, "50000"
+}
+
+OptionMenu "BDCredits1"
+{
+
+   Title "BDv21 by SGT_Mark_IV"
+   StaticText "==== Graphics ===="
+   StaticText "Mike12, Captain Toenail, David G, Revilution,"
+   StaticText "Eriance, Perkristian, Dr. Doctor, DoomNukem,"
+   StaticText "Joey_TD, Samuel 'Mryayayify' Shank, Brandon (Keeper)"
+   StaticText "Pa1nki113r, CrucuxDuo, Minigunner, Jekyll Grim Payne,"
+   StaticText "Scuba Steeve, Ghastly, Vader, Lynn Forest,"
+   StaticText "EletricPulse, Mr. Enchanter, Doom_Jedi, Kamijou"
+   StaticText "Kars van Kouwen, scalliano, Tomtefars, Das_M,"
+   StaticText "Azona, Bret Arts, 3D Realms, Raven Software."
+   StaticText ""
+   
+   
+   StaticText "==== Code Contributions ===="
+   StaticText "TerminusEst13, Solarsnowfall, Nash, Jekyll Grim Payne" 
+   StaticText " "
+   
+   StaticText "==== Voice Acting ===="
+   StaticText "Zero X. Diamond (Doomguy), Tiberium Soul (Marines)"
+    StaticText " "
+   
+   StaticText "==== PSX Doom Maps ===="
+   StaticText "fenderc01, Dragonsbretheren"
+   
+   StaticText " "
+   StaticText " "
+   StaticText " "
+   StaticText "In case of missing names, please PM them to me either"
+   StaticText "in Twitter, Discord, Moddb, Doomworld, or Zandronum forums"
+}
+
+
+
+
+
+OptionMenu "BDCredits2"
+{
+
+   Title "Special Thanks"
+   
+   StaticText "==== Special Sponsors ===="
+   StaticText "Rowan Waltho, Tainted Reality, Josef S. E. Trendevski,"
+   StaticText "Lasse Skov, Matthew J. Meade, Jian Feng"
+   StaticText "Suleyman Kutlu, Khayman, SenorFussion"
+   StaticText "Aaron Stockman, Kyle Quintanilla"
+   StaticText " "
+   
+   StaticText "= V21 Testing Team (list still incomplete) ="
+   StaticText "Cairn (El_Jefe) Moczygemba, Bog, TheZombie, LadySlash"
+   StaticText "FusedQYou, BXN, Erebus, Miles, Jaylen (Pyrolex) Leu"	
+   StaticText "Jess-James (scaryred24) Medeiros, Spart_N"
+   StaticText "ManofDom, Brandon (Keeper), Deathlock176,"
+   StaticText "Sir Fagtrixxx, Iddqd, Supra107, JeffSturm4nn,"
+   StaticText "Jose (TootsyBowl) Lee, Joji (Battore) Iriefu,"
+   StaticText "Marcin (Martinoz) Oprzadek,"   
+   StaticText "Dantos, Enrico Alessandro (ZioMcCall) Marino,"  
+   StaticText "blackmore103, SoulCircle, NexGuy"  
+   StaticText " "
+   StaticText "In case of missing names, please PM them to me either"
+   StaticText "in Twitter, Discord, Moddb, Doomworld, or Zandronum forums"
+   
+   
+   StaticText " "
+   StaticText "Special Thanks To Andrew Hulshult, Finfr0sk"
+   StaticText "John Romero, Bethesda's Doom Community Managers"
+   
+}
+
+// ZMOVEMENT 
+
+AddOptionMenu "OptionsMenu"
+{
+	StaticText ""
+	Submenu "ZMove Options", "ZMoveOptions"
+}
+
+OptionMenu "ZMoveOptions"
+{
+	Class "ZMoveMenu"
+	Title "ZMove Options"
+	Position -32
+	
+	StaticText	""
+	StaticText	"Speed & Acceleration", 1
+	ZMoveOption	"Movement Type",						"Pick your Movement Type",																"zm_movetype",				"MoveType"
+	ZMoveSlider "Ground Friction Strength", 			"Set Ground Friction Strength",															"zm_friction",				2.0,	10.0,	0.1
+	ZMoveSlider	"Maximum Ground Speed",					"Maximum Ground Speed (u/s)",															"zm_maxgroundspeed",		10,		15,		0.1
+	ZMoveSlider "Maximum Hopping Speed", 				"Maximum Hopping Speed (u/s)",															"zm_maxhopspeed",			24,		36,		1,		0
+	ZMoveSlider	"Strafe Speed",							"How fast you strafe (% of moving forward)",											"zm_strafespeed",			0.5,	1.0,	0.05,	2
+	ZMoveSlider	"Walk Speed",							"How fast you move when walking (% of regular speed)",									"zm_walkspeed",				0.5,	1.0,	0.1
+	ZMoveSlider	"Crouch Speed",							"How fast you move when crouching (% of regular speed, never faster than Walk Speed)",	"zm_crouchspeed",			0.1,	1.0,	0.1
+	ZMoveSlider "StrafeRunning Speed Bonus",			"Ground Straferunning speed boost",														"zm_strafemodifier",		1.0,	1.2,	0.05,	2
+	ZMoveOption	"Drop Prevention",						"Helps not fall ledges when you are walking/not pressing directional inputs",			"zm_dropprevention",		"OnOff"
+	StaticText	""
+	StaticText	"Dusk Movement", Orange
+	ZMoveSlider "Strafejumping Acceleration", 			"How fast you gain speed when you strafejump",											"dsk_acceleration",			1.0,	2.5,	0.1
+	StaticText	""
+	StaticText	"Painkiller Movement", Orange
+	ZMoveSlider "BHop Acceleration", 					"How fast you gain speed when bunnyhopping",											"pk_acceleration",			1.0,	2.0,	0.05,	2
+	StaticText	""
+	StaticText	"Quake Movement", Orange
+	ZMoveOption	"Strafe Jumping Type",					"Pick your Strage Jumping Type",														"q_strafetype",				"StrafeType"
+	ZMoveSlider "Q3 Acceleration", 						"How fast you gain speed when strafejumping Q3 style",									"q_3airaccel",				0.5,	1.0,	0.05,	2
+	ZMoveSlider "Q1 Acceleration", 						"How fast you gain speed when strafejumping Q1 style",									"q_1airaccel",				1.0,	2.0,	0.05,	2
+	StaticText	""
+	
+	StaticText	"Jumping", 1
+	ZMoveSlider "Jump Height", 							"Player Jump Height",																	"zm_jumpheight",			5,		8,		0.5
+	ZMoveSlider "Gravity", 								"Set Player Gravity",																	"zm_setgravity",			0.1,	1.5,	0.1,	2
+	ZMoveOption "Auto Jump", 							"Enable auto jump",																		"zm_autojump",				"OnOff"
+	StaticText	""
+	StaticText	"Build Engine Movement", Orange
+	ZMoveSlider "Jump Animation ViewHeight", 			"How much your viewpoint lowers when executing a jump",									"be_jumpanim",				4.0,	8.0,	0.5
+	StaticText	""
+	StaticText	"Painkiller Movement", Orange
+	ZMoveSlider "BHop Jump Height", 					"Bunny Hop Jump Height (% of regular jump height)",										"pk_bhopjumpheight",		0.5,	1,		0.1,	2
+	StaticText	""
+	StaticText	"Double Jump", Orange
+	ZMoveOption "Double Jump Type", 					"Enable and choose Double Jumping style",												"zm_doublejump",			"DoubleJump"
+	ZMoveSlider "Double Jump Height", 					"Double Jump Height (% of regular jump height)",										"zm_doublejumpheight",		0.5,	1.5,	0.1
+	ZMoveOption "Wall Jump Renewal", 					"Grants double jump everytime you execute a consecutive wall jump",						"zm_wjdoublejumprenew",		"OnOff"
+	StaticText	""
+	StaticText	"Ramp Jumps", Orange
+	ZMoveOption "Ramp Jumps Enabled", 					"When on you will be able to perform ramp jumps",										"zm_rampjump",				"OnOff"
+	ZMoveSlider "Ramp Jump Multiplier", 				"How beneficial a ramp jump is to the overall jump height",								"zm_rjumpmulti",			0.5,	1.2,	0.1,	2
+	StaticText	""
+	StaticText	"Elevator Jumps", Orange
+	ZMoveOption "Elevator Jumps Enabled", 				"When on you can perform UT style elevator jumps",										"zm_elevatorjump",			"OnOff"
+	ZMoveSlider "Elevator Jumps Bonus Multiplier", 		"Multiplier of the elevator jump bonus",												"zm_ejumpmultiplier",		1.0,	2.0,	0.05,	2
+	StaticText	""
+	StaticText	"Jump landing height animation", Orange
+	ZMoveOption	"Jump Landing Enabled",					"Enable Build style jump landing view height animation",								"zm_landing",				"OnOff"
+	ZMoveSlider	"Landing Velocity Sensitivity",			"How sensitive the height change is to the landing velocity",							"zm_landingsens",			4.0,	8.0,	0.1
+	ZMoveSlider	"Animation Speed",						"How quickly your viewheight returns to normal",										"zm_landingspeed",			0.25,	1.0,	0.05,	2
+	ZMoveSlider	"Minimum Height",						"The minimum viewheight you reach during a landing (% of regular view height)",			"zm_minlanding",			0.5,	0.75,	0.05,	2
+	StaticText	""
+	
+	StaticText	"Dashing", 1
+	Control		"Dash",				"Dash"
+	//ZMoveOption	"Dash Type",							"Dash on Ground, Or Jump when you dash",																		"zm_dashtype",					"DashType"
+	ZMoveOption	"Dash Enabled",							"Enable Dashing",																		"zm_dash",					"OnOff"
+	ZMoveOption	"Double Tap Dash",						"Enable Dashing double tapping trigger",												"zm_doubletap",				"OnOff"
+	ZMoveSlider "Max Double Tap Time", 					"Maximum double tapping time",															"zm_maxtaptime",			2,		20,		1,		0
+	ZMoveSlider "Dash Boost", 							"Set how fast you dash",																"zm_dashboost",				1.2,	1.5,	0.05,	2
+	ZMoveSlider "Dash Jump Height", 					"Set how high you jump when dashing (% of regular jump height)",						"zm_dashheight",			0.25,      1.0,    0.05,   2//0.5,	1.0,	0.05,	2
+	StaticText	""
+	StaticText	"Wall Jumping", Orange
+	ZMoveOption	"Wall Jump Enabled",					"Enable Wall Jumping",																	"zm_wjump",					"OnOff"
+	ZMoveSlider "Wall Jump Boost", 						"Set how fast you walljump",															"zm_wjumpboost",			1.5,	2.0,	0.05,	2
+	ZMoveSlider "Consecutive Jumps Bonus", 				"Speed bonus per each consecutive wall jump",											"zm_multipledashes",		0.0,	2.0,	0.05,	2
+	ZMoveSlider "Wall Jump Height", 					"Set how high you jump when wall jumping (% of regular jump height)",					"zm_wjumpheight",			0.5,	1.0,	0.05,	2
+	StaticText	""
+	StaticText	"Air Dashing", Orange
+	ZMoveOption	"Air Dash Enabled",						"Enable Air Dashing",																	"zm_airdash",				"OnOff"
+	ZMoveSlider	"Air Dash Boost",						"How strong air dashing boost is",														"zm_adashboost",			5,		15,		1,		0
+	ZMoveSlider	"Air Dash Friction",					"How quickly you will loose speed after an air dash",									"zm_adashfriction",			0.5,	1.5,	0.05,	2
+	StaticText	""
+	
+	StaticText	"Wall Sliding", 1
+	Control		"Wall Slide Bind",						"WallSlide"
+	ZMoveOption	"Wall Slide Enabled",					"Enable Wall Sliding",																	"zm_wslide",				"OnOff"
+	ZMoveSlider "Wall Sliding Gravity", 				"Lower the value slower you will fall to the ground when wall sliding",					"zm_wslidevelz",			0.5,	1.0,	0.05,	2
+	StaticText	""
+	
+	StaticText	"CrouchSlide", 1
+	ZMoveOption "Crouch Slide", 						"Enable crouch sliding",																"zm_crouchslide",			"OnOff"
+	ZMoveOption "Crouch Slide Type", 					"Select crouch slide type",																"zm_cslidetype",			"SlideType"
+	StaticText	""
+	StaticText	"Regular Crouch Slide", Orange
+	ZMoveSlider "Slide Speed Boost", 					"Set the initial crouch slide speed boost",												"zm_cslidestrength",		1.5,	2.5,	0.05,	2
+	ZMoveSlider "Slide duration", 						"Maximum slide duration in tics",														"zm_cslideduration",		10,		15,		1,		0
+	StaticText	""
+	StaticText	"Quake Crouch Slide", Orange
+	ZMoveSlider "Slide Acceleration", 					"How strong the crouch slide acceleration is",											"zm_qslideaccel",			5.0,	7.0,	0.05,	2
+	ZMoveSlider "Slide duration", 						"Multiplier of the crouch slide duration",												"zm_qslideduration",		6,		10,		1,		0
+	StaticText	""
+	
+	StaticText	"Ledge Grabbing", 1
+	ZMoveOption "Ledge Grabbing Enabled", 				"Turn on and off ledge grabbing",														"zm_ledgegrab",				"OnOff"
+	StaticText	""
+	
+	StaticText	"Grappling Hook", 1
+	Control		"Grappling Hook Bind",					"GrapplingHook"
+	ZMoveOption "Grappling Hook Enabled", 				"Enable and choose grappling hook style",												"zm_hook",					"GHook"
+	ZMoveSlider "Hook speed boost", 					"Intensity of the hook's speed boost",													"zm_hookboost",				1.0,	2.0,	0.1
+	StaticText	""
+	
+	StaticText	"Bobbing", 1
+	ZMoveSlider	"Walk/Run View Bobbing",				"Adjust view bobbing's intensity when moving",											"movebob",					0.0,	1.0,	0.1
+	ZMoveSlider	"Still View Bobbing",					"Adjust view bobbing's intensity when not moving",										"stillbob",					0.0,	1.0,	0.1
+	ZMoveSlider	"Walk/Run Weapon Bobbing",				"Adjust weapon bobbing's intensity when moving",										"wbobspeed",				0.0,	2.0,	0.1
+	ZMoveOption	"Still Weapon Bobbing",					"Turn on/off the weapon bobbing when standing still",									"zm_stillbob",				"OnOff"
+	ZMoveSlider	"Sprite speed to full bob",				"How fast weapon sprites transition to their maximum bobbing range",					"zm_fullbobspeed",			1,		15,		1,		0
+	StaticText 	""
+	StaticText	"Weapon Sway", Orange
+	ZMoveOption "Yaw Weapon Sway", 						"Allow weapons to sway according to your mouse yaw",									"zm_yawsway",				"OnOff"
+	ZMoveSlider "Yaw Sway Speed", 						"How fast weapons sway / realign to the center",										"zm_yawswayspeed",			0,		4,		0.5
+	ZMoveSlider "Yaw Sway Range", 						"Maximum Distance weapons can sway",													"zm_yawswayrange",			0,		8,		0.1
+	ZMoveSlider "Yaw Sway Friction", 					"How fast sprites will tend to realign to the center",									"zm_yawswayfriction",		5,		14,		0.5
+	ZMoveOption "Yaw Sway Direction", 					"Set wherever weapons sway in the direction you turn or the opposite",					"zm_yawswaydirection",		"SwayDirection"
+	StaticText 	""
+	StaticText	"Vertical Offset", Orange
+	ZMoveSlider "Offset Speed", 						"How fast weapons raise and fall depending on your vertical velocity",					"zm_offsetspeed",			50,		100,	1,		0
+	ZMoveSlider "Offset Range", 						"Maximum Height weapons can fall",														"zm_offsetmaxrange",		10,		50,		1,		0
+	StaticText 	""
+	
+	StaticText	"Others", 1
+	ZMoveOption "Speedometer", 							"Enable SpeedOMeter",																	"zm_speedometer",			"Speedometer"
+	Control		"Reset to default values",				"zmove_reset"
+}
+
+OptionValue "MoveType"
+{
+	0, "Doom"
+	1, "Build Engine"
+	2, "Dusk"
+	3, "Painkiller"
+	4, "Quake"
+	5, "Unreal Tournament"
+}
+
+OptionValue "StrafeType"
+{
+	0, "Quake 3"
+	1, "Quake 1"
+	2, "CPMA"
+}
+
+OptionValue "DoubleJump"
+{
+	0, "Off"
+	1, "Unreal Tournament"
+	2, "Doom 4"
+}
+
+OptionValue "SlideType"
+{
+	0, "Regular"
+	1, "Quake"
+}
+
+OptionValue "BobType"
+{
+	0, "Doom"
+	1, "Build Engine"
+	2, "Dusk"
+	3, "Painkiller"
+	4, "Unreal Tournament"
+}
+
+OptionValue "GHook"
+{
+	0, "Off"
+	1, "Pull Only"
+	2, "Pull & Pendulum"
+}
+
+OptionValue "SwayDirection"
+{
+	0, "Opposite Direction"
+	1, "Same Direction"
+}
+
+OptionValue "Speedometer"
+{
+	0, "Off"
+	1, "Doom Units"
+	2, "Quake Units"
+}
+
+OptionValue "DashType"
+{
+	1, "Keksdose Dash Styled"
+	2, "Zmovement Styled"
+}
+
+// Footstep Stuff
+AddOptionMenu "OptionsMenu"
+{
+	Submenu "Footsteps Options", "FootstepOptions"
+}
+
+OptionMenu "FootstepOptions"
+{
+title "Footstep Options"
+
+StaticText " "
+Option  "Enabled", "fs_enabled","OnOff"
+Slider "Delay",	"fs_delay_mul",0.0,1.0,0.1
+Slider "Volume", "fs_volume_mul",0.0,1.0,0.1
+}
+
+OptionMenu tp_MenuInjector
+{
+  tp_MenuInjector
+}
+
+AddOptionMenu "OptionsMenu"
+{
+	StaticText ""
+	StaticText "Tilt++ v1.65"
+	Submenu "$OPTMNU_TILTPLUSPLUS", "TiltPlusPlusMenu"
+}
+
+OptionMenu "TiltPlusPlusMenu"
+{
+	Class "TiltPlusPlusMenu"
+	Title "$TILTPLUSPLUSMNU_TITLE"
+	Position -32
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_STRAFETILT_TITLE", 1
+
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT",				"sv_strafetilt", "YesNo"
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_INVERT",					"$TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT_INVERT",		"sv_strafetiltinvert", "YesNo"
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SPEED",					"$TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT_SPEED",		"sv_strafetiltspeed", 0.1, 2.0, 0.01, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_ANGLE",					"$TILTPLUSPLUSMNU_HELPTEXT_STRAFETILT_ANGLE",		"sv_strafetiltangle", 0.1, 1.0, 0.01, 2
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_MOVETILT_TITLE", 1
+
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_MOVETILT",				"sv_movetilt", "YesNo"
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SPEED",					"$TILTPLUSPLUSMNU_HELPTEXT_MOVETILT_SPEED",			"sv_movetiltspeed", 0.1, 20.0, 0.1, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_ANGLE",					"$TILTPLUSPLUSMNU_HELPTEXT_MOVETILT_ANGLE",			"sv_movetiltangle", 0.01, 0.10, 0.01, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SCALAR",					"$TILTPLUSPLUSMNU_HELPTEXT_MOVETILT_SCALAR",		"sv_movetiltscalar", 0.0, 1.0, 0.1
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_TURNTILT_TITLE", 1
+
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_TURNTILT",				"sv_turntilt", "YesNo"
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_INVERT",					"$TILTPLUSPLUSMNU_HELPTEXT_TURNTILT_INVERT",		"sv_turntiltinvert", "YesNo"
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SCALAR",					"$TILTPLUSPLUSMNU_HELPTEXT_TURNTILT_SCALAR",		"sv_turntiltscalar", 0.0, 20.0, 0.1
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_UNDERWATERTILT_TITLE", 1
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT",			"sv_underwatertilt", "YesNo"
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SPEED",					"$TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT_SPEED",	"sv_underwatertiltspeed", 0.1, 20.0, 0.1, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_ANGLE",					"$TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT_ANGLE",	"sv_underwatertiltangle", 0.01, 0.5, 0.01, 2
+	TiltPlusPlusSlider "$TILTPLUSPLUSMNU_SCALAR",					"$TILTPLUSPLUSMNU_HELPTEXT_UNDERWATERTILT_SCALAR",	"sv_underwatertiltscalar", 0.0, 1.0, 0.1
+
+	StaticText ""
+	StaticText "$TILTPLUSPLUSMNU_DEATHTILT_TITLE", 1
+	TiltPlusPlusOption "$TILTPLUSPLUSMNU_ENABLED",					"$TILTPLUSPLUSMNU_HELPTEXT_DEATHTILT",				"sv_deathtilt", "YesNo"
+}
+
+// Motion Blur
+
+AddOptionMenu "OptionsMenu"
+{
+	Submenu "Motion Blur", "MBlurOpts"
+}
+
+OptionValue "MBlurBlendModes"
+{
+	0, "Normal"
+	1, "Lighten"
+}
+
+OptionValue "MBlurCurves"
+{
+	0, "Power"
+	1, "Sine"
+}
+
+OptionMenu "MBlurAdvOpts"
+{
+	Position -15
+	Title "Advanced Settings"
+	Option "Auto Stop", "mblur_autostop", OnOff
+	Slider "Stop Recovery", "mblur_recovery2", 0, 100, 5, 2
+	Slider "Stop Threshold", "mblur_threshold", 0, 100, 10, 2
+	statictext ""
+	option "Pitch Curve", "mblur_pcurve", "MBlurCurves"
+}
+
+OptionMenu "MBlurOpts"
+{
+	Position -15
+	Title "Motion Blur"
+	Option "Enabled", "mblur", YesNo
+	Option "Blend Mode", "mblur_blendmode", "MBlurBlendModes"
+	statictext ""
+	Slider "Samples", "mblur_samples", 1, 100, 1, 0
+	option "Dynamic", "mblur_dynsamps", YesNo
+	statictext ""
+	Slider "Look Strength", "mblur_strength", 1, 500, 8, 2
+	Slider "Walk Strength", "mblur_strength_walk", 1, 100, 5, 2
+	Slider "Jump Strength", "mblur_strength_jump", 1, 100, 5, 2
+	Slider "Recovery", "mblur_recovery", 4, 100, 4, 1
+	Submenu "Advanced", "MBlurAdvOpts"
+}
