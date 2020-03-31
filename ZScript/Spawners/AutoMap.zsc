@@ -1,0 +1,29 @@
+class AllMapSS : SS_ScriptedSpawner replaces Allmap
+{
+    override name SS_GetActorToSpawn ()
+    {
+	    // Assuming '' is a boolean console variable.
+                                      // And '' is true.
+		if(GetCvar("bd_disablenewautomap")){return 'Allmap';}
+		// '' is false.
+
+        return 'AllMapS';
+    }
+}
+
+Class AllMapS : Actor //Replaces Allmap
+{
+		Default
+	{
+		+NOINTERACTION
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0; 
+		TNT1 A 0 A_SpawnItemEx("MegaMap",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		Stop;
+	}
+	
+}

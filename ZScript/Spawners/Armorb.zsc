@@ -1,0 +1,256 @@
+class BlueArmorSS : SS_ScriptedSpawner replaces BlueArmor
+{
+    override name SS_GetActorToSpawn ()
+    {
+	    // Assuming '' is a boolean console variable.
+                                      // And '' is true.
+		if(GetCvar("bd_disablenewarmor")){return 'HeavyArmor';}
+		// '' is false, Spawn Armor Replacement.
+
+        return 'BlueArmorS';
+    }
+}
+
+Class BlueArmorS : Actor //Replaces BlueArmor
+{
+		Default // Tells the game to use the default flags.
+	{
+		+NOINTERACTION  // Tells the actor to not interact with the map.
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0 
+		{
+		if (Level.Cluster == 1)
+		{
+		A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if (Level.Cluster == 2)
+		{
+		A_SpawnItemEx("SuperHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if (Level.Cluster > 2 && Level.Cluster <= 4)
+		{
+		A_SpawnItemEx("HellArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.Cluster == 5)
+		{
+		// Sigil
+        if(Level.LevelNum < 44)
+		{
+		A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum < 47 && Level.LevelNum > 43)
+		{
+		A_SpawnItemEx("SuperHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum >= 46)
+		{
+		A_SpawnItemEx("HellArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		// We're Not Playing Sigil. Spawn LightArmor so balance isn't broken.
+		else
+		{
+		A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		}
+		
+		else if(Level.Cluster == 11)
+        {
+		// Nerve.wad
+        if(Level.LevelNum < 14)
+		{
+		A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum < 17 && Level.LevelNum > 13)
+		{
+		A_SpawnItemEx("SuperHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum >= 16)
+		{
+		A_SpawnItemEx("HellArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		// We're Not Playing Nerve. Chances are if something has cluster 11 it
+		// makes sense to spawn the most powerful upgrade here.
+		else
+		{
+		A_SpawnItemEx("HellArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+        }
+		else if (Level.Cluster >= 6 && Level.Cluster <= 7) 
+		{
+		A_SpawnItemEx("SuperHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if (Level.Cluster >= 8)
+		{
+		A_SpawnItemEx("HellArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		}
+		Stop;
+	}
+}
+
+/*
+Class BlueArmorS : Actor Replaces BlueArmor
+{
+		Default
+	{
+		+NOINTERACTION
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0; 
+		TNT1 A 0
+		{
+		 switch(Level.Cluster)
+		 {
+		  Case 1:  // E1
+		   A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  Case 5:  // D2E1, Also Sigil.
+		  A_SpawnItemEx("BlueArmors2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		  Case 2:  // E2
+		  Case 6:  //D2E2
+		  A_SpawnItemEx("SuperHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		  Case 3:  // E3
+		  Case 7:  //D2E3
+		  Case 4:  // E4
+		  Case 8:  //D2E4
+		  A_SpawnItemEx("HellArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		  Case 9:  //MAP31
+		  Case 10: //MAP32
+		  A_SpawnItemEx("SuperHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		  Case 11: //NERVE.WAD
+		  A_SpawnItemEx("BlueArmors3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		 Default:
+		   A_SpawnItemEx("BlueArmors4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		}
+		}
+		Stop;
+	}
+	
+}
+
+CLASS BlueArmorS2: Actor
+{
+		Default 
+	{
+		+NOINTERACTION  
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0 //NODELAY
+		{
+		 switch(Level.LevelNum) 
+		  {
+		   Case 41:
+		   Case 42:
+		   Case 43:
+		   A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 44:
+		   Case 45:
+		   Case 46:
+		   A_SpawnItemEx("SuperHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 47:
+		   Case 48:
+		   Case 49:
+		   A_SpawnItemEx("HellArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Default:
+		   A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  }}
+		  Stop;
+}}
+
+CLASS BlueArmorS3: Actor
+{
+		Default 
+	{
+		+NOINTERACTION  
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0
+		{
+		 switch(Level.LevelNum) 
+		  {
+		   Case 1:
+		   Case 2:
+		   Case 3:
+		   A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 4:
+		   Case 5:
+		   Case 6:
+		   A_SpawnItemEx("SuperHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 7:
+		   Case 8:
+		   Case 9:
+		   A_SpawnItemEx("HellArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Default:
+		   A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  }}
+		  Stop;
+}}
+
+CLASS BlueArmorS4: Actor
+{
+		Default 
+	{
+		+NOINTERACTION  
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0; 
+		TNT1 A 0
+		{
+		 switch(Level.LevelNum) 
+		  {
+		   Case 1:
+		   Case 2:
+		   Case 3:
+		   Case 4:
+		   Case 5:
+		   Case 6:
+		   A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 7:
+		   Case 8:
+		   Case 9:
+		   Case 10:
+		   Case 11:
+		   A_SpawnItemEx("SuperHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Default:
+		   A_SpawnItemEx("HellArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  }}
+		  Stop;
+}}
+
+*/

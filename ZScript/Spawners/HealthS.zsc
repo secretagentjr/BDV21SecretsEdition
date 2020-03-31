@@ -1,0 +1,25 @@
+class StimpackS : SS_ScriptedSpawner replaces Stimpack
+{
+    override name SS_GetActorToSpawn ()
+    {
+	    // Assuming '' is a boolean console variable.
+                                      // And '' is true.
+		if(GetCvar("bd_disableRandomizerHealth")){return 'Stimpack2';}
+		// '' is false.
+
+        return 'StimKitSL';
+    }
+}
+
+class MedikitSS : SS_ScriptedSpawner replaces Medikit
+{
+    override name SS_GetActorToSpawn ()
+    {
+	    // Assuming '' is a boolean console variable.
+                                      // And '' is true.
+		if(GetCvar("bd_disableRandomizerHealth")){return 'Medikit2';}
+		// '' is false.
+
+        return 'MedikitS';
+    }
+}

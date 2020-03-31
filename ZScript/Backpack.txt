@@ -1,0 +1,217 @@
+#region Ammo
+//$Color 6
+
+// Health Increase. Talon1024/ozymandias81, Taken from WolfenDoom.
+class VitalitySerum : Inventory
+{
+	int Boost;
+	Property Boost:Boost;
+
+	Default
+	{
+		//$Category Health (BoA)
+		//$Title Vitality Serum (max+5)
+		//$Color 6
+		Radius 20;
+		Scale 0.45;
+		Inventory.MaxAmount 9999;
+		Inventory.PickupMessage "Picked Up An Experimental Vitality Serum.(+5)";
+		VitalitySerum.Boost 5;
+		+INVENTORY.IGNORESKILL
+		+INVENTORY.UNDROPPABLE
+		+INVENTORY.ISHEALTH
+	}
+
+	States
+	{
+	Spawn:
+		TNT1 A 1;
+		Loop;
+	}
+
+	override bool TryPickup(in out Actor toucher)
+	{
+		if (Super.TryPickup(toucher))
+		{
+			toucher.Stamina += Boost;
+			toucher.GiveBody(Boost);
+			return true;
+		}
+		return false;
+	}
+}
+
+class UACSerum : CustomInventory
+{
+Default
+{
+}
+ States
+	{
+	Spawn:
+	    TNT1 A 0;
+		Stop;
+	Pickup:
+	    TNT1 A 0 
+		{;
+		if (GetCvar("bd_serum")) {A_GiveInventory("VitalitySerum");}
+		}
+		Stop;
+	}
+}
+
+	
+	    	
+// Shamefully taken from Guncaster and modified a bit. Made By PillowBlaster, and KeksDose..?
+// Also, Portable!
+class PBackpack : CustomInventory
+{
+	// The list of ammotypes NOT to raise the MaxAmount for.
+	static const string GC_AmmoBlacklist[] = {
+	//"Dosh",			// Money, for which you already have a ridiculous wallet
+	//"Mana",			// Mana reserves, like a backpack's gonna do anything to that
+	//"EmperorAmmo"	// An addon weapon's magazine
+	// All of the ammo for weapon actors/magazines.
+	// this isn't working atm.
+	"BDPistolAmmo"
+	"BDSMGAmmo"
+	"BDDualSMGAmmo"
+	"RifleAmmo"
+	"ShotgunAmmo"
+	"SSGAmmo"
+	"AssaultShotgunAmmo"
+	"MinigunAmmo"
+	"RocketRounds"
+	"PlasmaAmmo"
+	"DoublePlasmaAmmo"
+	"BFGBattery"
+	"MP40Ammo"
+	"DualMP40Ammo"
+	"GLAmmo"
+	"RailgunAmmo"
+	"RevolverAmmo"
+	};
+	
+	bool SkipThisType;
+	
+	Default
+	{
+		//$Title Hammerspace Backpack
+		Tag "Portable Blackhole Backpack";
+		Inventory.PickupSound "Backpack";
+		Inventory.PickupMessage "Obtained a portable blackhole backpack!";
+		+COUNTITEM
+		-INVENTORY.ALWAYSPICKUP // Set to - so we can guarantee this isn't wasted.
+		+DONTGIB
+		+INVENTORY.INVBAR
+	    +FLOORCLIP
+	    Inventory.Amount 1;
+	    Inventory.MaxAmount 1;
+	    Inventory.InterHubAmount 1;
+	    Inventory.Icon "BPAKA0";
+	}
+	States
+	{
+	Spawn:
+		BPAK A -1;
+		Loop;
+	//Pickup:
+	Use:
+		TNT1 A 0; //ACS_NamedExecuteAlways("HammerspaceBackpack");
+		/*
+		{
+			// Only augment ammo max amount if the CVar is set.
+			if(bd_blackholebackpack)
+			{	
+				// Just in case.
+				invoker.SkipThisType = FALSE;
+				// Search through the picker-upper's inventory.
+				for(Inventory item = self.inv; item != null; item = item.inv)
+				{
+					// If it's of type Ammo...
+					if(item is "Ammo")
+					{
+						// Cast to access Ammo methods.
+						let thisammotype = Ammo(item);
+						// Check for if this inventory item's type is blacklisted.
+						for(int blacklist = 0; blacklist < invoker.GC_AmmoBlacklist.Size(); blacklist++)
+						{
+							if(thisammotype.GetClassName() == invoker.GC_AmmoBlacklist[blacklist])
+							{
+								 //Blacklisted ammotype, skip it.
+								invoker.SkipThisType = TRUE;
+							}
+						}
+						
+						// If it's not blacklisted, increase its max!
+						if(!invoker.SkipThisType)
+						{
+							// Only increase max ammo with hammerspace if we're above backpack max.
+							if(thisammotype.MaxAmount >= thisammotype.BackpackMaxAmount)
+							{
+								// Plus 10% of backpack max. because backpacks are kind of rare.
+								thisammotype.MaxAmount += thisammotype.BackpackMaxAmount * 0.1;
+							}
+						}
+						// Reset the bool on each ammotype run.
+						invoker.SkipThisType = FALSE;
+					}
+				}
+			}*/
+			TNT1 A 0 A_GiveInventory("Backpack", 1); // Always hand off a backpack.
+			TNT1 A 0 
+			{
+			if(CVar.GetCVar("bd_serum",Player).GetBool())
+			{
+			 A_GiveInventory("UACSerum", 1); // Health Boost.
+			}
+			}
+			TNT1 A 0 A_GiveInventory("Medikit",  1);   // Healing.
+		//}
+		Stop;
+	}
+}
+
+
+
+class BackpackSpawnerS : SS_ScriptedSpawner replaces BackPack
+{
+    override name SS_GetActorToSpawn ()
+    {
+	    // Assuming '' is a boolean console variable.
+                                      // And '' is true.
+		if(GetCvar("bd_disablePBackpack")){return 'Ammosupply';}
+
+        return 'BackpackSpawner';
+    }
+}
+
+class BackpackSpawner : actor //replaces BackPack
+{
+	Default
+	{
+		+NOINTERACTION
+	}
+	
+	// This should behave exactly as before, just condensing everything into a few lines for convenience.
+	// This also solves the problem with backpack not properly gaining TIDs, Actor Specials, or possibly some
+	// strange pointer it might get for whatever reason.
+	// -Dino
+	Override Void PostBeginPlay()
+	{
+		//else { A_SpawnItemEx("HBackpack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERPOINTERS | SXF_NOCHECKPOSITION,0,tid); }
+		{ A_SpawnItemEx("PBackpack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERPOINTERS | SXF_NOCHECKPOSITION,0,tid); }
+		Super.PostBeginPlay();
+	}
+	
+	States
+	{
+	Spawn:
+		TNT1 A 1 NODELAY;
+		Stop;
+	}
+	
+}
+
+
+#endregion

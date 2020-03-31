@@ -1,0 +1,41 @@
+class SpectreS : SS_ScriptedSpawner replaces Spectre
+{
+    override name SS_GetActorToSpawn ()
+    {
+	    // Assuming '' is a boolean console variable.
+                                      // And '' is true.
+        if(GetCvar("bd_classicmonsters")){return 'VanillaSpectre';} 
+		if(GetCvar("bd_disablenewenemies")){return 'Spectro';}
+		// Not Really Needed Here, but you never know, i might add more.
+		// '' is false, Spawn Other Enemies.
+
+        return 'Spectro';
+    }
+}
+
+/*
+Class SpectreS : Actor Replaces Spectre
+{
+		Default
+	{
+		+NOINTERACTION
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0; 
+		TNT1 A 0
+		{
+		If(GetCvar("bd_classicmonsters")==1)   { return resolvestate("ReplaceVanilla");}
+		return resolvestate("SpawnSpectro"); 
+		}	
+	ReplaceVanilla:
+	    TNT1 A 0 A_SpawnItemEx("VanillaSpectre",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	SpawnSpectro:
+	    TNT1 A 0 A_SpawnItemEx("Spectro",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;		
+	}
+}
+*/

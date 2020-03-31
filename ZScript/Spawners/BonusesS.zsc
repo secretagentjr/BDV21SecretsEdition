@@ -1,0 +1,502 @@
+class HBonusesSS : SS_ScriptedSpawner replaces HealthBonus
+{
+    override name SS_GetActorToSpawn ()
+    {
+	    // Assuming '' is a boolean console variable.
+                                      // And '' is true.
+		if(GetCvar("bd_disableNewBonuses")){return 'HealthPlus';}
+		// '' is false.
+
+        return 'HBonusesS';
+    }
+}
+
+Class HBonusesS : Actor //Replaces HealthBonus
+{
+		Default // Tells the game to use the default flags.
+	{
+		+NOINTERACTION  // Tells the actor to not interact with the map.
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0 
+		{
+		if (Level.Cluster == 1)
+		{
+		A_SpawnItemEx("HealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if (Level.Cluster == 2)
+		{
+		A_SpawnItemEx("StrongHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if (Level.Cluster > 2 && Level.Cluster <= 4)
+		{
+		A_SpawnItemEx("SuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.Cluster == 5)
+		{
+		// Sigil
+        if(Level.LevelNum < 44)
+		{
+		A_SpawnItemEx("HealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum < 47 && Level.LevelNum > 43)
+		{
+		A_SpawnItemEx("StrongHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum >= 46)
+		{
+		A_SpawnItemEx("SuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		// We're Not Playing Sigil. Spawn LightArmor so balance isn't broken.
+		else
+		{
+		A_SpawnItemEx("HealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		}
+		
+		else if(Level.Cluster == 11)
+        {
+		// Nerve.wad
+        if(Level.LevelNum < 14)
+		{
+		A_SpawnItemEx("HealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum < 17 && Level.LevelNum > 13)
+		{
+		A_SpawnItemEx("StrongHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum >= 16)
+		{
+		A_SpawnItemEx("SuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		// We're Not Playing Nerve. Chances are if something has cluster 11 it
+		// makes sense to spawn the most powerful upgrade here.
+		else
+		{
+		A_SpawnItemEx("SuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+        }
+		else if (Level.Cluster >= 6 && Level.Cluster <= 7) 
+		{
+		A_SpawnItemEx("StrongHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if (Level.Cluster >= 8)
+		{
+		A_SpawnItemEx("SuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		}
+		Stop;
+	}
+}
+
+class ABonusesSS : SS_ScriptedSpawner replaces ArmorBonus
+{
+    override name SS_GetActorToSpawn ()
+    {
+	    // Assuming '' is a boolean console variable.
+                                      // And '' is true.
+		if(GetCvar("bd_disableNewBonuses")){return 'ArmorShard';}
+		// '' is false.
+
+        return 'ABonusesS';
+    }
+}
+
+Class ABonusesS : Actor //Replaces ArmorBonus
+{
+		Default // Tells the game to use the default flags.
+	{
+		+NOINTERACTION  // Tells the actor to not interact with the map.
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0 
+		{
+		if (Level.Cluster == 1)
+		{
+		A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if (Level.Cluster == 2)
+		{
+		A_SpawnItemEx("StrongArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if (Level.Cluster > 2 && Level.Cluster <= 4)
+		{
+		A_SpawnItemEx("SuperArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.Cluster == 5)
+		{
+		// Sigil
+        if(Level.LevelNum < 44)
+		{
+		A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum < 47 && Level.LevelNum > 43)
+		{
+		A_SpawnItemEx("StrongArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum >= 46)
+		{
+		A_SpawnItemEx("SuperArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		// We're Not Playing Sigil. Spawn LightArmor so balance isn't broken.
+		else
+		{
+		A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		}
+		
+		else if(Level.Cluster == 11)
+        {
+		// Nerve.wad
+        if(Level.LevelNum < 14)
+		{
+		A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum < 17 && Level.LevelNum > 13)
+		{
+		A_SpawnItemEx("StrongArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum >= 16)
+		{
+		A_SpawnItemEx("SuperArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		// We're Not Playing Nerve. Chances are if something has cluster 11 it
+		// makes sense to spawn the most powerful upgrade here.
+		else
+		{
+		A_SpawnItemEx("SuperArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+        }
+		else if (Level.Cluster >= 6 && Level.Cluster <= 7) 
+		{
+		A_SpawnItemEx("StrongArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if (Level.Cluster >= 8)
+		{
+		A_SpawnItemEx("SuperArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		}
+		Stop;
+	}
+}
+
+/*
+Class HBonusesS : Actor Replaces HealthBonus
+{
+		Default
+	{
+		+NOINTERACTION
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0; 
+		TNT1 A 0
+		{
+		 switch(Level.Cluster)
+		 {
+		  Case 1:  // E1
+		   A_SpawnItemEx("HealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  Case 5:  // D2E1, Also Sigil.
+		  A_SpawnItemEx("HBonusesS2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		  Case 2:  // E2
+		  Case 6:  //D2E2
+		  A_SpawnItemEx("StrongHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		  Case 3:  // E3
+		  Case 7:  //D2E3
+		  Case 4:  // E4
+		  Case 8:  //D2E4
+		  //break;
+		  Case 9:  //MAP31
+		  Case 10: //MAP32
+		  A_SpawnItemEx("SuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		  Case 11: //NERVE.WAD
+		  A_SpawnItemEx("HBonusesS3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		 Default:
+		   A_SpawnItemEx("HBonusesS4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		}
+		}
+		Stop;
+	}
+	
+}
+
+CLASS HBonusesS2: Actor
+{
+		Default 
+	{
+		+NOINTERACTION  
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0 //NODELAY
+		{
+		 switch(Level.LevelNum) 
+		  {
+		   Case 41:
+		   Case 42:
+		   Case 43:
+		   A_SpawnItemEx("HealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 44:
+		   Case 45:
+		   Case 46:
+		   A_SpawnItemEx("StrongHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 47:
+		   Case 48:
+		   Case 49:
+		   A_SpawnItemEx("SuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Default:
+		   A_SpawnItemEx("HealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  }}
+		  Stop;
+}}
+
+CLASS HBonusesS3: Actor
+{
+		Default 
+	{
+		+NOINTERACTION  
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0
+		{
+		 switch(Level.LevelNum) 
+		  {
+		   Case 1:
+		   Case 2:
+		   Case 3:
+		   A_SpawnItemEx("HealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 4:
+		   Case 5:
+		   Case 6:
+		   A_SpawnItemEx("StrongHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 7:
+		   Case 8:
+		   Case 9:
+		   A_SpawnItemEx("SuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Default:
+		   A_SpawnItemEx("HealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  }}
+		  Stop;
+}}
+
+CLASS HBonusesS4: Actor
+{
+		Default 
+	{
+		+NOINTERACTION  
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0; 
+		TNT1 A 0
+		{
+		 switch(Level.LevelNum) 
+		  {
+		   Case 1:
+		   Case 2:
+		   Case 3:
+		   Case 4:
+		   Case 5:
+		   Case 6:
+		   A_SpawnItemEx("HealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 7:
+		   Case 8:
+		   Case 9:
+		   Case 10:
+		   Case 11:
+		   A_SpawnItemEx("StrongHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Default:
+		   A_SpawnItemEx("SuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  }}
+		  Stop;
+}}
+*/
+
+/*
+
+Class ABonusesS : Actor Replaces ArmorBonus
+{
+		Default
+	{
+		+NOINTERACTION
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0; 
+		TNT1 A 0
+		{
+		 switch(Level.Cluster)
+		 {
+		  Case 1:  // E1
+		   A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  Case 5:  // D2E1, Also Sigil.
+		  A_SpawnItemEx("ABonusesS2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		  Case 2:  // E2
+		  Case 6:  //D2E2
+		  A_SpawnItemEx("StrongArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		  Case 3:  // E3
+		  Case 7:  //D2E3
+		  Case 4:  // E4
+		  Case 8:  //D2E4
+		  break;
+		  Case 9:  //MAP31
+		  Case 10: //MAP32
+		  A_SpawnItemEx("SuperArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		  Case 11: //NERVE.WAD
+		  A_SpawnItemEx("ABonusesS3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		 Default:
+		   A_SpawnItemEx("ABonusesS4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		}
+		}
+		Stop;
+	}
+	
+}
+
+CLASS ABonusesS2: Actor
+{
+		Default 
+	{
+		+NOINTERACTION  
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0 //NODELAY
+		{
+		 switch(Level.LevelNum) 
+		  {
+		   Case 41:
+		   Case 42:
+		   Case 43:
+		   A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 44:
+		   Case 45:
+		   Case 46:
+		   A_SpawnItemEx("StrongArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Default:
+		   A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  }}
+		  Stop;
+}}
+
+CLASS ABonusesS3: Actor
+{
+		Default 
+	{
+		+NOINTERACTION  
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0
+		{
+		 switch(Level.LevelNum) 
+		  {
+		   Case 1:
+		   Case 2:
+		   Case 3:
+		   A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 4:
+		   Case 5:
+		   Case 6:
+		   A_SpawnItemEx("StrongArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Default:
+		   A_SpawnItemEx("SuperArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  }}
+		  Stop;
+}}
+
+CLASS ABonusesS4: Actor
+{
+		Default 
+	{
+		+NOINTERACTION  
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0; 
+		TNT1 A 0
+		{
+		 switch(Level.LevelNum) 
+		  {
+		   Case 1:
+		   Case 2:
+		   Case 3:
+		   Case 4:
+		   Case 5:
+		   Case 6:
+		   A_SpawnItemEx("ArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 7:
+		   Case 8:
+		   Case 9:
+		   Case 10:
+		   Case 11:
+		   A_SpawnItemEx("StrongArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Default:
+		   A_SpawnItemEx("SuperArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  }}
+		  Stop;
+}}
+*/
+
+	

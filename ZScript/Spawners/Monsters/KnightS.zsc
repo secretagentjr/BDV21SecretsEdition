@@ -1,0 +1,41 @@
+class KnightS : SS_ScriptedSpawner replaces HellKnight
+{
+    override name SS_GetActorToSpawn ()
+    {
+	    // Assuming '' is a boolean console variable.
+                                      // And '' is true.
+        if(GetCvar("bd_classicmonsters")){return 'VanillaHellKnight';} 
+		if(GetCvar("bd_disablenewenemies")){return 'HellKnight2';}
+		// Not Really Needed Here, but you never know, i might add more.
+		// '' is false, Spawn Other Enemies.
+
+        return 'HellKnight2';
+    }
+}
+
+/*
+Class KnightS : Actor Replaces HellKnight
+{
+		Default
+	{
+		+NOINTERACTION
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0; 
+		TNT1 A 0
+		{
+		If(GetCvar("bd_classicmonsters")==1)   { return resolvestate("ReplaceVanilla");}
+		return resolvestate("SpawnKnight"); 
+		}	
+	ReplaceVanilla:
+	    TNT1 A 0 A_SpawnItemEx("VanillaHellKnight",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	SpawnKnight:
+	    TNT1 A 0 A_SpawnItemEx("HellKnight2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;		
+	}
+}
+*/

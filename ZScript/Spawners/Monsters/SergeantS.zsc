@@ -1,0 +1,38 @@
+class ShotgunguyS : SS_ScriptedSpawner replaces ShotgunGuy
+{
+    override name SS_GetActorToSpawn ()
+    {
+	    // Assuming '' is a boolean console variable.
+                                      // And '' is true.
+        if(GetCvar("bd_classicmonsters")){return 'VanillaShotgunguy';} 
+		if(GetCvar("bd_disablenewenemies")){return 'ShotgunGuy1';}
+		// '' is false, Spawn Other Enemies
+		//if (random() > 32){return 'SMGGuy';} 
+
+        return 'ShotgunGuySpawner';
+    }
+} 
+
+
+
+Class ShotgunguySpawner : Actor Replaces ShotgunGuy
+{
+		Default
+	{
+		+NOINTERACTION
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0; 
+		TNT1 A 0 A_Jump(32,"ReplaceSMG");
+	SpawnShotgunGuy:
+	    TNT1 A 0 A_SpawnItemEx("ShotgunGuy1",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	ReplaceSMG:
+	    TNT1 A 0 A_SpawnItemEx("SMGGuy",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;	
+	}
+}
+

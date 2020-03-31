@@ -1,0 +1,142 @@
+// ZmovePlayerPawn.zsc towards the bottom.
+
+Class MonsterBase : Actor abstract
+{
+	int	HitBoxTimerNew;
+	int HitBoxTimerOld;
+	int EnemySightedOld;
+	int EnemySightedNew;
+	
+	
+	bool HitBoxSpawned;
+	//bool Wandering;
+	
+	void HitboxerHandler() {
+		
+		if (HitBoxSpawned == True){
+			HitBoxTimerNew = Level.MapTime;
+			if(abs(HitBoxTimerNew - HitBoxTimerOld) > 350) {
+				A_TakeInventory("HeadshotToken",1);
+				HitBoxSpawned = False;
+				//Wandering = False;
+			}
+		}
+	
+		if (CheckInventory("HeadshotToken",1) && HitBoxSpawned == False) {
+			A_SpawnItem("HeadshotHitbox");
+			A_SpawnItem("LegHitbox");
+			HitBoxSpawned = True;
+			HitBoxTimerOld = Level.MapTime;
+		}
+		
+		
+		
+	}
+
+	override void Tick()
+	{
+		Super.Tick();
+		
+		//Handle Hitbox system
+		HitboxerHandler();
+	}
+
+	override void PostBeginPlay() {
+		Super.PostBeginPlay(); // call the super function for virtual functions so we don't break shit if GZdoom update.
+		HitBoxSpawned = False;
+	
+	}}
+	
+Class MonsterBaseM : Actor abstract
+{
+	int	HitBoxTimerNew;
+	int HitBoxTimerOld;
+	int EnemySightedOld;
+	int EnemySightedNew;
+	
+	
+	bool HitBoxSpawned;
+	//bool Wandering;
+	
+	void HitboxerHandler() {
+		
+		if (HitBoxSpawned == True){
+			HitBoxTimerNew = Level.MapTime;
+			if(abs(HitBoxTimerNew - HitBoxTimerOld) > 350) {
+				A_TakeInventory("HeadshotToken",1);
+				HitBoxSpawned = False;
+				//Wandering = False;
+			}
+		}
+	
+		if (CheckInventory("HeadshotToken",1) && HitBoxSpawned == False) {
+			A_SpawnItem("HeadshotHitboxMG");
+			//A_SpawnItem("LegHitbox");
+			HitBoxSpawned = True;
+			HitBoxTimerOld = Level.MapTime;
+		}
+		
+		
+		
+	}
+
+	override void Tick()
+	{
+		Super.Tick();
+		
+		//Handle Hitbox system
+		HitboxerHandler();
+	}
+
+	override void PostBeginPlay() {
+		Super.PostBeginPlay(); // call the super function for virtual functions so we don't break shit if GZdoom update.
+		HitBoxSpawned = False;
+	
+	}}
+
+Class MonsterBaseL : Actor abstract
+{
+	int	HitBoxTimerNew;
+	int HitBoxTimerOld;
+	int EnemySightedOld;
+	int EnemySightedNew;
+	
+	
+	bool HitBoxSpawned;
+	//bool Wandering;
+	
+	void HitboxerHandler() {
+		
+		if (HitBoxSpawned == True){
+			HitBoxTimerNew = Level.MapTime;
+			if(abs(HitBoxTimerNew - HitBoxTimerOld) > 350) {
+				A_TakeInventory("HeadshotToken",1);
+				HitBoxSpawned = False;
+				//Wandering = False;
+			}
+		}
+	
+		if (CheckInventory("HeadshotToken",1) && HitBoxSpawned == False) {
+			A_SpawnItem("CybersHitBoxN");
+			//A_SpawnItem("LegHitbox");
+			HitBoxSpawned = True;
+			HitBoxTimerOld = Level.MapTime;
+		}
+		
+		
+		
+	}
+
+	override void Tick()
+	{
+		Super.Tick();
+		
+		//Handle Hitbox system
+		HitboxerHandler();
+	}
+
+	override void PostBeginPlay() {
+		Super.PostBeginPlay(); // call the super function for virtual functions so we don't break shit if GZdoom update.
+		HitBoxSpawned = False;
+	
+	}}		

@@ -1,0 +1,91 @@
+(Version, 1.0) (These are just for references.)
+(Until I release a final version of v1.0 every update is just going to be v1.0)
+
+//This mod now requires at least Gzdoom 2.4.0
+
+//This mod now requires gzdoom 3.8
+
+//This mod now requires gzdoom 4.1.1
+
+This mod now requires gzdoom 4.2.4
+
+These aren't in order of what i changed, just a list.
+
+== V1.0 == (Not a final version)
+
+Added Tilt++
+
+Added Motion Blur
+
+A_GunFlash is now used for kicking
+
+You can now Perform a four hit melee combo while having any weapon out, except
+the fists.
+
+The recoil on tactical class has been entirely deleted.
+
+Implemented a spawning system for hitboxes which is better.
+
+Disabled Weapon Switching & Firing while reloading, but you will go back to
+ready state and then fire if using the shotgun.
+
+== PLAYER ==
+Implemented zmovement, Reverted Doomguys mass back to 100.
+
+== PISTOL == 
+Updated Design
+Changed Sounds, Added a Silencer, New Muzzle Flashes, New Anims
+
+== REVOLVER ==
+Updated Design, New Anims
+
+==  SHOTGUN ==
+Updated Design, New Anims, Damage Tweaks, Buffed the shotgun capacity
+
+== SSG == 
+Updated Design/Animations, Updated Damage/Spread
+
+== MINIGUN ==
+Updated Design/Animations, Accuracy/Recoil Tweaks, Doubled The Damage.
+
+== Rifle ==
+Updated Design/Anims, Accuracy/Recoil Tweaks, Doubled the Damage.
+
+== ROCKET LAUNCHER ==
+New Design, Animations, Altfire now charges up a rocket that does 2x
+The Damage and has 2x the speed.
+The Rocket Speed Has Been Doubled.
+Backblast removed because it was causing issues.
+
+== Plasma Rifle ==
+Restored V20B plasma rifles, Updated Anims
+
+== BFG ==
+BFG Now uses it's own ammo type, Projectile Speed has been increased.
+Updated The Design of the BFG
+
+== MONSTERS == All Code Has Been Improved Upon, at least when they are on active.
+(Or at least, i intend too, it's not quite fully done yet.)
+
+Increased the hp/armor bonus limit to 9999, and armor bonuses to 5,
+to resemble actual fragments of armor.
+Removed the +NEVERRESPAWN tag.
+
+== MISC ==
+
+== HealthKits ==
+Sometimes replaced by Potions, or advanced medipacks.
+
+== Backpack ==
+
+Made it portable, increase your max ammo by 50% after first use and added a health boost of 5.
+
+== POWERUPS ==
+
+Tweaked the Default SoulSphere and Megasphere to be more proper.
+(They don't get wasted if you have the highest value for the powerups.)
+Added the Haste,Rage,Double Damage,Full Invisibility,Salvation, and TimeSphere.
+
+(rage timesphere is currently not in use because it doesn't seem to work.)
+
+== ZMOVEMENT Implemented. ==

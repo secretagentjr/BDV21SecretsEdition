@@ -1,0 +1,314 @@
+//CLASS RifleInspected: Inventory{};
+
+CLASS MiniGun : BrutalWeapon
+{
+// 4,3,2 or 1, or Empty.
+//Bool Revvedup;
+// As you fire it, the
+//Int OverHeatCounter;
+DEFAULT
+{
+	//Game Doom;
+	//SpawnID 28;
+	Weapon.SelectionOrder 700;
+	Weapon.AmmoType1 "MinigunAmmo";
+	//Weapon.AmmoType2 "MinigunAmmo"
+	Weapon.AmmoGive 0;
+	Weapon.AmmoUse1 0;
+	+WEAPON.NOAUTOAIM;
+	+WEAPON.NOAUTOFIRE;
+	+FORCEXYBILLBOARD;
+	Inventory.PickupSound "CBOXPKUP";
+	Inventory.PickupMessage "You got the Minigun!";
+	Obituary "%o was mowed down by %k's Minigun.";
+	AttackSound "none";
+	Scale 0.9;
+}
+	States
+	{
+	Spawn:
+		//MGUN A 1;
+		MGUN A -1;
+		Stop;
+		 
+		 
+		 Ready: 
+		 Ready3:
+		  CHAG A 0;
+		  CHAG A 1
+		  {
+		  A_WeaponReady();
+		  If(CountInv("Kicking") >=1 ) {return resolvestate("DoKick");}
+		  else If(CountInv("Salute1") >=1 ) {return resolvestate("Salute");}
+		  else If(CountInv("Taunting") >=1 ) {return resolvestate("Taunt");}
+		  else If(CountInv("TossGrenade") >=1 ) {return resolvestate("TossGrenade");}
+		  else If(CountInv("IsRunning") >=1 ) {return resolvestate("CheckSprint");}
+		  else If(CountInv("QuickMelee") >=1 ) {return resolvestate("DoQuickMelee");}
+		  else{return resolvestate(null);}
+		  }
+		  CHAG A 0 A_JumpIfInventory("Spin",1,"Ready2");
+		  Loop;
+		 
+		Ready2:
+	      CHAG ABCD 1
+		  {
+		  A_WeaponReady();
+		  If(CountInv("Kicking") >=1 ) {return resolvestate("DoKick");}
+		  else If(CountInv("Salute1") >=1 ) {return resolvestate("Salute");}
+		  else If(CountInv("Taunting") >=1 ) {return resolvestate("Taunt");}
+		  else If(CountInv("TossGrenade") >=1 ) {return resolvestate("TossGrenade");}
+		  else If(CountInv("IsRunning") >=1 ) {return resolvestate("CheckSprint");}
+		  else If(CountInv("QuickMelee") >=1 ) {return resolvestate("DoQuickMelee");}
+		  else{return resolvestate(null);}
+		  }
+		  CHAG A 0 A_PlaySound("CHAINSPI", 5);
+		  Loop;
+		 
+		 
+		 
+		  
+		  
+	CheckSprint:
+		CHAG A 1 A_WeaponReady(WRF_NOFIRE);
+		CHAG A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3");
+		CHAG A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint");
+		Goto Ready;
+		
+	StartSprint:
+		CHAG A 1 A_WeaponReady(WRF_NOFIRE);
+		CHAG A 0 A_Takeinventory("Zoomed",1);
+		CHAG A 0 A_Takeinventory("ADSmode",1);
+		CHAG A 0 A_ZoomFactor(1.0);
+		CHAG A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired");
+		
+	Sprinting:	
+		CHSP A 0 offset(-9,32);
+		CHAG A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3");
+		CHAG A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired");
+		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0);//Makes player faster.
+		CHAG A 0 offset(-9,32) A_JumpIfInventory("PowerStrength", 1, 2);
+		CHAG A 0 offset(-9,32) A_GiveInventory("UsedStamina", 9);
+		CHAG A 0 offset(-9,32);
+		CHSP A 1;
+	ContinueSprint:	  
+		CHSP A 1 offset(-9,34) A_SetPitch(pitch -0.5);
+		CHSP A 1 offset(-6,36) A_SetPitch(pitch -0.5);
+		CHSP A 1 offset(-3,38) A_SetPitch(pitch -0.5);
+		CHSP A 1 offset(0,38) A_SetPitch(pitch -0.5);
+		CHSP A 1 offset(3,36) A_SetPitch(pitch -0.5);
+		CHSP A 1 offset(6,34) A_SetPitch(pitch -0.5);
+		CHSP A 1 offset(9,32) A_SetPitch(pitch -0.5);
+		CHAG A 0 offset(9,32) A_WeaponReady(WRF_NOBOB);
+		CHAG A 0 A_JumpIfInventory("Kicking",1,"DoKick");
+        CHAG A 0 A_JumpIfInventory("Taunting",1,"Taunt");
+		CHAG A 0 offset(-9,32) A_GiveInventory("UsedStamina", 9);
+		CHAG A 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4);
+		CHSP A 1 offset(9,34) A_SetPitch(pitch +0.5);
+		CHSP A 1 offset(6,36) A_SetPitch(pitch +0.5);
+		CHSP A 1 offset(3,38) A_SetPitch(pitch +0.5);
+		CHSP A 1 offset(0,38) A_SetPitch(pitch +0.5);
+		CHSP A 1 offset(-3,36) A_SetPitch(pitch +0.5);
+		CHSP A 1 offset(-6,34) A_SetPitch(pitch +0.5);
+		CHSP A 1 offset(-9,32) A_SetPitch(pitch +0.5);
+		CHAG B 0 offset(-9,32) A_WeaponReady(WRF_NOBOB);
+		CHAG A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting");
+		Goto StopSprint;
+		
+	StopSprintTired:
+		CHGS C 1;
+		//CHAG A 1;
+	StopSprintContinue:	
+		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0);//Makes player slower.
+		CHAG A 0 A_PlaySound("Tired", 2);
+		CHAG A 0 A_TakeInventory("UsedStamina", 2);
+		CHAG A 5 A_WeaponReady;
+		CHAG A 0 A_TakeInventory("UsedStamina", 2);
+		CHAG A 5 A_WeaponReady;
+		CHAG A 0 A_TakeInventory("UsedStamina", 2);
+		CHAG A 5 A_WeaponReady;
+		CHAG A 0 A_TakeInventory("UsedStamina", 2);
+		CHAG A 5 A_WeaponReady;
+		CHAG A 0 A_TakeInventory("UsedStamina", 2);
+		CHAG A 5 A_WeaponReady;
+		Goto Ready;
+	StopSprint:
+		//CHSP A 1;
+		//CHGS B 1
+		CHAG A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired");
+		CHGS C 1;
+	StopSprintC2:	
+		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0);//Makes player slower.
+		Goto Ready;
+
+		Deselect:
+			CHAG A 0 A_TakeInventory ("Spin",1);
+			CHAG A 0 A_TakeInventory("TossGrenade", 1);
+			CHAG A 0 A_Takeinventory("HeavyAutomaticWeapon",1);
+			CHAG A 0 A_TakeInventory("RandomHeadExploder", 1);
+			CHAG A 0 SetPlayerProperty(0,0,0);
+			//CHGS D 1;
+			CHGS DCBA 1;
+			TNT1 A 0 ZWL_QuickLower();
+			//TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower;
+			//TNT1 A 1 A_Lower;
+			Wait;
+		 
+		Select:
+			CHAG A 0;
+			CHAG A 0 A_Giveinventory("GoSpecial",1);
+			CHAG A 0 A_Giveinventory("HeavyAutomaticWeapon",1);
+			CHAG A 0 A_Takeinventory("FistsSelected",1);
+			CHAG A 0 A_Takeinventory("SawSelected",1);
+			CHAG A 0 A_Takeinventory("ShotgunSelected",1);
+			CHAG A 0 A_Takeinventory("SSGSelected",1);
+			CHAG A 0 A_Giveinventory("MinigunSelected",1);
+			CHAG A 0 A_Takeinventory("PlasmaGunSelected",1);
+			CHAG A 0 A_Takeinventory("RocketLauncherSelected",1);
+			CHAG A 0 A_Takeinventory("GrenadeLauncherSelected",1);
+			CHAG A 0 A_Takeinventory("BFGSelected",1);
+			CHAG A 0 A_Takeinventory("BFG10kSelected",1);
+			CHAG A 0 A_Takeinventory("RailGunSelected",1);
+			CHAG A 0 A_Takeinventory("SubMachineGunSelected",1);
+			CHAG A 0 A_Takeinventory("RevenantLauncherSelected",1);
+			CHAG A 0 A_Takeinventory("LostSoulSelected",1);
+			CHAG A 0 A_Takeinventory("FlameCannonSelected",1);
+			CHAG A 0 A_Takeinventory("HasBarrel",1);
+			CHAG A 0 A_TakeInventory("TossGrenade", 1);
+			CHAG A 0 A_GiveInventory("RandomHeadExploder", 1);
+			CHAG A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "PuristGun");
+			CHAG A 0 A_PlaySound("CHGNPKUP");
+			//CHGS A 1 A_Raise
+			//TNT1 AAAAAA 0 A_Raise;
+			TNT1 A 0 ZWL_QuickRaise();
+			CHGS ABCD 1;
+			Goto Ready;
+		
+		//SelectAnimation:
+			//CHAG A 0;
+			//CHAG A 0 A_GunFlash;
+			//CHGS AB 1;
+			//CHGS C 1;
+			//CHGS D 1;
+			//Goto Ready;
+
+		NoAmmo:
+			CHAG A 10 A_PlaySound("weapons/empty");
+			//Goto IdleNoAmmo;
+			Goto Ready;
+		
+		AltFire:
+		    CHAG A 0 A_JumpIfInventory("Spin",1,"StopSpinning");
+			TNT1 A 0 A_GiveInventory("Spin");
+			CHAG A 0 A_PlaySound("CHAINSTA", 5);
+			CHAG BC 1;
+			CHAG D 1;
+			CHAG AB 1;
+			Goto Ready2;
+		StopSpinning:
+			CHAG BC 1;
+			CHAG D 1;
+			CHAG AB 1;
+			CHAG A 0 A_PlaySound("CHAINSTO", 6);
+			TNT1 A 0 A_TakeInventory("Spin");
+			Goto Ready;
+			
+		Fire:
+			CHAG A 0 A_JumpIfInventory("Spin",1,"Hold");
+			CHAG A 0 A_PlaySound("CHAINSPI", 5);
+			CHAG A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, 0, 0);
+			CHAG BC 1;
+			CHAG D 1;
+			CHAG AB 1;
+			CHAG A 0 A_StopSound(5);
+			//CHAG A 0 A_PlaySound("CHAINSPI", 5)
+			CHAG A 0;
+		Hold:	
+			CHAG A 0
+			{
+			If(CountInv("MinigunAmmo") <=0 ) {return resolvestate("NoAmmo");}
+			Else {return resolvestate(null);}
+			}
+			CHAG A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, 0, 0);
+			TNT1 A 0 
+			{
+			A_Takeinventory("MinigunAmmo",1);
+			A_PlaySound("CHGNSHOT", 1);
+			A_PlaySound("FARMGN", 5);
+			ZWL_FireHitscan(2, 40, pellets:1, spread:2, damagetype:"", pufftype:"MachineGunBulletPuff",tracertype:"Tracer",Offset:(0,0,-5));
+			A_Firecustommissile("50CaseSpawn",0,0,-12,-18);
+			A_SpawnItemEx("PlayerMuzzle2",30,5,27);
+			//A_FireCustomMissile("DecorativeTracer", random(-1,1), 0, 0, 0, 0, random(-1,1));
+		    }
+			CHAF A 1 BRIGHT;
+			CHAG A 0
+			{
+			If(CountInv("MinigunAmmo") <=0 ) {return resolvestate("NoAmmo");}
+			Else {return resolvestate(null);}
+			}
+			CHAG A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, 0, 0);
+			TNT1 A 0 
+			{
+			A_Takeinventory("MinigunAmmo",1);
+			A_PlaySound("CHGNSHOT", 1);
+			A_PlaySound("FARMGN", 5);
+			ZWL_FireHitscan(2, 40, pellets:1, spread:2, damagetype:"", pufftype:"RiflePuff",tracertype:"Tracer",Offset:(0,0,-5));
+			A_Firecustommissile("50CaseSpawn",0,0,-12,-18);
+			A_SpawnItemEx("PlayerMuzzle2",30,5,27);
+			//A_FireCustomMissile("DecorativeTracer", random(-1,1), 0, 0, 0, 0, random(-1,1));
+		    }
+			CHAF B 2 BRIGHT;
+			CHAG A 0
+			{
+			If(CountInv("MinigunAmmo") <=0 ) {return resolvestate("NoAmmo");}
+			Else {return resolvestate(null);}
+			}
+			CHAG A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, 0, 0);
+			TNT1 A 0 
+			{
+			A_Takeinventory("MinigunAmmo",1);
+			A_PlaySound("CHGNSHOT", 1);
+			A_PlaySound("FARMGN", 5);
+			ZWL_FireHitscan(2, 40, pellets:1, spread:2, damagetype:"", pufftype:"RiflePuff",tracertype:"Tracer",Offset:(0,0,-5));
+			A_Firecustommissile("50CaseSpawn",0,0,-12,-18);
+			A_SpawnItemEx("PlayerMuzzle2",30,5,27);
+			//A_FireCustomMissile("DecorativeTracer", random(-1,1), 0, 0, 0, 0, random(-1,1));
+		    }
+			CHAF C 1; //BRIGHT;
+		    CHAG A 0
+			{
+			If(CountInv("MinigunAmmo") <=0 ) {return resolvestate("NoAmmo");}
+			Else {return resolvestate(null);}
+			}
+			CHAG A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, 0, 0);
+			TNT1 A 0 
+			{
+			A_Takeinventory("MinigunAmmo",1);
+			A_PlaySound("CHGNSHOT", 1);
+			A_PlaySound("FARMGN", 5);
+			ZWL_FireHitscan(2, 40, pellets:1, spread:2, damagetype:"", pufftype:"RiflePuff",tracertype:"Tracer",Offset:(0,0,-5));
+			A_Firecustommissile("50CaseSpawn",0,0,-12,-18);
+			A_SpawnItemEx("PlayerMuzzle2",30,5,27);
+			//A_FireCustomMissile("DecorativeTracer", random(-1,1), 0, 0, 0, 0, random(-1,1));
+		    }
+			CHAF D 2; //BRIGHT;
+			TNT1 A 0 A_Refire;
+			Goto Ready;
+		 
+		PuristGun:
+			TNT1 A 1;
+			CHAG A 0 A_GiveInventory("ClassicChaingun", 1);
+			CHAG A 0 A_TakeInventory("MiniGun", 1);
+			TNT1 A 10;
+			Goto Ready;
+		}
+}
+
+//ACTOR MinigunAmmo : Ammo
+//{
+   //Inventory.Amount 0
+   //Inventory.MaxAmount 100
+   //Ammo.BackpackAmount 0
+   //Ammo.BackpackMaxAmount 100
+   //Inventory.Icon "MGUNA0"
+//}
+

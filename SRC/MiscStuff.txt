@@ -1,0 +1,56 @@
+// Some stuff i haven't got working yet.
+// Obsolete. Spawners.zsc
+
+#library "MiscStuff"
+#include "zcommon.acs"
+
+/*
+
+Script "SpawnerScript" (int LevelNumber) // Declare a variable.
+{
+	//Initialize variables
+	LevelNumber = GetLevelInfo(LEVELINFO_CLUSTERNUM); // Determine Map Number.
+	
+	Switch(LevelNumber)
+	{
+	 // Progression Based Spawning System with 
+	 // Replaced Actors at the 2nd cluster.
+	 // Episodes 1-4, For Doom 2 this is Map1-6,7-11,12-20,21-30
+	 
+	 Case 1:
+	         SetActorState(0, "E1S");
+			break;
+	 Case 2:
+	         SetActorState(0, "E2S");
+	         break;
+	 Case 3:
+	         SetActorState(0, "E3S");
+			 break;
+	 Case 4:
+	         SetActorState(0, "E4S");
+			 break;
+	 // For the Secret Maps.
+	 default:
+	        SetActorState(0, "E2S"); // Map31, and Map32 Count towards E2.
+			break;
+	}
+}
+
+*/
+
+//Script 148 (VOID) NET 
+//{
+ //GiveInventory("ItemST", 1);
+//}
+
+Script 148 (VOID) NET
+{
+ GiveInventory("Shop", 1);
+ SetWeapon("Shop");
+}
+
+Script 155 (VOID) NET
+{
+ GiveInventory("SkipPage", 1);
+ //SetWeapon("Shop");
+}

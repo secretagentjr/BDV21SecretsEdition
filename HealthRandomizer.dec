@@ -1,0 +1,28 @@
+ACTOR StimKitSL: RandomSpawner //Replaces Stimpack
+{
+  // 25%, 10% of the time for each.
+  DropItem "PowerRegenerationMedium",64,1
+  DropItem "MediumPortablePotion",64,1
+  DropItem "MediumMiraclePotion",64,1
+  DropItem "MediumHealthPotion",64,1
+  // 100% Spawn Rate, 60% of the time.
+  DropItem "Stimpack2",256,1
+}
+
+ACTOR MedikitS : RandomSpawner //Replaces Medikit
+{
+  // 25%, 4% of the time for each.
+  DropItem "SuperRegenerationPotion",64,1
+  DropItem "LargeRegenerationPotion",64,1
+  DropItem "SuperPortablePotion",64,1
+  DropItem "LargePortablePotion",64,1
+  DropItem "SuperMiraclePotion",64,1
+  DropItem "LargeMiraclePotion",64,1
+  DropItem "Medipack",64,1
+  DropItem "FieldKit",64,1
+  DropItem "Medikit2",64,1
+  // 100% Spawn Rate, 60% of the time.
+  DropItem "Stimpack2",256,1
+}
+
+	

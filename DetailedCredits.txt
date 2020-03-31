@@ -1,0 +1,323 @@
+This is a detailed credit list with the information I could gather.
+If you are going to take stuff from this mod, give credits to me/whoever 
+created it.
+Resources made by me are also listed.
+Unlisted resources are likely to belong to people unknown.
+
+== HitBox System Code ==
+PA1NK1LLER
+
+== ZWeapons Script Library ==
+dodopod
+
+Ended up not implementing
+//== Zscript Footsteps ==
+//Base Zscript Conversion
+//vsonnier
+
+
+
+== MenuTips ==
+M8F
+
+== Tilt++ ==
+Nash Muhandes
+
+Original ACS Footsteps which it was based off of
+DaZombieKiller
+
+== PLAYER SPRITES ==
+Firing and moving sprites, Meatshields, wounded marine, jumping, rifle bashing, by Sgt Mark IV
+Weapon skins based on Marine Skins by Vader
+Guarding position by Das_M
+Player deaths (XPL1*, XPL2*, XPL3*, XPL4*, XPL5*, XPL6*, XPL8*, PLAY I - N, 
+MHEA*, HPLA*, PBUR*, PMET*, PLDHA0) by Sergeant_Mark_IV
+Extra rotations for PLAY  A - G by Adrian Carmack, provided by John Romero
+Marine - No Weapons (PLA1*) by Captain Toenail
+Marine - aiming down the sights (MAR2*) by Sergeant_Mark_IV
+Cheering Marine MWAV A to F by Unknown
+Cheering Marine MWAV I to N by Das_M, edited by Sergeant_Mark_IV
+Generic Burning Man (BUR2*) from Strife by Rogue Entertainment
+Marine - kicking animations by Sergeant_Mark_IV (edited from Captain Toenail 
+unarmed marine sprites)
+Marine - Combat Roll Animation by Sergeant_Mark_IV (edited from existing 
+player crouch sprites by Skulltag Team)
+Muzzle effects (PLMZ*) Sergeant_Mark_IV (edited from Aliens Trilogy)
+Captured Marine by Sergeant_Mark_IV
+Executions/Fatalities by Sergeant_Mark_IV
+
+== WEAPONS ==
+== MELEE ==
+Axe sprite by Mike12, animated (blood smeared versions included) 
+by Sergeant_Mark_IV
+
+Chainsaw by Mike12, animated by Sergeant_Mark_IV
+
+== GUNS ==
+== PISTOL ==
+kofeinoe_zerno (Koff)
+New Idle (Silencer as well)/PullBack Frames On Pistol, Some Editing By Secret
+Angled Frames by DoomNukem
+The Pistol Frames where he attaches/detaches the silencer
+Galdoc
+Base Pickup Sprite by DoomNukem, Updated ArtsyShyGal/ZackoWacko238
+
+= Revolver ==
+Base Sprite by MrTypical, Reload Sprites by Galdoc,recolored by secret
+Ammo Sprites from copcap RE2 
+
+== SMG ==
+SMG by Sergeant_Mark_IV, based on the Alpha Doom SMG sprites.
+
+== SHOTGUN ==
+New Pump Sounds by Squig
+Shotgun Hand by Mrtypical/TypicalSonicFan , Further Edited by Secret
+Shotgun Base (SHSL*) by Mike12, Foregrip by JoeyTD edited by Mike12, muzzle and animations by Sergeant_Mark_IV 
+Further Edited by Ali Jr(Wood,Ironsight plate), and Secret(Recoloring)/MrTypical(Edited DoomNukem shotgun barrel)
+Shotgun Pumping frames (SHTN*) by DoomNukem, Modified by Secret(Recolored Pump to red)
+ADS Sprite by DoomNukem, Heavily Edited by Sperglord, Further edited by Secret
+Ammo Sprite By Metalman
+Shotgun Sounds Taken From Brutal Pack V9
+Shotgun Shell & Hand Reload sprite by Benjamin Zuriel
+
+Shellbox Sprite from Doom64, Reshaded by MrTypical
+
+== SSG == 
+SSG Base by DoomNukem, Heavily Edited by MrtypicalSF
+SSG Reload Frames by ID, Heavily Edited by MrtypicalSF
+SSG G Frame by MrTypicalSF
+Animation By Secret
+SSG Sounds Taken From Brutal Pack V9
+SSG Inspection Base Frames by Fistful of Frags Team, SomeOtherDoomGuy and jdredalert,
+Tweaked by Secret
+
+== RIFLE ==
+Base by Mike12(AR), DoomNukem(DMR), Modified By Carrot
+Reload Frame base by Mike12, Modified by Secret,Mrtypical,Vallena(M203 Grenade Launcher)
+Animation By Secret
+Reload Hand
+MrTypical
+
+
+
+== MINIGUN ==
+Minigun Extra animations for barrels by Perkristian and Minigunner, Ammo Belt by Mike12, base by Skulltag Team, animations and muzzle by Sergeant_Mark_IV
+
+== MACHINE GUN ==
+Machinegun by Sergeant_Mark_IV, based on the Alpha Doom Machinegun sprites, 
+reload frames based on a sprite from Platoon mod of Duke Nukem 3D.
+
+== MG42 ==
+MG42 based on a screenshot from Call of Duty, edited by Sergeant_Mark_IV
+
+== ROCKET LAUNCHER ==
+Rocket Launcher base by Eriance, edited by Sergeant_Mark_IV, 
+Further Edited by JTC3
+Reload Frames Edited Further by JTC3
+Muzzle Flash/Lighting By Secret 
+Ammo barrels from Necrodome, Edited by JTC3
+Rocket MISL* by FreeDoom team
+
+
+== GRENADE LAUNCHER ==
+Grenade Launcher base sprites by Nmn, animated by Sergeant_Mark_IV, 
+grenades based by FreeDoom team, animated by Sergeant_Mark_V
+
+== MP40 ==
+MP40 by Apogee Entertainment, edited by Sergeant_Mark_IV, 
+side frames by Marty Kirra.
+
+== BFG9000 ==
+BFG9000 Sergeant_mark_IV
+BFG9000 Ammo Sprite Base By ID Software, Modified by Secret
+BFG9000 Idle Sprites,Fire By MrTypicalSF
+
+== BFG10000 ==
+BFG10000 by Eriance
+
+== Other Stuff ==
+Taunt sprites Sergeant_Mark_IV
+
+Mancubus Flame Cannon by Mike12
+
+Barrel being carried by player on HUD by Mr Enchanter
+Cacodemon Eye Trophy by Kamijou
+
+Revenant Missile Launcher (RVCG) base from Hacx, edited by Mike12
+
+Plasma Gun Based on a 3D model by Sitters, sprites by Sergeant Mark IV
+
+Smooth Classic Doom weapon sprites by Perkristian
+
+== Monsters ==
+Zombie scientist by scalliano, extra death animations by Das_M
+
+Zombies animations killed by shotgun, railgun, axe, explosives by Sgt Mark IV
+Zombies animations killed by Minigun by Mike12
+
+Shotgunguy firing and pumping shotgun animation by Sgt Mark IV
+
+Minigun Zombie by Das_M
+Minigun zombie frontal death frames by David G, 
+gory versions (losing arm, head, etc.) by Sgt Mark IV
+
+Zombie gibs by Sgt Mark IV
+
+Imp dying with guts hanging out by Dr. Doctor
+Imp deaths (head exploding, losing arm, burning, losing leg, 
+killed by shotgun, rolling downstairs, cut in half, gibs for head, 
+arms and legs) by Sgt Mark IV
+Imp deaths by Minigun by Mike12
+Imp leaping attack and swimming animations by Sgt Mark IV
+
+
+
+Pinky demon eating stuff from the floor by Sgt Mark IV
+Pinky demon death by losing its arm by David G.
+Pinky demon deaths (cut in half, head exploding), 
+head, leg and arm gibs by Sergeant_Mark_IV
+Pinky demon plasma death by Mike12
+Pinky Demon without arms by Sergeant_Mark_IV
+Pinky Demon death by BFG by David G.
+
+Lost Soul without flames and death piece particles by Jekyll Grim Payne
+
+Juggernaut - Base, ripped from Quake 2' Tank boss model by DRUMASTER, 
+mancubus part by 
+
+== Decorations ==
+Green trees by Doom_Jedi
+Bush and grass sprites from DN Platoon TC
+Burning tires, rubble, destroyed signposts from Terminator Skynet.
+Destroyed light post by Sgt Mark IV, made from a model by Sitters.
+
+== Gore ==
+Blood decals, blood sprites, generic gibs by Sergeant_Mark_IV
+Blood splatter effect (BLHT) sprites based on effects from TF2, 
+edited and reshaded by Sgt Mark IV
+
+== EFFECTS ==
+Large fire particles (when burning trees) by Ashish Yadav, 
+converted into Doom by Sgt Mark IV
+Rocket explosion fire particle from Quake 3
+Most explosions are from common 90s effects seen in thousands 
+of games and movies, hard to find the creators of it.
+Huge water effect when exploding stuff on the water/blood/nukage 
+- based on some sprites from Metal Slug.
+Effect when shoting the water based on the effects from Blood 
+(+particles based on stuff from Heretic)
+Lava splash effects - Sgt Mark IV
+PARTA0 Taken from Brutal Pack, by JTC3
+
+
+== VOICE ACTING ==
+Zero X. Diamond (Doomguy), Tiberium Soul (Marines), Halo 3 (female player)
+
+== TANKS ==
+3D Models and textures by Sergeant_Mark_IV
+Cammo pattern, tracks texture from Action Doom by Scuba_Steeve
+Tank Cannon HUD is based on one of Eriance's weapons, edited by Sgt Mark IV
+Artillery Tank's HUD is based on sprites from Necrodome.
+
+== PSX DOOM MAPS ==
+fenderc01, Dragonsbretheren
+
+== EXTRA CODE ==
+Solarsnowfall (Third Person Camera script)
+Jekyll Grim Payne (base for torches)
+Nash - I remember I took something from him, I don't remember what.
+TerminusEst13 - The tracer code used on large tracing projectiles, 
+such as the Artillery Tank autocannon.
+Invuln taunt, and ghost code by JustUserAgain
+
+== MISC ==
+Female player mugshot sprites by Xaser
+Full Helmet HUD by DoomNukem
+
+P.S.: Some people constantly change their names.
+Eriance is also reffered as Marisa Kitsune
+Mike12 is also reffered as HorrorMovieGuy and HDoomGuy 
+David G as IsNatureToDie, and Zero X. Diamond as Chinese Tony Danza
+MrTypicalSF as TypicalSonicFan
+
+== POWERUPS ==
+
+Haste Sphere
+Decorate: scalliano
+GLDefs: scalliano
+Sprites: Id Software
+Sprite Edit: scalliano
+
+Rage Sphere
+Decorate: Captain Toenail
+GLDefs: Captain Toenail
+Sprites: Blood, Doom64
+Sprite Edit: Captain Toenail
+
+Double Damage Sphere
+Decorate: Captain Toenail
+GLDefs: scalliano
+
+Full Invisibility Sphere
+Decorate:  The Skulltag Team
+GLDefs:  The Skulltag Team
+Sprites: Id Software
+Sprite Edit: The Skulltag Team
+
+Salvation Sphere
+Decorate: PillowBlaster
+Sprites: Captain Toenail
+Idea Base: DoomedArchvileDemon's idea.
+
+TimeSphere
+Code: The Skulltag Team
+GLDefs: The Skulltag Team
+Sprites: The Skulltag Team
+
+== PORTABLE ITEMS ==
+
+Potions
+Decorate: BlueShadow
+Sprites: Raven Software
+Sprite Edit: Tormentor667
+
+FieldKit
+Decorate: Ghastly_dragon
+Sounds: Id Software
+Sprites: Id Software
+Sprite Edit: Ghastly_dragon
+
+Medipack
+Decorate: Dreadopp
+Sounds: ID Software
+Sprites: ID Software
+Sprite Edit: Dreadopp
+
+== ZMOVEMENT ==
+
+Dusk Movement is inspired by the game DUSK, developed by David Szymanski and published by New Blood Interactive.
+Painkiller movement is inspired by the game Painkiller, developed by People Can Fly and published by THQ Nordic.
+UT Movement is inspired by the Unreal Tournament series developed and published by Epic Games.
+Build Engine movement in inspired by the classic Build Trilogy, and Ion Fury developed by Voidpoint and published by 3DRealms.
+Quake movement is inspired by the Quake series developed and published by id Software.
+Sounds included in this mod come from the aforementioned games except the wallslide and climbing sounds which come from QC:DE: Kane's crouch slide (QC's Slash crouchslide) and Major's climbing.
+
+Credits:
+- Ivory Duke: all original coding;
+- Nash, Gutawer, Ijon: creators of code that put me on the right track when I started working on this project;
+- Michaelis and DoomKrakken: help, support, and answers to my ZScript questions.
+
+== Backpack ==
+Code By PillowBlaster, and KeksDose?(im unsure.)
+Serum Code by Talon1024/ozymandias81
+
+
+Motion Blur - Pixel Eater
+
+Thankyou to the following who have helped to shape this effect!
+
+Nash Muhandes
+Caligari87
+Tormentor667
+
+And thanks to _mental_ for identifying a bad glitch!

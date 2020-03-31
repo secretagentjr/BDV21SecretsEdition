@@ -1,0 +1,39 @@
+class ZombieMenS : SS_ScriptedSpawner replaces Zombieman
+{
+    override name SS_GetActorToSpawn ()
+    {
+	    // Assuming '' is a boolean console variable.
+                                      // And '' is true.
+        if(GetCvar("bd_classicmonsters")){return 'VanillaZombieman';} 
+		if(GetCvar("bd_disablenewenemies")){return 'RifleZombie';}
+		// '' is false, Spawn Other Enemies.
+		//if (random() > 1){return 'Labguy';} 
+		//if (random() > 140){return 'PistolZombie';} 
+
+        return 'RifleZombieSpawner';
+    }
+} 
+
+Class RifleZombieSpawner : Actor //Replaces ZombieMan
+{
+		Default
+	{
+		+NOINTERACTION
+	}
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0 A_Jump(1,"ReplaceAxeMan");
+		TNT1 A 0 A_Jump(140,"ReplacePistol");
+	SpawnRifleMan:
+	    TNT1 A 0 A_SpawnItemEx("RifleZombie",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;	
+	ReplaceAxeMan:
+	    TNT1 A 0 A_SpawnItemEx("Labguy",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	ReplacePistol:
+	    TNT1 A 0 A_SpawnItemEx("PistolZombie",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;	
+	}
+}

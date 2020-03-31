@@ -1,0 +1,286 @@
+// This is for testing purposes.
+
+/*
+class arm : actor
+{
+override void tick()
+{
+    super.tick();
+    console.printf("level number is %i, cluster number %i, map name %s", level.levelnum, level.cluster, level.mapname);
+}
+
+}
+*/
+
+/*
+Some Clarifications, 
+Level.Cluster is the episode Cluster.
+Level.LevelNum Is The LevelNumber(This is for single episodic Scaling)
+Level.MapName Is the MapName(You'll probably never use this, But there are
+rare cases, in which you don't know the levelnum, but the mapname.)
+
+Also, Level.LevelNum or Level.Cluster should only be used together in single
+episodes, unless you want to set a custom point in the cluster, like for example
+
+Anything that uses These Pre-Defined Clusters are the same as Doom 2.
+TNT,Plutonia,Etc.
+
+Level.Cluster 1-4 are Episodes 1-4 of Doom 1,Ultimate Doom.
+Level.Cluster 5 is Doom 2 Maps 01-06, and Sigil.
+Level.Cluster 6 is Map 07-11 Of Doom 2
+Level.Cluster 7 is Map 12-20 Of Doom 2
+Level.Cluster 8 is Map 21-30 Of Doom 2
+Level.Cluster 9/10 is Level 31 and 32 of Doom 2.
+Level.Cluster 11 Is Nerve.wad
+Level.LevelNum 11-19 is Nerve.wad
+*/
+
+/*
+A Bit of an explanation as to what's happening here. we check for the cluster
+of sigil,D2E1, and then nerve, and then anything else. If D2E1 or Sigil is true,
+we check the levelnum for sigil to see how far along we are, or if we're playing
+sigil at all. If we're in the 1st half, we spawn greenarmor, and if we're in
+the 2nd half, we spawn HeavyArmor. Otherwise we spawn LightArmor because we're 
+in the beginning of doom 2, or whatever megawad. After that we Check for == 1
+for Doom Episode 1, and >= 2 for Doom Episodes 2-4
+*/
+
+// Cvar to Replace Armor
+class GreenArmorSS : SS_ScriptedSpawner replaces GreenArmor
+{
+    override name SS_GetActorToSpawn ()
+    {
+	    // Assuming '' is a boolean console variable.
+                                      // And '' is true.
+		if(GetCvar("bd_disablenewarmor")){return 'LightArmor';}
+		// '' is false, Spawn Armor Replacement.
+
+        return 'GreenArmorS';
+    }
+}
+
+// Spawns GreenArmor On Episode 1 of Doom,Doom 2 and Heavy Armor on episodes 2-4
+// and beyond of anything else. 
+
+// Inherit from Actor for properties, and Replace GreenArmor Actor.
+Class GreenArmorS : Actor //Replaces GreenArmor
+{
+		Default // Tells the game to use the default flags.
+	{
+		+NOINTERACTION  // Tells the actor to not interact with the map.
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0 
+		{
+		// If Equal to 1
+		if (Level.Cluster == 1)
+		{
+		A_SpawnItemEx("LightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		// If Equal to 5
+		else if(Level.Cluster == 5)
+		{
+		// Sigil
+        if(Level.LevelNum <= 44)
+		{
+		A_SpawnItemEx("LightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		else if(Level.LevelNum >= 45)
+		{
+		A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		// We're Not Playing Sigil. Spawn LightArmor so balance isn't broken.
+		else
+		{
+		A_SpawnItemEx("LightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		}
+		
+		// ELSE If Equal to 11
+		else if(Level.Cluster == 11)
+        {
+		// Nerve.wad
+        if(Level.LevelNum <= 14)
+		{
+		A_SpawnItemEx("LightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+        else if(Level.LevelNum >= 15)
+		{
+		A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		// We're Not Playing Nerve. Chances are if something has cluster 11 it
+		// makes sense to spawn the most powerful upgrade here.
+		else
+		{
+		A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+        }
+		
+		// ELSE If Equal to 2 but not to 5
+		else if ((Level.Cluster >= 2) && (Level.Cluster != 5))
+		{
+		A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}		
+		}
+		Stop;
+	}
+}
+	
+
+// 	This is the old spawning system i was using, very inefficient.
+
+/*
+
+// Inherit from Actor for properties, and Replace GreenArmor Actor.
+Class GreenArmorS : Actor Replaces GreenArmor
+{
+		Default // Tells the game to use the default flags.
+	{
+		+NOINTERACTION  // Tells the actor to not interact with the map.
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0 //NODELAY // we don't need ; on { } 
+		{
+		 // Fetch a variable.
+		 switch(Level.Cluster) 
+		 {
+		  // Whatever number is returned, jump to that case.
+		  Case 1:  // E1
+		   A_SpawnItemEx("LightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  Case 5:  // D2E1, Also Sigil.
+		   // you can't do two switch functions within the same tick apparently.
+		   A_SpawnItemEx("GreenArmors2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  Case 2:  // E2
+		  Case 6:  //D2E2
+		  Case 3:  // E3
+		  Case 7:  //D2E3
+		  Case 4:  // E4
+		  Case 8:  //D2E4
+		  Case 9:  //MAP31
+		  Case 10: //MAP32
+		  A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  Case 11: //NERVE.WAD
+		  A_SpawnItemEx("GreenArmors3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		  break;
+		 Default: 
+		   // In case of custom megawads. with more than 32 levels.
+		   A_SpawnItemEx("GreenArmors4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		}
+		}
+		Stop;
+	}
+	
+}
+
+CLASS GreenArmorS2: Actor
+{
+		Default 
+	{
+		+NOINTERACTION  
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0 //NODELAY
+		{
+		 switch(Level.LevelNum) 
+		  {
+		   Case 41:
+		   Case 42:
+		   Case 43:
+		   Case 44:
+		   A_SpawnItemEx("LightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 45:
+		   Case 46:
+		   Case 47:
+		   Case 48:
+		   Case 49:
+		   A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Default:
+		   A_SpawnItemEx("LightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  }}
+		  Stop;
+}}
+
+CLASS GreenArmorS3: Actor
+{
+		Default 
+	{
+		+NOINTERACTION  
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0; 
+		TNT1 A 0
+		{
+		 switch(Level.LevelNum) 
+		  {
+		   Case 1:
+		   Case 2:
+		   Case 3:
+		   Case 4:
+		   A_SpawnItemEx("LightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Case 5:
+		   Case 6:
+		   Case 7:
+		   Case 8:
+		   Case 9:
+		   A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Default:
+		   A_SpawnItemEx("LightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  }}
+		  Stop;
+}}
+
+CLASS GreenArmorS4: Actor
+{
+		Default 
+	{
+		+NOINTERACTION  
+	}
+	
+	States
+	{
+	Spawn:
+	    TNT1 A 0; 
+		TNT1 A 0
+		{
+		 switch(Level.LevelNum) 
+		  {
+		   Case 1:
+		   Case 2:
+		   Case 3:
+		   Case 4:
+		   Case 5:
+		   Case 6:
+		   A_SpawnItemEx("LightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		   Default:
+		   A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+		   break;
+		  }}
+		  Stop;
+}}
+
+*/
