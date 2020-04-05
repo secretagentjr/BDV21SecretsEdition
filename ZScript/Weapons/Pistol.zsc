@@ -502,9 +502,9 @@ CLASS BrutalPistol : BrutalWeapon
 	ChamberRound:
 	    TNT1 A 0; 
 	    PISR YZ 1;
-		PIST F 0 A_PlaySound("CHMBRSB");
+		PIST F 0 A_PlaySound("CHMBRSB", 1);
 		PIRR ABC 1;
-		PIST F 0 A_PlaySound("CHMBRSB");
+		PIST F 0 A_PlaySound("CHMBRSB", 1);
 		PIRR DDCB 1;
 		PIRR EF 1;
 		Goto Ready3;
@@ -512,9 +512,9 @@ CLASS BrutalPistol : BrutalWeapon
 	SChamberRound:
 		TNT1 A 0;
 	    PI2R YZ 1;
-		PIST F 0 A_PlaySound("CHMBRSB");
+		PIST F 0 A_PlaySound("CHMBRSB", 1);
 		PI22 AAA 1;
-		PIST F 0 A_PlaySound("CHMBRR");
+		PIST F 0 A_PlaySound("CHMBRR", 1);
 		PI22 BCD 1;
 		Goto SilencerReady;
 		

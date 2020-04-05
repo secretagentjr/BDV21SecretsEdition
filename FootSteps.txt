@@ -15,10 +15,12 @@ ACTOR Purist : Doomer
 }
 
 
+
 ACTOR BDoomer : Doomer
 {
 	Speed 1.0
 	Player.DisplayName "Normal (Rifle Start)"
+	Player.StartItem "IsPlayingBDSTE", 1
 	Player.StartItem "Rifle"
 	Player.StartItem "Melee_Attacks"
 	Player.StartItem "IsPlayer", 1
@@ -27,6 +29,7 @@ ACTOR BDoomer : Doomer
 	Player.StartItem "BDPistolAmmo", 16
 	//Player.StartItem "BDDualPistolAmmo", 16
 	//Player.StartItem "DoubleRifleAmmo", 31
+	//Player.StartItem "IsPlayingBDSTE", 1
 	Player.StartItem "ShotgunAmmo", 10
 	Player.StartItem "PlasmaAmmo", 50
 	Player.StartItem "DoublePlasmaAmmo", 50
@@ -51,6 +54,7 @@ ACTOR Doomer2 : Doomer
 {
 	Speed 1.0
 	Player.DisplayName "Normal (Pistol Start)"
+	Player.StartItem "IsPlayingBDSTE", 1
 	Player.StartItem "BrutalPistol"
 	Player.StartItem "Melee_Attacks"
 	Player.StartItem "IsPlayer", 1
@@ -58,9 +62,9 @@ ACTOR Doomer2 : Doomer
 	Player.StartItem "RifleAmmo", 30
 	Player.StartItem "BDPistolAmmo", 16
 	Player.StartItem "BDSMGAmmo", 41
-	Player.StartItem "BDDualPistolAmmo", 16
+	//Player.StartItem "BDDualPistolAmmo", 16
 	Player.StartItem "AssaultShotgunAmmo", 20
-	Player.StartItem "DoubleRifleAmmo", 31
+	//Player.StartItem "DoubleRifleAmmo", 31
 	Player.StartItem "ShotgunAmmo", 10
 	Player.StartItem "PlasmaAmmo", 50
 	Player.StartItem "DoublePlasmaAmmo", 50
@@ -87,6 +91,7 @@ ACTOR TacticalDoomer : Doomer
 	Speed 1.0
 	Player.RunHealth 999
 	Player.DisplayName "Tactical (Sprints, Recoil)"
+	Player.StartItem "IsPlayingBDSTE", 1
 	Player.StartItem "Rifle"
 	Player.StartItem "RifleAmmo", 30
 	//Player.StartItem "DoubleRifleAmmo", 31

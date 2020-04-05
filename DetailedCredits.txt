@@ -4,16 +4,18 @@ created it.
 Resources made by me are also listed.
 Unlisted resources are likely to belong to people unknown.
 
+
+== Zscript Based Footstep sounds by DenisBelmondo ==
+Credits: Valve Software (wood plank sounds), 
+Turtle Rock Studios (the rest of the sounds), 
+The Zombie Killer (the idea even wrt to the implementation like speed-based sound volume)
+
+
 == HitBox System Code ==
 PA1NK1LLER
 
 == ZWeapons Script Library ==
 dodopod
-
-Ended up not implementing
-//== Zscript Footsteps ==
-//Base Zscript Conversion
-//vsonnier
 
 PDA Sprites by MrTypical
 
@@ -23,9 +25,6 @@ M8F
 
 == Tilt++ ==
 Nash Muhandes
-
-Original ACS Footsteps which it was based off of
-DaZombieKiller
 
 == PLAYER SPRITES ==
 Firing and moving sprites, Meatshields, wounded marine, jumping, rifle bashing, by Sgt Mark IV

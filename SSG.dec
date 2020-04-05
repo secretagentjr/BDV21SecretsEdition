@@ -30,16 +30,113 @@ ACTOR SSG : BrutalWeapon
 	InspectSSG:
 	TNT1 A 0
 	SHTZ A 0 A_Giveinventory("InspectSSG",1)
-	SHTZ A 1 A_WeaponReady
-	SSGI ABCDD 1 A_WeaponReady
-	SHTZ A 0 A_PlaySound("weapons/ssg/open",2)
-	SSGI EEFF 1 A_WeaponReady
-	SSGI H 15 A_WeaponReady
-	SSGI I 1 A_WeaponReady
-	SHTZ A 0 A_playsound("weapons/ssg/close",3)
-	SSGI JJKKLLMMNNOPQA 1 A_WeaponReady
-	SHTZ A 1 A_WeaponReady
-	Goto Ready3
+	SHTZ AB 1 A_WeaponReady
+		SHTZ C 1
+		{
+		  A_WeaponReady;
+		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
+	   }
+	//ReloadB:
+		SHTZ D 1
+		{
+		  A_Giveinventory("ScreenTilt",1);
+		  A_WeaponReady;
+		  A_Setroll(roll+0.8, SPF_INTERPOLATE);
+		  A_PlaySound("weapons/ssg/open",2);
+	   }
+	   SHTZ EF 1
+	   {
+		 A_WeaponReady;
+		  A_Setroll(roll+0.2, SPF_INTERPOLATE); // +0.7
+	   }
+	   SHTZ G 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll-0.6, SPF_INTERPOLATE); 
+	   }
+	   SHTZ G 4
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll-0.2, SPF_INTERPOLATE); 
+	   }
+	   SHTZ HIJK 1 A_WeaponReady
+	   SSGR ABCDEFGHI 1 A_WeaponReady
+	   SHTZ A 0 A_playsound("weapons/ssg/in",3)
+	   SHTZ L 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
+	   }
+	   SHTZ M 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll+0.4, SPF_INTERPOLATE); // +0.3
+	   }
+	   SHTZ N 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll-0.4, SPF_INTERPOLATE); 
+	   }
+	   SHTZ O 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll+0.4, SPF_INTERPOLATE); 
+	   }
+	   SHTZ P 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll-0.4, SPF_INTERPOLATE); // +0.1
+	   }
+	   SHTZ Q 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll-0.4, SPF_INTERPOLATE); //-0.1
+		  A_playsound("weapons/ssg/close",3);
+	   }
+	   SHTZ RST 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll-1.2, SPF_INTERPOLATE); //-1.9
+	   }
+	   SHTZ U 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll-1.0, SPF_INTERPOLATE); //-2.4
+	   }
+	   SHTZ V 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll-0.6, SPF_INTERPOLATE); //-2.7
+	   }
+	   SHTZ WXY 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll-0.2, SPF_INTERPOLATE); //-3.0
+	   }
+	   SHTZ Z 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll+1.0, SPF_INTERPOLATE); //-2.5
+		  A_playsound("weapons/ssg/close",3);
+	   }
+	   SHTX AB 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll+2.5, SPF_INTERPOLATE); //0
+	   }
+	   SHTX C 1
+	   {
+		  A_WeaponReady;
+		  A_Setroll(roll-0.8, SPF_INTERPOLATE); //0
+	   }
+	   SHTZ A 1
+	   {
+		  A_takeinventory("ScreenTilt",1);
+		  A_WeaponReady;
+		  A_Setroll(0, SPF_INTERPOLATE); //0
+	   }
+		SHTZ A 0 A_TakeInventory("SSGAlt",1)
+        Goto Ready
     SelectAnimation:    
 	Ready:
 	Ready3:
@@ -144,8 +241,7 @@ ACTOR SSG : BrutalWeapon
 		SHTZ A 0 A_Takeinventory("Zoomed",1)
         SHTZ A 0 A_ZoomFactor(1.0)
 		SHTZ A 0 A_TakeInventory("TossGrenade", 1)
-		SHTX CBBA 1
-		SHTZ ZY 1
+		SHT5 DCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1 A_Lower
 		Wait
@@ -175,8 +271,9 @@ ACTOR SSG : BrutalWeapon
 		//SHTZ A 0 A_GunFlash
 		SHTZ A 0 A_JumpIfInventory("SSGAmmo", 1, 1)
 		Goto RaiseReloading
-		SHTZ YZ 1
-		SHTX ABBC 1
+		//SHTZ YZ 1
+		//SHTX ABBC 1
+		SHT5 ABCD 1
 		SHTZ A 0 A_PlaySound("weapons/sshotc")
 		TNT1 AAAAAAAAAAAA 0 A_Raise
 		Goto Ready
@@ -184,27 +281,8 @@ ACTOR SSG : BrutalWeapon
 	RaiseReloading:
 		SHTZ A 0 A_JumpIfInventory("AmmoShell", 2,1)//Check if has any ammo left to reload
 		Goto RaiseNoAmmo
-		SHTZ A 0 A_PlaySound("weapons/ssg/open",2)
-		//SHTZ A 0 A_JumpIfInventory("HasUnloaded", 1, 2)
-		TNT1 AA 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10, -20)
-		SHTZ DEF 1
-		SHTZ G 5
-		//TNT1 A 0 A_playsound("SSHSTEAM",1)
-		SHTZ HIJK 1
-		SHTZ A 0 A_playsound("weapons/ssg/in",3)
-		SHTZ A 0 A_playsound("weapons/ssg/in2",4)
-		SHTZ LMNOPQR 1
-		SHTZ A 0 A_GiveInventory ("Pumping", 1)
-		SHTZ A 0 A_TakeInventory("AmmoShell", 2)
-		SHTZ A 0 A_GiveInventory("SSGAmmo", 2)
-		SHTZ STUVXYZ 1 //A_WeaponReady(WRF_NOFIRE)
-		//SHTX A 1 A_WeaponReady(WRF_NOFIRE)
-		SHTZ A 0 A_playsound("weapons/ssg/close",3)
-		SHTX ABC 1 //A_WeaponReady(WRF_NOFIRE)
-		SHTZ A 0 A_TakeInventory("SSGAlt",1)
-		//SHTX A 1 //A_WeaponReady
-        Goto Ready
-		
+		TNT1 A 0
+		Goto Reload
 		
 	RaiseNoAmmo:	
 		SHTZ YZ 1
@@ -248,7 +326,7 @@ ACTOR SSG : BrutalWeapon
 		SHTZ A 0
 		SHTZ A 0 A_FireCustomMissile("DistantFireSoundSSG", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		SHO9 A 0 A_firebullets (0,0,1,40,"shotpuff",FBF_NORANDOM,300)
-        SHO9 A 0 BRIGHT A_playsound("SSHFIRE")
+        SHO9 A 0 BRIGHT A_playsound("SSHFIRE", 1)
 		//TNT1 AAAAAAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
 		//TNT1 AAAAAAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-19,19), 0, -1, 0, 0, random(-9,9))
 		//TNT1 AAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-19,19), 0, -1, 0, 0, random(-9,9))
@@ -260,7 +338,7 @@ ACTOR SSG : BrutalWeapon
 		SHOF A 1 BRIGHT
 		
 		//SHTZ A 0 A_SetPitch(pitch-2)
-		SHOF B 1 BRIGHT
+		//SHOF B 1 BRIGHT
 		//SHTZ A 0 A_SetPitch(pitch-2)
 		SHTZ A 0 A_ZoomFactor(1.00)
         SHTZ A 0 A_TakeInventory("SSGAlt",1)
@@ -291,19 +369,21 @@ AltFire:
 		//SHTZ AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 2, 0, 0, 0)
 		//TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
 		//TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
-		TNT1 A 0 A_PlaySound("SGFIRE")
+		TNT1 A 0 A_PlaySound("SGFIRE", 1)
         //SHTU A 1 BRIGHT //A_PlaySound("weapons/ssg/Altfire")
 		SHTZ A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
 		SHTZ A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
         SHTU A 0 A_FireBullets (5, 1, 5, 20, "ShotgunPuff", FBF_NORANDOM)
 		SHTU A 0 A_FireBullets (2.5, 2.5, 5, 20, "ShotgunPuff2", FBF_NORANDOM)
-		SHT3 AB 1 BRIGHT //A_FireBullets (2, 2, 10, 20, "ShotgunPuff", FBF_NORANDOM)
+		SHT3 A 1 BRIGHT //A_FireBullets (2, 2, 10, 20, "ShotgunPuff", FBF_NORANDOM)
 		
         TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
 		//SHT3  1
-		SHOF C 1 A_SetPitch(pitch-1.0)
-		SHOF D 1 A_SetPitch(pitch-1.0)
-		SHOF EFFGHIJ 1
+		SHT3 E 1 A_SetPitch(pitch-3.0)
+		SHT3 E 4 A_WeaponReady(WRF_NOFIRE)
+		SHT3 F 1 A_WeaponReady(WRF_NOFIRE)
+		//SHOF D 1 A_SetPitch(pitch-1.0)
+		//SHOF EFFGHIJ 1
 		//SHTZ A 0 A_SetPitch(-2.5 + pitch)
 		//SHTU DE 1
 		//SHOF EFGHI 1 A_SetPitch(+1.0 + pitch)
@@ -318,19 +398,18 @@ AltFire:
 		//SHTZ AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, -2, 0, 0, 0)
 		//TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
 		//TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
-        TNT1 A 0 A_PlaySound("SGFIRE")
+        TNT1 A 0 A_PlaySound("SGFIRE", 1)
 		//SHTU B 1 BRIGHT //A_PlaySound("weapons/sg")
 		SHTZ A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
 		SHTZ A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
         SHTU A 0 A_FireBullets (5, 1, 5, 20, "ShotgunPuff", FBF_NORANDOM)
 		SHTU A 0 A_FireBullets (2.5, 2.5, 5, 20, "ShotgunPuff2", FBF_NORANDOM)
-		SHT3 CD 1 BRIGHT //A_FireBullets (2, 2, 10, 20, "ShotgunPuff", FBF_NORANDOM)
+		SHT3 C 1 BRIGHT //A_FireBullets (2, 2, 10, 20, "ShotgunPuff", FBF_NORANDOM)
 
         TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
 		SHOF C 1 A_SetPitch(pitch-1.0)
-		SHOF D 1 A_SetPitch(pitch-1.0)
-		SHOF EFFGHIJ 1
-        //SHOF EFGHI 1 A_SetPitch(+1.0 + pitch)
+		SHOF C 4 A_WeaponReady(WRF_NOFIRE)
+		SHT3 F 1 A_WeaponReady(WRF_NOFIRE)
 		
 		SHTZ A 0 A_TakeInventory("SSGAlt", 1)
 		//TNT1 A 0 A_JumpIfInventory("NoAutoReload", 1, "NoAmmo")
@@ -356,25 +435,123 @@ AltFire:
 	
 		//SHTZ DEFGHHHHIJ 1
 		//SHTZ ABCDEF 1 A_WeaponReady(WRF_NOFIRE)
-		SHTZ ABC 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
-	ReloadB:
-		SHTZ A 0 A_PlaySound("weapons/ssg/open",2)
+		SHTZ AB 1 A_WeaponReady(WRF_NOFIRE)
+		SHTZ C 1
+		{
+		  A_Giveinventory("ScreenTilt",1);
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
+	   }
+	//ReloadB:
 		//SHTZ A 0 A_JumpIfInventory("HasUnloaded", 1, 2)
 		TNT1 AA 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10, -20)
-		SHTZ DEF 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
-		SHTZ G 5 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
-		//TNT1 A 0 A_playsound("SSHSTEAM",1)
-		SHTZ HIJK 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
-		SHTZ A 0 A_playsound("weapons/ssg/in",3) 
-		SHTZ A 0 A_playsound("weapons/ssg/in2",4)
-		SHTZ LMNOPQR 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
-		SHTZ A 0 A_GiveInventory ("Pumping", 1)
-		SHTZ A 0 A_TakeInventory("AmmoShell", 2)
-		SHTZ A 0 A_GiveInventory("SSGAmmo", 2)
-		SHTZ STUVXYZ 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH) //A_WeaponReady(WRF_NOFIRE)
+		SHTZ D 1
+		{
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+0.8, SPF_INTERPOLATE);
+		  A_PlaySound("weapons/ssg/open",2);
+	   }
+	   SHTZ EF 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+0.2, SPF_INTERPOLATE); // +0.7
+	   }
+	   SHTZ G 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.6, SPF_INTERPOLATE); 
+	   }
+	   SHTZ G 4
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.2, SPF_INTERPOLATE); 
+	   }
+	   SHTZ HIJK 1 A_WeaponReady(WRF_NOFIRE)
+	   SSGR I 1 A_WeaponReady(WRF_NOFIRE)
+	   SHTZ A 0 A_playsound("weapons/ssg/in",3)
+	   SHTZ L 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
+	   }
+	   SHTZ M 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+0.4, SPF_INTERPOLATE); // +0.3
+	   }
+	   SHTZ N 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.4, SPF_INTERPOLATE); 
+	   }
+	   SHTZ O 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+0.4, SPF_INTERPOLATE); 
+	   }
+	   SHTZ P 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.4, SPF_INTERPOLATE); // +0.1
+	   }
+	   SHTZ Q 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.4, SPF_INTERPOLATE); //-0.1
+		  A_playsound("weapons/ssg/close",3);
+	   }
+	   SHTZ A 0 
+	   {
+	    A_TakeInventory("AmmoShell", 2);
+		A_GiveInventory("SSGAmmo", 2);
+	   }
+	   SHTZ RST 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-1.2, SPF_INTERPOLATE); //-1.9
+		  //A_TakeInventory("AmmoShell", 2);
+		  //A_GiveInventory("SSGAmmo", 2);
+	   }
+	   SHTZ U 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-1.0, SPF_INTERPOLATE); //-2.4
+	   }
+	   SHTZ V 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.6, SPF_INTERPOLATE); //-2.7
+	   }
+	   SHTZ WXY 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.2, SPF_INTERPOLATE); //-3.0
+	   }
+	   SHTZ Z 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+1.0, SPF_INTERPOLATE); //-2.5
+		  A_playsound("weapons/ssg/close",3);
+	   }
+	   SHTX AB 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+2.5, SPF_INTERPOLATE); //0
+	   }
+	   SHTX C 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.8, SPF_INTERPOLATE); //0
+	   }
+	   SHTZ A 1
+	   {
+		  A_takeinventory("ScreenTilt",1);
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(0, SPF_INTERPOLATE); //0
+	   }
 		//SHTX A 1 A_WeaponReady(WRF_NOFIRE)
-		SHTZ A 0 A_playsound("weapons/ssg/close",3)
-		SHTX ABC 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH) //A_WeaponReady(WRF_NOFIRE)
+		//SHTZ A 0 A_playsound("weapons/ssg/close",3)
+		//SHTX ABC 1 A_WeaponReady(WRF_NOFIRE) //A_WeaponReady(WRF_NOFIRE)
 		SHTZ A 0 A_TakeInventory("SSGAlt",1)
 		//SHTX A 1 //A_WeaponReady
         Goto Ready
@@ -384,28 +561,117 @@ AltFire:
 		SHTZ A 0 A_JumpIfInventory("AmmoShell",1,1)
 		Goto NoAmmo
 		SHTZ A 0 A_TakeInventory("SSGAlt",1)
-		
-		SHTZ AB 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)//A_WeaponReady(WRF_NOFIRE)
-		//SHTZ A 0 A_GiveInventory("Reloading",1)
-		SHT7 A 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
-        SHTZ A 0 A_PlaySound("weapons/ssg/open",2)
-		//SHTZ J 1
-		SHT7 BCD 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
-        //SHT7 BC 1
-		SHT7 E 5 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
-		SHTZ A 0 A_JumpIfInventory("HasUnloaded", 1, 2)
-		TNT1 A 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10, -20)
-		SHT7 EFGHI 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
-		//SHTZ A 0 A_playsound("weapons/ssg/in",3)
-		SHTZ A 0 A_playsound("weapons/ssg/in2",4)
-		SHTZ LMNOPQR 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
-		SHTZ A 0 A_GiveInventory ("Pumping", 1)
-		SHTZ A 0 A_TakeInventory("AmmoShell", 1)
-		SHTZ A 0 A_GiveInventory("SSGAmmo", 1)
-		SHTZ STUVXYZ 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH) //A_WeaponReady(WRF_NOFIRE)
+		SHTZ B 1 A_WeaponReady(WRF_NOFIRE)
+		SHT7 A 1
+		{
+		  A_Giveinventory("ScreenTilt",1);
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
+	   }
+		//SHTZ A 0 A_JumpIfInventory("HasUnloaded", 1, 2)
+		TNT1 AA 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10, -20)
+		SHT7 B 1
+		{
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+0.8, SPF_INTERPOLATE);
+		  A_PlaySound("weapons/ssg/open",2);
+	   }
+	   SHT7 CD 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+0.2, SPF_INTERPOLATE); // +0.7
+	   }
+	   SHT7 E 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.6, SPF_INTERPOLATE); 
+	   }
+	   SHT7 E 4
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.2, SPF_INTERPOLATE); 
+	   }
+	   SHT7 FGHIJ 1 A_WeaponReady(WRF_NOFIRE)
+	   SSGR I 1 A_WeaponReady(WRF_NOFIRE)
+	   SHTZ A 0 A_playsound("weapons/ssg/in",3)
+	   SHTZ L 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
+	   }
+	   SHTZ M 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+0.4, SPF_INTERPOLATE); // +0.3
+	   }
+	   SHTZ N 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.4, SPF_INTERPOLATE); 
+	   }
+	   SHTZ O 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+0.4, SPF_INTERPOLATE); 
+	   }
+	   SHTZ P 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.4, SPF_INTERPOLATE); // +0.1
+	   }
+	   SHTZ Q 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.4, SPF_INTERPOLATE); //-0.1
+		  A_playsound("weapons/ssg/close",3);
+	   }
+	   SHTZ RST 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-1.2, SPF_INTERPOLATE); //-1.9
+		  A_TakeInventory("AmmoShell", 1);
+		  A_GiveInventory("SSGAmmo", 1);
+	   }
+	   SHTZ U 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-1.0, SPF_INTERPOLATE); //-2.4
+	   }
+	   SHTZ V 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.6, SPF_INTERPOLATE); //-2.7
+	   }
+	   SHTZ WXY 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.2, SPF_INTERPOLATE); //-3.0
+	   }
+	   SHTZ Z 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+1.0, SPF_INTERPOLATE); //-2.5
+		  A_playsound("weapons/ssg/close",3);
+	   }
+	   SHTX AB 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll+2.5, SPF_INTERPOLATE); //0
+	   }
+	   SHTX C 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(roll-0.8, SPF_INTERPOLATE); //0
+	   }
+	   SHTZ A 1
+	   {
+		  A_takeinventory("ScreenTilt",1);
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_Setroll(0, SPF_INTERPOLATE); //0
+	   }
 		//SHTX A 1 A_WeaponReady(WRF_NOFIRE)
-		SHTZ A 0 A_playsound("weapons/ssg/close",3)
-		SHTX ABC 1 A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH) //A_WeaponReady(WRF_NOFIRE)
+		//SHTZ A 0 A_playsound("weapons/ssg/close",3)
+		//SHTX ABC 1 A_WeaponReady(WRF_NOFIRE) //A_WeaponReady(WRF_NOFIRE)
 		SHTZ A 0 A_TakeInventory("SSGAlt",1)
 		//SHTX A 1 //A_WeaponReady
         Goto Ready

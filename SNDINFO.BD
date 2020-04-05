@@ -102,6 +102,7 @@ world/drip			dsdrip2
 world/hotsiz			dshtsiz
 // Rifle
 weapons/rifle			DSRIFLE
+$volume weapons/rifle 0.5
 weapons/rifleHP         DSRIFLE2
 // Shotgun
 //weapons/sg			sgfire
@@ -111,6 +112,7 @@ SGFIRE2 SGFIRE2
 SGFIRE3 SGFIRE3
 SGFIRE4 SGFIRE4
 SGFIRE5 SGFIRE5
+$volume SGFIRE 0.5
 //sgfire sgfire
 weapons/sgpump STGNPUMP
 //Empty
@@ -287,6 +289,7 @@ RKTSML RKTSML
 $rolloff world/RKTSML 1200 2000 
 
 SSHFIRE SSHFIRE
+$volume SSHFIRE 0.5
 //$random SSHFIRE { SSHFIRE0 SSHFIRE2 SSHFIRE3 }
 //SSHFIRE0 SSHFIRE0
 //SSHFIRE2 SSHFIRE2
@@ -492,6 +495,7 @@ puff/ric7 			dsrich7
 
 $limit weapons/chaingun/fire 0
 weapons/chaingun/fire	CHGNSHOT
+$volume weapons/chaingun/fire 0.25
 weapons/chaingun/spin	CHGNSPIN
 weapons/chaingun/stop	CHGNSTOP
 weapons/chaingun/start	CHGNSTRT
@@ -948,6 +952,7 @@ ICEBRK2 ICEBRK2
 
 
 CHGNSHOT CHGNSHOT
+$Volume chgnshot 0.5
 $limit CHGNSHOT 0
 
 
@@ -1153,6 +1158,7 @@ A12FIR A12FIR
 AACL AACL
 
 PFIRE PFIRE
+$Volume PFIRE 0.5
 DSPISTOL DSPISTOL
 PREL PREL
 

@@ -115,14 +115,6 @@ brightmap sprite PLSTA0
 	disablefullbright
 }
 
-
-brightmap sprite RIFFA0
-{
-	map "brightmaps/doom/RIFFA0.png"
-	disablefullbright
-}
-
-
 brightmap sprite CHAFA0
 {
 	map "brightmaps/doom/CHAFA0.png"
@@ -148,127 +140,9 @@ brightmap sprite SM2FB0
 	disablefullbright
 }
 
-
-brightmap sprite PISTA0
-{
-	map "brightmaps/doom/PISTA0.png"
-	disablefullbright
-}
-
-brightmap sprite PI2FA0
-{
-	map "brightmaps/doom/PI2FA0.png"
-	disablefullbright
-}
-
-
-
 brightmap sprite A12FA0
 {
 	map "brightmaps/doom/A12FA0.png"
-	disablefullbright
-}
-
-
-brightmap sprite SHTNA0
-{
-	map "brightmaps/doom/SHTNA0.png"
-	disablefullbright
-}
-
-brightmap sprite SHTAA0
-{
-	map "brightmaps/doom/SHTAA0.png"
-	disablefullbright
-}
-
-
-brightmap sprite SHTAB0
-{
-	map "brightmaps/doom/SHTAB0.png"
-	disablefullbright
-}
-
-
-brightmap sprite SHTAC0
-{
-	map "brightmaps/doom/SHTAC0.png"
-	disablefullbright
-}
-
-
-brightmap sprite SHTAD0
-{
-	map "brightmaps/doom/SHTAD0.png"
-	disablefullbright
-}
-
-
-brightmap sprite SHTAE0
-{
-	map "brightmaps/doom/SHTAE0.png"
-	disablefullbright
-}
-
-
-brightmap sprite SHT8A0
-{
-	map "brightmaps/doom/SHT8A0.png"
-	disablefullbright
-}
-
-
-brightmap sprite SHT8D0
-{
-	map "brightmaps/doom/SHT8D0.png"
-	disablefullbright
-}
-
-brightmap sprite SHT8E0
-{
-	map "brightmaps/doom/SHT8E0.png"
-	disablefullbright
-}
-
-brightmap sprite SHT8F0
-{
-	map "brightmaps/doom/SHT8F0.png"
-	disablefullbright
-}
-
-brightmap sprite SHT8G0
-{
-	map "brightmaps/doom/SHT8G0.png"
-	disablefullbright
-}
-
-brightmap sprite SHT8H0
-{
-	map "brightmaps/doom/SHT8H0.png"
-	disablefullbright
-}
-
-brightmap sprite SHT8I0
-{
-	map "brightmaps/doom/SHT8I0.png"
-	disablefullbright
-}
-
-brightmap sprite SHT8J0
-{
-	map "brightmaps/doom/SHT8J0.png"
-	disablefullbright
-}
-
-brightmap sprite SHT8K0
-{
-	map "brightmaps/doom/SHT8K0.png"
-	disablefullbright
-}
-
-brightmap sprite SHT8L0
-{
-	map "brightmaps/doom/SHT8L0.png"
 	disablefullbright
 }
 
@@ -408,8 +282,13 @@ brightmap Texture SPACM4
 
 brightmap sprite CELLB0 {	map "brightmaps/doom/CELLB0.png" }
 
+// ssg
 brightmap sprite SHOFA0 {	map "brightmaps/doom/SSG/SHOFA0.png" disablefullbright}
-brightmap sprite SHOFB0 {	map "brightmaps/doom/SSG/SHOFB0.png" disablefullbright}
-brightmap sprite SHTUA0 {	map "brightmaps/doom/SSG/SHTUA0.png" disablefullbright}
-brightmap sprite SHTUB0 {	map "brightmaps/doom/SSG/SHTUB0.png" disablefullbright}
+brightmap sprite SHT3A0 {	map "brightmaps/doom/SSG/SHT3A0.png" disablefullbright}
+brightmap sprite SHT3C0 {	map "brightmaps/doom/SSG/SHT3C0.png" disablefullbright}
 brightmap sprite SHTZA0 {	map "brightmaps/doom/SSG/SHTZA0.png" disablefullbright}
+
+// Shotgun
+brightmap sprite SHTAA0 {	map "brightmaps/doom/Shotgun/SHTAA0.png" disablefullbright}
+brightmap sprite SHT8A0 {	map "brightmaps/doom/Shotgun/SHT8A0.png" disablefullbright}
+brightmap sprite SHT8B0 {	map "brightmaps/doom/Shotgun/SHT8B0.png" disablefullbright}

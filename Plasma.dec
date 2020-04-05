@@ -196,7 +196,7 @@ ACTOR Plasma_Gun : BrutalWeapon
         Goto NoAmmo
         TNT1 AAA 0
 		
-	PLSN A 0 A_PlaySound("PLSCHARG")
+	PLSN A 0 A_PlaySound("PLSCHARG", 1)
 		PLSA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
 		PLSA B 1 BRIGHT A_Takeinventory("PlasmaAmmo",2)
 		PLSA C 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
@@ -262,7 +262,7 @@ AltHold:
 // Let Fly --------------------------------------------------------------------------
 
 	PLSN A 0 A_StopSound(6)
-	PLST A 1 A_PlaySound("PLSALTFR")
+	PLST A 1 A_PlaySound("PLSALTFR", 1)
 	PLSN A 0 A_ZoomFactor(0.9)
 	PLST B 2 BRIGHT A_Recoil(3)
 	PLSN A 0 A_StopSound(6)
@@ -411,9 +411,9 @@ AltHold:
 		PLSN A 0 A_JumpIfInventory("PlasmaAmmo",50,"Ready")
 		PLSN A 0 A_JumpIfInventory("AmmoCell",1,7)
 
-		PLSN A 0 A_PlaySound("BEP")
+		PLSN A 0 A_PlaySound("BEP", 1)
 		PLSR A 4 A_WeaponReady(WRF_NOFIRE)
-		PLSN A 0 A_PlaySound("BEP")
+		PLSN A 0 A_PlaySound("BEP", 2)
 		PLSR A 4 A_WeaponReady(WRF_NOFIRE)
 		PLSN A 0 A_CheckReload
         Goto Ready

@@ -83,9 +83,9 @@ OptionMenu "BrutalMenu"
 	Submenu "BD Doom Gameplay Options",			"BrutalDoomOptionsGame"
 	Submenu "BD Player Options",			"BrutalDoomOptionsPlayer"
 	Command "Go to Weapons Testing Map",			"map test"
-	Option "Disable Weapon Sway",				"disable_weaponsway", "OnOff"
-	StaticText "Disables weapon swaying when quickly looking around"
-	StaticText " "
+	//Option "Disable Weapon Sway",				"disable_weaponsway", "OnOff"
+	//StaticText "Disables weapon swaying when quickly looking around"
+	//StaticText " "
 }
 
 
@@ -172,7 +172,7 @@ OptionMenu "BrutalDoomOptionsLevel"
   StaticText " "
   
   Option "New Enemies", "bd_disablenewenemies", "DisabledOption"
-  Option "Footstep Sounds", "bd_footstepsounds", "YesOrNo"
+  //Option "Footstep Sounds", "bd_footstepsounds", "YesOrNo"
   Option "Spawn New Armor", "bd_disablenewarmor", "DisabledOption"
   Option "Spawn SoulSphere Upgrade", "bd_disablesoulspherepowerup", "DisabledOption"
   Option "Spawn Megasphere Upgrade", "bd_disablemegaspherepowerup", "DisabledOption"

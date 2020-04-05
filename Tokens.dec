@@ -33,6 +33,16 @@ Actor TakeGhost: CustomInventory
 	}
 }
 
+Actor IsPlayingBDSTE : Inventory
+{
+ Inventory.MaxAmount 1
+}
+
+Actor ScreenTilt : Inventory
+{
+ Inventory.MaxAmount 1
+}
+
 Actor RocketCharge : Inventory
 {
  Inventory.MaxAmount 4

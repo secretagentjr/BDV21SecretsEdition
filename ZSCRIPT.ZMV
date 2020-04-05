@@ -2,6 +2,8 @@
 //Version "4.1.1"
 Version 4.2.4
 
+#include "zscript/Footsteps/StepEventHandler.zc"
+
 // Zweaponslist
 #include "zscript/zwl/zwl.zs"
 //#include "zscript/huds/status_bar.zs"
@@ -14,7 +16,7 @@ Version 4.2.4
 //#include "zscript/weapons/Shotgun.zsc"
 
 #include "zscript/misc/tracers.zsc"
-#include "zscript/misc/Footsteps3.txt"
+//#include "zscript/misc/Footsteps3.txt"
 #include "zscript/misc/tp_tips.zs"
 
 #include "zscript/Tilt/TiltPlusPlus.zc"

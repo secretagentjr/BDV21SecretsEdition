@@ -129,9 +129,9 @@ ACTOR Clip2 : Ammo Replaces Clip
 {
 	Inventory.PickupMessage "Picked up a Rifle Magazine."
 	Inventory.Amount 30
-	Inventory.MaxAmount 200
+	Inventory.MaxAmount 300
 	Ammo.BackpackAmount 30
-	Ammo.BackpackMaxAmount 400
+	Ammo.BackpackMaxAmount 600
 	Inventory.Icon "CLIPA0"
 	Inventory.PickupSound "CLIPICK2"
 	Scale 0.9
@@ -143,25 +143,14 @@ ACTOR Clip2 : Ammo Replaces Clip
 	}
 }
 
-ACTOR DoubleRifleAmmo : Ammo
-{
-   Inventory.Amount 0
-   Inventory.MaxAmount 62
-   Ammo.BackpackAmount 0
-   Ammo.BackpackMaxAmount 62
-   // Readd when Dual Rifles are Added Back.
-   //Inventory.Icon "RIFLB0"
-}
-
-
 ACTOR Clip1 : Ammo
 {
 	Game Doom
 	Inventory.PickupMessage "Picked up a Pistol Magazine."
 	Inventory.Amount 10
-	Inventory.MaxAmount 200
+	Inventory.MaxAmount 300
 	Ammo.BackpackAmount 100
-	Ammo.BackpackMaxAmount 400
+	Ammo.BackpackMaxAmount 600
 	Inventory.Icon "CLIPB0"
 	Inventory.PickupSound "CLIPICK"
 	Scale 0.9
@@ -232,10 +221,10 @@ ACTOR MinigunAmmo : Ammo//Clip2 Replaces Clipbox
 	SpawnID 12300
 	Inventory.PickupMessage "Picked up a box of chaingun ammunition."
 	Inventory.PickupSound "CBOXPICK"
-	Inventory.Amount 100
-	Inventory.MaxAmount 200
-	Ammo.BackpackAmount 100
-	Ammo.BackpackMaxAmount 400
+	Inventory.Amount 50
+	Inventory.MaxAmount 300
+	Ammo.BackpackAmount 50
+	Ammo.BackpackMaxAmount 600
 	Inventory.Icon "AMMOB0"
 	Scale 0.9
 	States
@@ -536,11 +525,11 @@ ACTOR AmmoShell : Ammo Replaces Shell
 	Ammo.BackpackMaxAmount 100
 	Inventory.Icon "SHELB0"
 	Inventory.Pickupsound "SHELPK1"
-	Scale 0.2
+	Scale 1
 	States
 	{
 	Spawn:
-		SHEL A -1
+		SHEL B -1
 		Stop
 	}
 }
@@ -563,7 +552,24 @@ ACTOR AmmoShellBox : AmmoShell Replaces SHellBox
 	}
 }
 
+ACTOR DoubleRifleAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 62
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 62
+   // Readd when Dual Rifles are Added Back.
+   //Inventory.Icon "RIFLB0"
+}
 
+ACTOR ShotgunAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 10
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 10
+   Inventory.Icon "SHTCA0"
+}
 
 ACTOR SSGAmmo : Ammo
 {

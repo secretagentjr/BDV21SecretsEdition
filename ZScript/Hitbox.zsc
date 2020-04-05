@@ -294,7 +294,7 @@ Class HeadshotHitboxMG : Actor
 		Speed 0;
 		Radius 8;
 		Height 18;
-		//BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood";
+		BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood";
 		-COUNTKILL;
 		+NOTARGET;
 		+MISSILE;

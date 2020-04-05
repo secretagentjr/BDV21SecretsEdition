@@ -55,10 +55,7 @@ class tp_ListMenuNote : ListMenuItem
 
     //add("\"Never send a human to do a machine’s job.\"\n"
         //" - Agent Smith, The Matrix");
-		
-	//add("\"We failed, men.\"\n"
-        //" - Soldier, TF2");	
-		
+				
 	add("Shoot Revenant Rockets to make them less annoying.");
 		
 	add("The backpack is now portable due to... Blackhole technology????");

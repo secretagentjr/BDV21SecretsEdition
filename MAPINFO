@@ -533,6 +533,11 @@ GameInfo
 	AddEventHandlers = "MBlurHandler"
 }
 
+// Footsteps.
+gameInfo
+{
+	addEventHandlers = "StepEventHandler"
+}
 
 // Tilt++
 GameInfo

@@ -272,10 +272,16 @@ class Z_TiltMe : CustomInventory
 
 	override void Tick(void)
 	{
-		if (Owner && Owner is "PlayerPawn")
+				
+		if (Owner && Owner is "PlayerPawn" && !Owner.CheckInventory("ScreenTilt",1))
 		{
 			Tilt_CalcViewRoll();
 		}
+		
+		//else if (Owner && Owner is "PlayerPawn")
+		//{
+			//Tilt_CalcViewRoll();
+		//}
 
 		Super.Tick();
 	}
