@@ -224,6 +224,7 @@ DEFAULT
 			CHAG A 0 A_StopSound(5);
 			//CHAG A 0 A_PlaySound("CHAINSPI", 5)
 			CHAG A 0;
+			TNT1 A 0 A_GiveInventory("Spin");
 		Hold:	
 			CHAG A 0
 			{
