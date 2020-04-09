@@ -7,7 +7,7 @@ ACTOR HealthPlus : Health //Replaces HealthBonus
 	+COUNTITEM
 	//+INVENTORY.ALWAYSPICKUP
 	//+INVENTORY.NEVERRESPAWN
-	Inventory.Amount 2 
+	Inventory.Amount 5 
 	Inventory.MaxAmount 9999
 	Tag "Health Bonus"
 	Inventory.PickupMessage "$GOTHTHBONUS"
@@ -39,7 +39,7 @@ ACTOR StrongHealthPlus : Health
 	+FLOORCLIP
 	+DONTGIB
 	+INVENTORY.ALWAYSPICKUP
-	Inventory.Amount 4
+	Inventory.Amount 10
 	Inventory.MaxAmount 9999
 	Inventory.PickupMessage "Picked up a strong health bonus."
 	Inventory.PickUpSound "misc/hbonus_PickUp"
@@ -61,7 +61,7 @@ ACTOR SuperHealthPlus : Health
 	+FLOORCLIP
 	+DONTGIB
 	+INVENTORY.ALWAYSPICKUP
-	Inventory.Amount 6
+	Inventory.Amount 15
 	Inventory.MaxAmount 9999
 	Inventory.PickupMessage "Picked up a super health bonus."
 	Inventory.PickUpSound "misc/hbonus_PickUp"
@@ -272,7 +272,7 @@ Actor ArmorShard : BasicArmorBonus Replaces ArmorBonus
 	Inventory.Pickupmessage "$GOTARMBONUS"
 	Inventory.Icon "BON2A0"
 	Armor.Savepercent 50.1
-	Armor.Saveamount 5 // Buffed from 2 to 5
+	Armor.Saveamount 2 // Buffed from 2 to 5
 	Armor.Maxsaveamount 9999
 	+COUNTITEM
 	//+INVENTORY.NEVERRESPAWN
@@ -295,8 +295,8 @@ Actor StrongArmorShard : BasicArmorBonus
 	Height 16
 	Inventory.Pickupmessage "Picked up a strong armor bonus."
 	Inventory.Icon "BON4A0"
-	Armor.Savepercent 33.335
-	Armor.Saveamount 10
+	Armor.Savepercent 50.1
+	Armor.Saveamount 4
 	Armor.Maxsaveamount 9999
 	+COUNTITEM
 	+FLOORCLIP
@@ -325,8 +325,8 @@ Actor SuperArmorShard : BasicArmorBonus
 	Height 16
 	Inventory.Pickupmessage "Picked up a super armor bonus."
 	Inventory.Icon "BON6A0"
-	Armor.Savepercent 33.335
-	Armor.Saveamount 15
+	Armor.Savepercent 50.1
+	Armor.Saveamount 8
 	Armor.Maxsaveamount 9999
 	+COUNTITEM
 	+FLOORCLIP
@@ -415,14 +415,14 @@ ACTOR Stimpack2 : Health //Replaces Stimpack
 	Game Doom
 	SpawnID 23
 	Inventory.Amount 10
-	Inventory.PickupMessage "$GOTSTIM"
+	Inventory.PickupMessage "Picked up a stimpack(+10)"//"$GOTSTIM"
 	Inventory.PickupSound "GOTHPS"
 	States
 	{
 	Spawn:
-		MEDK B 2
-		MEDK B -1
-		Stop
+		MEDK B 1
+		//MEDK B -1
+		Loop
 	}
 }
 
@@ -433,15 +433,15 @@ ACTOR Medikit2 : Health //Replaces Medikit
 	Game Doom
 	SpawnID 24
 	Inventory.Amount 25
-	Inventory.PickupMessage "$GOTMEDIKIT"
-	Health.LowMessage 25, "$GOTMEDINEED"
+	Inventory.PickupMessage "Picked up a medikit.(+25)"//"$GOTMEDIKIT"
+	Health.LowMessage 25, "Picked up a medikit that you REALLY need!(+25)"//"$GOTMEDINEED"
 	Inventory.PickupSound "GOTHPB"
 	States
 	{
 	Spawn:
         MEDK A 1
-		MEDK A -1
-		Stop	
+		//MEDK A -1
+		Loop	
 	}
 }
 
@@ -450,7 +450,7 @@ Actor FieldKit : HealthPickup
   Health 25
   +CountItem
   -Inventory.AlwaysPickup
-  Inventory.PickupMessage "You got a field kit"
+  Inventory.PickupMessage "You got a field kit(+25)"
   Inventory.PickupSound "GOTHPB"
   Inventory.UseSound "GOTHPB"
   Inventory.Icon "FKITC0"
@@ -468,13 +468,13 @@ Actor Medipack : Health 10394
 {
 	Game Doom
 	Inventory.Amount 50
-	Inventory.PickupMessage "Picked up a medipack."
-	Health.LowMessage 20, "Picked up a medipack that you REALLY need!"
+	Inventory.PickupMessage "Picked up a medipack.(+50)"
+	Health.LowMessage 20, "Picked up a medipack that you REALLY need!(+50)"
 	States
 	{
 		Spawn:
-		MEDP A -1
-		Stop
+		MEDP A 1
+		Loop
 	}
 }
 
@@ -596,39 +596,39 @@ ACTOR SmallHealthPotion : Health
 ACTOR MediumHealthPotion : Health
 {
   Inventory.Amount 15
-  Inventory.PickupMessage "Medium Health Potion"
+  Inventory.PickupMessage "Medium Health Potion(+15)"
   +FLOATBOB
   States
   {
   Spawn:
-    HPP2 A -1
-    Stop
+    HPP2 A 1
+    Loop
   }
 }
 
 ACTOR LargeHealthPotion : Health
 {
   Inventory.Amount 25
-  Inventory.PickupMessage "Large Health Potion"
+  Inventory.PickupMessage "Large Health Potion(+25)"
   +FLOATBOB
   States
   {
   Spawn:
-    HPP3 A -1
-    Stop
+    HPP3 A 1
+    Loop
   }
 }
 
 ACTOR SuperHealthPotion : Health
 {
   Inventory.Amount 50
-  Inventory.PickupMessage "Super Health Potion"
+  Inventory.PickupMessage "Super Health Potion(+50)"
   +FLOATBOB
   States
   {
   Spawn:
-    HPP4 A -1
-    Stop
+    HPP4 A 1
+    Loop
   }
 }
 
@@ -655,13 +655,13 @@ ACTOR MediumMiraclePotion : Health
 {
   Inventory.Amount 15
   Inventory.MaxAmount 200
-  Inventory.PickupMessage "Medium Miracle Potion"
+  Inventory.PickupMessage "Medium Miracle Potion(+15)"
   +FLOATBOB
   States
   {
   Spawn:
-    MRP2 A -1
-    Stop
+    MRP2 A 1
+    Loop
   }
 }
 
@@ -669,13 +669,13 @@ ACTOR LargeMiraclePotion : Health
 {
   Inventory.Amount 25
   Inventory.MaxAmount 200
-  Inventory.PickupMessage "Large Miracle Potion"
+  Inventory.PickupMessage "Large Miracle Potion(+25)"
   +FLOATBOB
   States
   {
   Spawn:
-    MRP3 A -1
-    Stop
+    MRP3 A 1
+    Loop
   }
 }
 
@@ -683,13 +683,13 @@ ACTOR SuperMiraclePotion : Health
 {
   Inventory.Amount 50
   Inventory.MaxAmount 200
-  Inventory.PickupMessage "Super Miracle Potion"
+  Inventory.PickupMessage "Super Miracle Potion(+50)"
   +FLOATBOB
   States
   {
   Spawn:
-    MRP4 A -1
-    Stop
+    MRP4 A 1
+    Loop
   }
 }
 
@@ -724,7 +724,7 @@ ACTOR MediumPortablePotion : HealthPickup
   Health 15
   HealthPickup.Autouse 1
   Inventory.Icon "PRP2B0"
-  Inventory.PickupMessage "Medium Portable Potion"
+  Inventory.PickupMessage "Medium Portable Potion(+15)"
   Inventory.PickupSound "misc/p_pkup"
   Tag "Recovers 15 HP"
   +COUNTITEM
@@ -734,8 +734,8 @@ ACTOR MediumPortablePotion : HealthPickup
   States
   {
   Spawn:
-    PRP2 A -1
-    Stop
+    PRP2 A 1
+    Loop
   }
 }
 
@@ -744,7 +744,7 @@ ACTOR LargePortablePotion : HealthPickup
   Health 25
   HealthPickup.Autouse 1
   Inventory.Icon "PRP3B0"
-  Inventory.PickupMessage "Large Portable Potion"
+  Inventory.PickupMessage "Large Portable Potion(+25)"
   Inventory.PickupSound "misc/p_pkup"
   Tag "Recovers 25 HP"
   +COUNTITEM
@@ -754,8 +754,8 @@ ACTOR LargePortablePotion : HealthPickup
   States
   {
   Spawn:
-    PRP3 A -1
-    Stop
+    PRP3 A 1
+    Loop
   }
 }
 
@@ -764,7 +764,7 @@ ACTOR SuperPortablePotion : HealthPickup
   Health 50
   HealthPickup.Autouse 1
   Inventory.Icon "PRP4B0"
-  Inventory.PickupMessage "Super Portable Potion"
+  Inventory.PickupMessage "Super Portable Potion(+50)"
   Inventory.PickupSound "misc/p_pkup"
   Tag "Recovers 50 HP"
   +COUNTITEM
@@ -774,8 +774,8 @@ ACTOR SuperPortablePotion : HealthPickup
   States
   {
   Spawn:
-    PRP4 A -1
-    Stop
+    PRP4 A 1
+    Loop
   }
 }
 
@@ -831,7 +831,7 @@ ACTOR SmallRegenerationPotion : PowerupGiver
 ACTOR MediumRegenerationPotion : PowerupGiver
 {
   Inventory.Icon "RGP2B0"
-  Inventory.PickupMessage "Medium Regeneration Potion"
+  Inventory.PickupMessage "Medium Regeneration Potion(+15 seconds)"
   Powerup.Type "PowerRegenerationMedium"
   Tag "Regenerates for 15 seconds"
   +COUNTITEM
@@ -840,15 +840,15 @@ ACTOR MediumRegenerationPotion : PowerupGiver
   States
   {
   Spawn:
-    RGP2 A -1
-    Stop
+    RGP2 A 1
+    Loop
   }
 }
 
 ACTOR LargeRegenerationPotion : PowerupGiver
 {
   Inventory.Icon "RGP3B0"
-  Inventory.PickupMessage "Large Regeneration Potion"
+  Inventory.PickupMessage "Large Regeneration Potion(+25 seconds)"
   Powerup.Type "PowerRegenerationLarge"
   Tag "Regenerates for 25 seconds"
   +COUNTITEM
@@ -857,15 +857,15 @@ ACTOR LargeRegenerationPotion : PowerupGiver
   States
   {
   Spawn:
-    RGP3 A -1
-    Stop
+    RGP3 A 1
+    Loop
   }
 }
 
 ACTOR SuperRegenerationPotion : PowerupGiver
 {
   Inventory.Icon "RGP4B0"
-  Inventory.PickupMessage "Super Regeneration Potion"
+  Inventory.PickupMessage "Super Regeneration Potion(+50 seconds)"
   Powerup.Type "PowerRegenerationSuper"
   Tag "Regenerates for 50 seconds"
   +COUNTITEM
@@ -874,7 +874,7 @@ ACTOR SuperRegenerationPotion : PowerupGiver
   States
   {
   Spawn:
-    RGP4 A -1
-    Stop
+    RGP4 A 1
+    Loop
   }
 }

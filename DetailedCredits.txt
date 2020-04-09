@@ -26,6 +26,9 @@ M8F
 == Tilt++ ==
 Nash Muhandes
 
+Pistol, Rifle,Shotgun sounds by Magmacow of Gamebanana
+SSG Sounds by Navarro & MSKyuuni Of Gamebanana
+
 == PLAYER SPRITES ==
 Firing and moving sprites, Meatshields, wounded marine, jumping, rifle bashing, by Sgt Mark IV
 Weapon skins based on Marine Skins by Vader

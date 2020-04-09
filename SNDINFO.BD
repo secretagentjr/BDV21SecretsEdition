@@ -100,31 +100,41 @@ world/drip			dsdrip2
 
 // Weapon Stuff
 world/hotsiz			dshtsiz
-// Rifle
-weapons/rifle			DSRIFLE
+PFIRE PFIRE1
+$volume PFIRE 0.5
+SFIRE SFIRE1
+$volume SFIRE 0.5
+PSRLOUT PSRLOUT
+PSRLIN PSRLIN
+CLIPIN CLIPIN
+CLIPOUT CLIPOUT
+weapons/rifle DSRIFLE1
 $volume weapons/rifle 0.5
-weapons/rifleHP         DSRIFLE2
-// Shotgun
-//weapons/sg			sgfire
-$random SGFIRE {SGFIRE1 SGFIRE2 SGFIRE3 SGFIRE4 SGFIRE5}
-SGFIRE1 SGFIRE1
-SGFIRE2 SGFIRE2
-SGFIRE3 SGFIRE3
-SGFIRE4 SGFIRE4
-SGFIRE5 SGFIRE5
+SGFIRE SGFIRE
 $volume SGFIRE 0.5
-//sgfire sgfire
-weapons/sgpump STGNPUMP
+insertshell SHELL_IN
+weapons/sgpump STNPFW1
+weapons/sgpump2 STNPBK1
+BOLT BOLT
+BLTFRW BLTFRW
+BLTBCK BLTBCK
+//CLIPINS CLIPINS
+//CLICKIN CLICKIN
+//CHAMBR CHAMBR
+// Shotgun
+//SGFIRE STGFIRE1
+//$random SGFIRE {STGFIRE1 STGFIRE2  STGFIRE3}
+//STGFIRE1 STGFIRE1
+//STGFIRE2 STGFIRE2
+//STGFIRE3 STGFIRE3
+//$volume SGFIRE 0.5
+
+//weapons/sgpump STGNPUMP
+//$volume insertshell 0.5
+//insertshell        SHELL_IN
 //Empty
 weapons/empty DRYFIRE
 DRYFIRE DRYFIRE
-//Reload
-CLIPIN CLIPIN
-CLIPINSS CLIPINSS
-CLIPOUT CLIPOUT
-CLIPINS CLIPINS
-CLICKIN CLICKIN
-CHAMBR CHAMBR
 
 weapons/ssg/open	SSGOPEN
 weapons/ssg/close	SSGCLOSE
@@ -135,17 +145,9 @@ FireSuperShotgun    SSGFIRE1
 MP40 MP40
 $limit MP40 30
 $limit weapons/sg 10
-insertshell        SHELL_IN
+//insertshell        SHELL_IN
 DSRLAUN DSRLAUN
 DSF2OOF DSF2OOF
-// Pistol Reload, Attach/Detach Silencer, Chamber.
-SFIRE SFIRE // Silenced/Supressed Fire
-PLSAT PLSAT // Attach Silencer
-PLSDET PLSDET // Detach
-PSRLOUT PSRLOUT // Remove Magazine
-PSRLIN PSRLIN  // Insert Magazine
-CHMBRSB CHMBRSB // SlideBack
-CHMBRR CHMBRR // Release
 
 //PlayerSounds
 $playersound	player	male	*death		dspldeth
@@ -290,6 +292,8 @@ $rolloff world/RKTSML 1200 2000
 
 SSHFIRE SSHFIRE
 $volume SSHFIRE 0.5
+SSHFIRE2 SSHFIRE2
+$volume SSHFIRE2 0.5
 //$random SSHFIRE { SSHFIRE0 SSHFIRE2 SSHFIRE3 }
 //SSHFIRE0 SSHFIRE0
 //SSHFIRE2 SSHFIRE2
@@ -1157,8 +1161,8 @@ $limit MINIGN4 999
 A12FIR A12FIR
 AACL AACL
 
-PFIRE PFIRE
-$Volume PFIRE 0.5
+//PFIRE PFIRE
+//$Volume PFIRE 0.5
 DSPISTOL DSPISTOL
 PREL PREL
 

@@ -125,9 +125,9 @@ ACTOR PBackPack : CustomInventory
 
 
 // Stock caps because each backpack raises your ammo.
-ACTOR Clip2 : Ammo Replaces Clip
+ACTOR Clip2 : Ammo //Replaces Clip
 {
-	Inventory.PickupMessage "Picked up a Rifle Magazine."
+	Inventory.PickupMessage "Rifle Mag(+30)"
 	Inventory.Amount 30
 	Inventory.MaxAmount 300
 	Ammo.BackpackAmount 30
@@ -143,11 +143,31 @@ ACTOR Clip2 : Ammo Replaces Clip
 	}
 }
 
+//Actor NewClip: CustomInventory 249
+//{
+	//States
+	//{
+	//Spawn:
+		//TNT1 A 0
+		//TNT1 A 0 A_SpawnItem("Clip2",1)
+		//TNT1 A 0 A_SpawnItem("MinigunAmmo",1)
+		//Stop
+	//}
+//}
+
+//Actor ClipSpawn : RandomSpawner Replaces Clip
+//{
+//dropitem "NewClip" // Basically, i have to spawn an actor which then spawns both actors.
+//}
+
+
+
+
 ACTOR Clip1 : Ammo
 {
 	Game Doom
-	Inventory.PickupMessage "Picked up a Pistol Magazine."
-	Inventory.Amount 10
+	Inventory.PickupMessage "Pistol Mag(+15)"
+	Inventory.Amount 15
 	Inventory.MaxAmount 300
 	Ammo.BackpackAmount 100
 	Ammo.BackpackMaxAmount 600
@@ -171,7 +191,7 @@ ACTOR Clip1Drop: CustomInventory
  radius 24
  height 24
  +THRUACTORS +FORCEXYBILLBOARD
- Inventory.PickupMessage "Picked up a Pistol Magazine"
+ //Inventory.PickupMessage "Picked up a Pistol Magazine"
  Inventory.PickupSound "CLIPIN"
  Mass 1
     States
@@ -191,19 +211,37 @@ ACTOR Clip1Drop: CustomInventory
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 	PickupNormal:	
-		TNT1 A 0 A_GiveInventory("Clip1", 10)
+		TNT1 A 0 A_GiveInventory("Clip1", 15)
 		Stop
 	Purist:
-	    TNT1 A 0 A_GiveInventory("Clip2", 10)
+	    TNT1 A 0 A_GiveInventory("Clip2", 15)
 		Stop
     }
+}
+
+Actor NewClip: CustomInventory 246 
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 0 A_SpawnItem("MinigunAmmo",1)
+		TNT1 A 0 A_SpawnItem("Clip2",1)
+		TNT1 A 0 A_SpawnItem("Clip1",1)
+		Stop
+	}
+}
+
+Actor NewClip2 : RandomSpawner Replaces Clip
+{
+dropitem "NewClip" // Basically, i have to spawn an actor which then spawns both actors.
 }
 
 ACTOR ClipBox2 : Clip2 //Replaces Clipbox
 {
 	Game Doom
 	SpawnID 139
-	Inventory.PickupMessage "Picked up a box of rifle ammunition."
+	Inventory.PickupMessage "Rifle Ammo Box(+100)"
 	Inventory.PickupSound "CBOXPICK"
 	Inventory.Amount 100 // 50% of the previous amount, since i buffed the accuracy of the minigun.
 	Scale 0.9
@@ -219,7 +257,7 @@ ACTOR MinigunAmmo : Ammo//Clip2 Replaces Clipbox
 {
     Game Doom
 	SpawnID 12300
-	Inventory.PickupMessage "Picked up a box of chaingun ammunition."
+	Inventory.PickupMessage "Minigun Cartridge(+50)"
 	Inventory.PickupSound "CBOXPICK"
 	Inventory.Amount 50
 	Inventory.MaxAmount 300
@@ -230,7 +268,7 @@ ACTOR MinigunAmmo : Ammo//Clip2 Replaces Clipbox
 	States
 	{
 	Spawn:
-		AMMO B -1
+		AMMO A -1
 		Stop
 	}
 }
@@ -239,7 +277,7 @@ ACTOR MinigunAmmoBox : MinigunAmmo Replaces ClipBox//Clip2 Replaces Clipbox
 {
     //Game Doom
 	//SpawnID 12300
-	Inventory.PickupMessage "Picked up a box of chaingun ammunition."
+	Inventory.PickupMessage "Minigun Ammo(+100)"
 	Inventory.PickupSound "CBOXPICK"
 	Inventory.Amount 100
 	//Inventory.MaxAmount 200
@@ -257,7 +295,7 @@ ACTOR MinigunAmmoBox : MinigunAmmo Replaces ClipBox//Clip2 Replaces Clipbox
 
 ACTOR DotFiftyBMGBullets : Ammo //Replaces Clipbox
 {
-	Inventory.PickupMessage "Picked up some 20MM Anti-Tank Rifle Rounds."
+	Inventory.PickupMessage "20MM (+10)"
 	Inventory.Amount 10
 	Inventory.MaxAmount 30
 	Ammo.BackpackAmount 10
@@ -275,7 +313,7 @@ ACTOR DotFiftyBMGBullets : Ammo //Replaces Clipbox
 
 ACTOR RevolverBullets : Ammo //Replaces Clipbox
 {
-	Inventory.PickupMessage "Picked up some Revolver Bullets."
+	Inventory.PickupMessage ".44 Magnum Rounds(+24)"
 	Inventory.Amount 24
 	Inventory.MaxAmount 100
 	Ammo.BackpackAmount 24
@@ -317,7 +355,7 @@ ACTOR AmmoRocket : Ammo Replaces RocketAmmo
 {
 	Game Doom
 	SpawnID 140
-	Inventory.PickupMessage "$GOTROCKET"
+	Inventory.PickupMessage "Rocket(+1)"
 	Inventory.Amount 1
 	Inventory.MaxAmount 50
 	Ammo.BackpackAmount 6
@@ -391,7 +429,7 @@ ACTOR AmmoRocketBox : AmmoRocket Replaces RocketBox
 {
 	Game Doom
 	SpawnID 141
-	Inventory.PickupMessage "$GOTROCKBOX"
+	Inventory.PickupMessage "Rocket Box(+3)"
 	Inventory.Amount 3
 	Scale 0.9
 	Inventory.Pickupsound "RCKCLIP2"
@@ -444,7 +482,7 @@ ACTOR AmmoCell : Ammo Replaces Cell
 {
 	Game Doom
 	SpawnID 75
-	Inventory.PickupMessage "$GOTCELL"
+	Inventory.PickupMessage "Cell Battery (+20)"
 	Inventory.Amount 20
 	Inventory.MaxAmount 300
 	Ammo.BackpackAmount 40
@@ -466,7 +504,7 @@ ACTOR AmmoCellPack : AmmoCell Replaces CellPack
 {
 	Game Doom
 	SpawnID 142
-	Inventory.PickupMessage "$GOTCELLBOX"
+	Inventory.PickupMessage "Large Cell Battery(+100)"
 	Inventory.Amount 100
 	Scale 0.9
 	States
@@ -518,7 +556,7 @@ ACTOR AmmoShell : Ammo Replaces Shell
 {
 	Game Doom
 	SpawnID 12
-	Inventory.PickupMessage "$GOTSHELLS"
+	Inventory.PickupMessage "ShottyShells(+4)"
 	Inventory.Amount 4
 	Inventory.MaxAmount 50
 	Ammo.BackpackAmount 8
@@ -540,7 +578,7 @@ ACTOR AmmoShellBox : AmmoShell Replaces SHellBox
 {
 	Game Doom
 	SpawnID 143
-	Inventory.PickupMessage "$GOTSHELLBOX"
+	Inventory.PickupMessage "ShellBox(+10)"
 	Inventory.Amount 10 // 50% of the previous amount, since i buffed the damage of the SSG/Shotgun.
 	Inventory.Pickupsound "SHELPK2"
 	Scale 0.9

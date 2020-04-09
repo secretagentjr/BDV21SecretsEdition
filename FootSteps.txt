@@ -22,9 +22,12 @@ ACTOR BDoomer : Doomer
 	Player.DisplayName "Normal (Rifle Start)"
 	Player.StartItem "IsPlayingBDSTE", 1
 	Player.StartItem "Rifle"
+	Player.StartItem "BrutalPistol"
 	Player.StartItem "Melee_Attacks"
+	Player.StartItem "PDA"
 	Player.StartItem "IsPlayer", 1
-	Player.StartItem "Clip2", 30
+	Player.StartItem "Clip2", 90
+	Player.StartItem "Clip1", 60
 	Player.StartItem "RifleAmmo", 30
 	Player.StartItem "BDPistolAmmo", 16
 	//Player.StartItem "BDDualPistolAmmo", 16
@@ -56,10 +59,11 @@ ACTOR Doomer2 : Doomer
 	Player.DisplayName "Normal (Pistol Start)"
 	Player.StartItem "IsPlayingBDSTE", 1
 	Player.StartItem "BrutalPistol"
+	Player.StartItem "PDA"
 	Player.StartItem "Melee_Attacks"
 	Player.StartItem "IsPlayer", 1
 	Player.StartItem "Clip1", 60
-	Player.StartItem "RifleAmmo", 30
+	Player.StartItem "RifleAmmo", 31
 	Player.StartItem "BDPistolAmmo", 16
 	Player.StartItem "BDSMGAmmo", 41
 	//Player.StartItem "BDDualPistolAmmo", 16
@@ -93,12 +97,14 @@ ACTOR TacticalDoomer : Doomer
 	Player.DisplayName "Tactical (Sprints, Recoil)"
 	Player.StartItem "IsPlayingBDSTE", 1
 	Player.StartItem "Rifle"
+	Player.StartItem "PDA"
 	Player.StartItem "RifleAmmo", 30
 	//Player.StartItem "DoubleRifleAmmo", 31
 	Player.StartItem "BrutalPistol"
 	Player.StartItem "Melee_Attacks"
 	Player.StartItem "IsPlayer", 1
-	Player.StartItem "Clip2", 30
+	Player.StartItem "Clip2", 90
+	Player.StartItem "Clip1", 60
 	Player.StartItem "BDPistolAmmo", 16
 	Player.StartItem "IsTacticalClass", 1
 	Player.StartItem "JustStartedGame", 1

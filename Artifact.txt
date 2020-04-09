@@ -32,7 +32,7 @@ ACTOR LifeSphere : Health //Replaces SoulSphere//CustomInventory Replaces SoulSp
 	// This shouldn't be an autopickup item.
 	-INVENTORY.ALWAYSPICKUP // Remove the tag.
 	+INVENTORY.AUTOACTIVATE
-	Inventory.Amount 200
+	Inventory.Amount 100
     Inventory.MaxAmount 400
 	Inventory.PickupMessage "Soulsphere"
 	Inventory.PickupSound "misc/p_pkup"
@@ -69,7 +69,7 @@ ACTOR EnergySphere : BasicArmorPickup //Replaces Megasphere//CustomInventory Rep
 	+COUNTITEM
 	-INVENTORY.ALWAYSPICKUP
 	Armor.SavePercent 50.1
-	Armor.SaveAmount 200
+	Armor.SaveAmount 100
 	Inventory.PickupMessage "Megasphere"
 	Inventory.PickupSound "misc/p_pkup"
 	Tag "Megasphere"

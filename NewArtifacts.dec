@@ -4,7 +4,7 @@ ACTOR NewLifeSphere :  Health //1326//CustomInventory
 	-INVENTORY.ALWAYSPICKUP
 	+DONTGIB
 	+FloatBob
-	Inventory.Amount 400
+	Inventory.Amount 200
     Inventory.MaxAmount 400
 	Inventory.PickupMessage "Greater Soulsphere"
 	Inventory.PickupSound "misc/p_pkup"
@@ -38,7 +38,8 @@ ACTOR UltraSphere : BasicArmorPickup//CustomInventory
 	+FloatBob
 	-INVENTORY.ALWAYSPICKUP
 	Armor.SavePercent 50.1
-	Armor.SaveAmount 400
+	Armor.SaveAmount 200
+	Inventory.MaxAmount 400
 	Inventory.PickupMessage "Ultrasphere"
 	Inventory.PickupSound "misc/p_pkup"
 	States

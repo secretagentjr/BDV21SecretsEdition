@@ -20,8 +20,8 @@ damage 0
 // SPAWNERS
 //#include ArmorSpawner.dec
 //#include BackPackSpawner.dec
-#include HealthRandomizer.dec
-#include Shop.dec
+//#include HealthRandomizer.dec
+#include PDA.dec//Shop.dec
 
 
 // Tokens, gameplay modifiers.

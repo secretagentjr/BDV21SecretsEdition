@@ -14,6 +14,12 @@ Actor InspectShotgun: Inventory
  Inventory.MaxAmount 1
 }
 
+Actor HandOfShells: Inventory
+{
+ Inventory.MaxAmount 5
+}
+
+
 Actor ReloadingShotgun: Inventory
 {
  Inventory.MaxAmount 1
@@ -51,6 +57,7 @@ ACTOR Shot_Gun : BrutalWeapon
 	InspectShotgun:
 	    TNT1 A 0 A_Giveinventory("ScreenTilt",1)
 		TNT1 A 0 A_Giveinventory("InspectShotgun",1)
+		SHSS ABCD 1 A_WeaponReady
 		SHTN A 1 A_WeaponReady
 		SHTN BCDEFGHIJ 1
 	    {
@@ -161,7 +168,7 @@ ACTOR Shot_Gun : BrutalWeapon
 	   A_Takeinventory("ScreenTilt",1);
 	   A_WeaponReady;
 	   }
-		SHTN A 15
+		SHTN A 5
 	    SHT8 I 1 A_WeaponReady
 	    SHT8 A 15 A_WeaponReady
 	    SHT8 I 1 A_WeaponReady
@@ -190,8 +197,8 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTN A 0 A_Takeinventory("FlameCannonSelected",1)
 		SHTN A 0 A_Takeinventory("HasBarrel",1)
 		SHTN A 0 A_TakeInventory("TossGrenade", 1)
-		TNT1 AAAAAAAAA 0 A_Raise
-		TNT1 AAAA 0 A_Raise
+		//TNT1 AAAAAAAAA 0 A_Raise
+		//TNT1 AAAA 0 A_Raise
 
 	SelectAnimation:
         TNT1 A 0 A_JumpIfInventory("InspectShotgun", 1,1)
@@ -199,9 +206,9 @@ ACTOR Shot_Gun : BrutalWeapon
 		TNT1 AAAA 0 A_JumpIfInventory("GoFatality", 1, "Steady")
 		SHTN A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "PuristGun")
         //SHSS ABCD 1 A_JumpIfInventory("GoFatality", 1, "Steady")
-		SHSS ABCD 1
+		SHSS ABCD 1 offset(0,32)
 		SHTN A 0 A_PlaySound("weapons/sgpump")
-		TNT1 AAAAAAAAAAAA 0 A_Raise
+		//TNT1 AAAAAAAAAAAA 0 A_Raise
 		//SHTN A 0 A_GunFlash
 
 	Ready3:	
@@ -284,12 +291,12 @@ ACTOR Shot_Gun : BrutalWeapon
 		SHTA A 1 BRIGHT
 		{
         A_AlertMonsters;
-        A_PlaySound("SGFIRE", 1);
 		A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1));
+		A_PlaySound("SGFIRE", 1);
 		A_SpawnItemEx("PlayerMuzzle1",30,5,30);
 		A_Takeinventory("ShotgunAmmo",1);
-		A_FireBullets (5, 1, 5, 20, "ShotgunPuff", FBF_NORANDOM,8192,"Tracer",-5);
-		A_FireBullets (2.5, 2.5, 5, 20, "ShotgunPuff2", FBF_NORANDOM,8192,"Tracer",-5);
+		A_FireBullets (5, 1, 5, 0, "", FBF_NORANDOM,8192,"p_shotgun_tracer",-5);
+		A_FireBullets (2.5, 2.5, 5, 0, "", FBF_NORANDOM,8192,"p_shotgun_tracer",-5);
 		if (CountInv("PowerStrength") >= 1 )
 		  {
 		   A_SetPitch(pitch-0.1, SPF_INTERPOLATE);
@@ -299,6 +306,19 @@ ACTOR Shot_Gun : BrutalWeapon
 		  {
 		   A_SetPitch(pitch-0.05, SPF_INTERPOLATE);
 		   //A_SetAngle(angle-0.01, SPF_INTERPOLATE);
+		  }
+		}
+		SHTA B 1
+		{
+		if (CountInv("PowerStrength") >= 1 )
+		  {
+		   A_SetPitch(pitch-0.5, SPF_INTERPOLATE);
+		   //A_SetAngle(angle-0.5, SPF_INTERPOLATE);
+		  }
+		 else
+		  {
+		   A_SetPitch(pitch-1, SPF_INTERPOLATE);
+		   //A_SetAngle(angle-1, SPF_INTERPOLATE);
 		  }
 		}
 	    SHTA C 1
@@ -314,6 +334,21 @@ ACTOR Shot_Gun : BrutalWeapon
 		   //A_SetAngle(angle-1, SPF_INTERPOLATE);
 		  }
 		}
+		SHTA D 1
+		{
+		if (CountInv("PowerStrength") >= 1 )
+		  {
+		   A_SetPitch(pitch-0.5, SPF_INTERPOLATE);
+		   //A_SetAngle(angle-0.5, SPF_INTERPOLATE);
+		  }
+		 else
+		  {
+		   A_SetPitch(pitch-1, SPF_INTERPOLATE);
+		   //A_SetAngle(angle-1, SPF_INTERPOLATE);
+		  }
+		}
+		//SHTA B 1
+		//SHTN A 1
 		//SHTA C 4
 		//SHTA D 1
 		//SHTN A 1
@@ -367,7 +402,7 @@ ACTOR Shot_Gun : BrutalWeapon
 	   {
 	    A_WeaponReady(WRF_NOFIRE);
 		A_Setroll(roll+0.8, SPF_INTERPOLATE); 
-		A_PlaySound("weapons/sgpump", 3);
+		A_PlaySound("weapons/sgpump2", 3);
 	   }
 	  SHTN L 1
 	   {
@@ -422,7 +457,7 @@ ACTOR Shot_Gun : BrutalWeapon
 		  A_WeaponReady(WRF_NOFIRE);
 		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
 	   }
-	   SHTN A 0 A_FireCustomMissile("ShotCaseSpawn",40,0,-8,-26) // The actor that fires the projectile has a delay of 1 tic
+	   //SHTN A 0 A_FireCustomMissile("ShotCaseSpawn",40,0,-8,-26) // The actor that fires the projectile has a delay of 1 tic
 	   SHTN K 1
 	   {
 		  //A_Giveinventory("ScreenTilt",1);
@@ -495,8 +530,8 @@ ACTOR Shot_Gun : BrutalWeapon
         SHTN A 0 A_AlertMonsters
         SHTN A 0 A_PlaySound("SGFIRE", 1)
 		SHTN A 0 A_SpawnItemEx("PlayerMuzzle1",30,0,45)
-		SHTN A 0 A_FireBullets (5, 1, 5, 20, "ShotgunPuff", FBF_NORANDOM)
-		SHTN A 0 A_FireBullets (2.5, 2.5, 5, 20, "ShotgunPuff2", FBF_NORANDOM)
+		//SHTN A 0 A_FireBullets (5, 1, 5, 20, "ShotgunPuff", FBF_NORANDOM)
+		SHTN A 0 A_FireBullets (2.5, 2.5, 10, 0, "", FBF_NORANDOM,8192,"p_shotgun_tracer",-5)
 		//SHTN A 0 A_JumpIfInventory("IsNOTTacticalClass", 1, 3)//Tactical Mode deals extra damage
 		//SHTN A 0 A_FireBullets (6, 3, 5, 13, "ShotgunPuff2", FBF_NORANDOM)
 		//SHTN A 0 A_SetPitch(pitch-10)
@@ -680,6 +715,7 @@ ACTOR Shot_Gun : BrutalWeapon
 		A_WeaponReady(WRF_NOFIRE);
 		}
 		//SSHR A 1 A_WeaponReady(WRF_NOFIRE)
+		//SSHR BC 1 A_WeaponReady(WRF_NOFIRE)
         
 	 InsertingShells:
 		SHTN A 0 A_GiveInventory("ReloadingShotgun", 1)
@@ -694,7 +730,8 @@ ACTOR Shot_Gun : BrutalWeapon
         
 	InsertShellAnimation:	
 		SHTN A 0
-		SSHR A 1
+		//SHTN A 0 A_JumpIfInventory("HandOfShells",5,"GrabShells")
+		SSHR AAA 1
 		{
 		  A_WeaponReady;
 	    }
@@ -703,16 +740,19 @@ ACTOR Shot_Gun : BrutalWeapon
 		{
 		A_Setroll(roll+0.2, SPF_INTERPOLATE);
 		A_WeaponReady(WRF_NOFIRE);
+		A_PlaySound("insertshell", 1);
 		}
 		SSHR F 1
 		{
 		A_Setroll(roll+0.2, SPF_INTERPOLATE);
+		//A_PlaySound("insertshell", 1);
 		A_WeaponReady(WRF_NOFIRE);
 		}
         SSHR G 1
 		{
 		 A_Setroll(roll-0.2, SPF_INTERPOLATE);
-		 A_PlaySound("insertshell", 1);
+		 //A_PlaySound("insertshell", 1);
+		 //A_Giveinventory("HandOfShells",1);
 		 A_Giveinventory("ShotgunAmmo",1);
 		 A_Takeinventory("AmmoShell",1);
 		 A_WeaponReady(WRF_NOFIRE);
@@ -720,7 +760,7 @@ ACTOR Shot_Gun : BrutalWeapon
 		SSHR H 1
 		{
 		 A_Setroll(roll-0.2, SPF_INTERPOLATE);
-		 A_WeaponReady(WRF_NOFIRE);
+		 A_WeaponReady;
 		}
 		SHTN A 0 A_JumpIfInventory("ShotgunWasEmpty",1,"Pump2")
 		SHTN A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")

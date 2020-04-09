@@ -2,7 +2,7 @@ clearplayerclasses
 addplayerclass BDoomer
 addplayerclass Doomer2
 //addplayerclass Purist 
-//addplayerclass TacticalDoomer 
+addplayerclass TacticalDoomer 
 
 // ZMOVEMENT
    
@@ -26,7 +26,7 @@ setslot 6 RailGun Plasma_Gun ClassicPlasmaRifle
 setslot 7 Unmaker BIG_FUCKING_GUN VanillaBFG9000
 setslot 8 HellishMissileLauncher 
 setslot 9 HandGrenades Flamethrower2 FlameCannon
-setslot 0 AmmoDroper, Shop
+setslot 0 AmmoDroper, PDA
 
    addkeysection "BrutalDoom - Advanced Actions" BrutalDoomActions    
    
@@ -57,9 +57,9 @@ setslot 0 AmmoDroper, Shop
    addmenukey "Quick Pull Pistol" quickpistol
    alias quickpistol "puke 310"
    
-   addmenukey "QuickMelee" QuickMelee
-   alias QuickMelee "puke 450"
-   defaultbind C QuickMelee
+   //addmenukey "QuickMelee" QuickMelee
+   //alias QuickMelee "puke 450"
+   //defaultbind C QuickMelee
 
    addkeysection "Brutal Doom - Interactions" BrutalDoomInteractions  
 
@@ -92,34 +92,6 @@ setslot 0 AmmoDroper, Shop
    addmenukey "Select Ammo Drop" selectammodrop
    alias selectammodrop "puke 309"
    defaultbind O selectammodrop
-   
-   addmenukey "Select Shop" selectShop
-   alias selectShop "puke 148"
-   defaultbind L selectShop
-   
-   addmenukey "Change Pages In Shop" ChangePage
-   alias ChangePage "puke 155"
-   defaultbind K ChangePage
-   
-   
-   addkeysection "Shop Controls" Forever21  
-   
-   //addmenukey "Toggle Item Store" ItemST
-   //alias ItemST "puke 148"
-   //defaultbind \ ItemST
-   
-	addmenukey "next item" next
-	defaultbind ] next
-	alias next "puke 679"
-
-	addmenukey "previous item" prev
-	defaultbind [ prev
-	alias prev "puke 680"
-   
-   
-   
-
-   
    
    addkeysection "Brutal Doom - Advanced Moves" BrutalDoomAdvMoves              // here too
    

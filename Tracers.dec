@@ -3,7 +3,7 @@
 // This is for the players projectiles only.
 Actor Tracer: FastProjectile
 {
-missiletype "TracerTrailMain"
+missiletype "None"
 missileheight 7
 	Projectile
 	+RANDOMIZE
@@ -44,7 +44,7 @@ missileheight 7
 
 Actor Tracer2: Tracer
 {
-missiletype ""
+missiletype "None"
 missileheight 7
 	Projectile
 	+RANDOMIZE
@@ -99,11 +99,12 @@ loop
 }
 }
 
-Actor DecorativeTracer: Tracer
+Actor DecorativeTracer: Tracer2
 {
 //-DONTSPLASH
 //seesound "weapons/minigunfire"
 //damagetype Minigun
+missiletype "TracerTrailMain"
 -DONTSPLASH
 }
 

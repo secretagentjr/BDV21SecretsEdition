@@ -23,3 +23,90 @@ class MedikitSS : SS_ScriptedSpawner replaces Medikit
         return 'MedikitS';
     }
 }
+
+// I could do RandomSpawner for this but it seems to be having issues and not
+// not spawning properly.
+
+Class StimKitSL : Actor 
+{
+		Default
+	{
+		+NOINTERACTION
+	}
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0 A_Jump(64,"PowerRegenerationMedium");
+		TNT1 A 0 A_Jump(64,"MediumPortablePotion");
+		TNT1 A 0 A_Jump(64,"MediumMiraclePotion");
+		TNT1 A 0 A_Jump(64,"MediumHealthPotion");
+		TNT1 A 0 A_Jump(256,"Stimpack2");
+	PowerRegenerationMedium:
+	    TNT1 A 0 A_SpawnItemEx("PowerRegenerationMedium",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	MediumPortablePotion:
+	    TNT1 A 0 A_SpawnItemEx("MediumPortablePotion",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	MediumMiraclePotion:
+	    TNT1 A 0 A_SpawnItemEx("MediumMiraclePotion",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	MediumHealthPotion:
+	    TNT1 A 0 A_SpawnItemEx("MediumHealthPotion",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	Stimpack2:
+	    TNT1 A 0 A_SpawnItemEx("Stimpack2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	}
+}
+
+Class MedikitS : Actor 
+{
+		Default
+	{
+		+NOINTERACTION
+	}
+	States
+	{
+	Spawn:
+	    TNT1 A 0;
+		TNT1 A 0 A_Jump(64,"SuperRegenerationPotion");
+		TNT1 A 0 A_Jump(64,"LargeRegenerationPotion");
+		TNT1 A 0 A_Jump(64,"SuperPortablePotion");
+		TNT1 A 0 A_Jump(64,"LargePortablePotion");
+		TNT1 A 0 A_Jump(64,"SuperMiraclePotion");
+		TNT1 A 0 A_Jump(64,"LargeMiraclePotion");
+		TNT1 A 0 A_Jump(64,"Medipack");
+		TNT1 A 0 A_Jump(64,"FieldKit");
+		TNT1 A 0 A_Jump(256,"Medikit2");
+	SuperRegenerationPotion:
+	    TNT1 A 0 A_SpawnItemEx("SuperRegenerationPotion",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	LargeRegenerationPotion:
+	    TNT1 A 0 A_SpawnItemEx("LargeRegenerationPotion",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	SuperPortablePotion:
+	    TNT1 A 0 A_SpawnItemEx("SuperPortablePotion",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	LargePortablePotion:
+	    TNT1 A 0 A_SpawnItemEx("LargePortablePotion",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	SuperMiraclePotion:
+	    TNT1 A 0 A_SpawnItemEx("SuperMiraclePotion",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	LargeMiraclePotion:
+	    TNT1 A 0 A_SpawnItemEx("LargeMiraclePotion",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	Medipack:
+	    TNT1 A 0 A_SpawnItemEx("Medipack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	FieldKit:
+	    TNT1 A 0 A_SpawnItemEx("FieldKit",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	Medikit2:
+	    TNT1 A 0 A_SpawnItemEx("Medikit2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288,0,tid);
+	    Stop;
+	}
+}
+
+

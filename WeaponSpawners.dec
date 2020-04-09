@@ -43,10 +43,10 @@ ACTOR RifleSpawner: CustomInventory Replaces Pistol
 		//TNT1 A 0 A_JumpIfInventory("Rifle", 1, "DualRifle")
 	PickupNormal:	
 		TNT1 A 0 A_GiveInventory("Rifle", 1)
-		TNT1 A 0 A_GiveInventory("Clip2", 10)
+		TNT1 A 0 A_GiveInventory("Clip2", 30)
 		Stop
 	Purist:
-	    TNT1 A 0 A_GiveInventory("Clip2", 10)
+	    TNT1 A 0 A_GiveInventory("Clip2", 30)
 		Stop
 	//DualRifle:
 		//TNT1 A 0 A_GiveInventory("DualRifles", 1)
@@ -379,12 +379,12 @@ ACTOR ChaingunSpawner: CustomInventory
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("Minigun", 1)
-		TNT1 A 0 A_GiveInventory("MinigunAmmo", 30)
+		TNT1 A 0 A_GiveInventory("MinigunAmmo", 50)
 		//TNT1 A 0 A_GiveInventory("Clip2", 20)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicChaingun", 1)
-		TNT1 A 0 A_GiveInventory("MinigunAmmo", 20)
+		TNT1 A 0 A_GiveInventory("MinigunAmmo", 50)
 		TNT1 A 1
 		TNT1 A -1
 		Stop
@@ -563,11 +563,11 @@ ACTOR DropedChaingunSpawner: ChaingunSpawner
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "Purist")
 		TNT1 A 0 A_GiveInventory("Minigun", 1)
-		TNT1 A 0 A_GiveInventory("MinigunAmmo", 30)
+		TNT1 A 0 A_GiveInventory("MinigunAmmo", 50)
 		Stop
 	Purist:
 	    TNT1 A 0 A_GiveInventory("ClassicChaingun", 1)
-		TNT1 A 0 A_GiveInventory("MinigunAmmo", 30)
+		TNT1 A 0 A_GiveInventory("MinigunAmmo", 50)
 		Stop
     }
 }
