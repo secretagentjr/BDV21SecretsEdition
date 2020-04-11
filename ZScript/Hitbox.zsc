@@ -34,7 +34,7 @@ Class HeadshotHitbox : Actor
 		Speed 0;
 		Radius 8;
 		Height 18;
-		BloodType "Brutal_Blood", "SawBlood", "SawBlood";
+		//BloodType "Brutal_Blood", "SawBlood", "SawBlood";
 		-COUNTKILL;
 		+NOTARGET;
 		+MISSILE;
@@ -50,6 +50,7 @@ Class HeadshotHitbox : Actor
 		+NOTAUTOAIMED;
 		+DONTTHRUST;
 		+NEVERTARGET;
+		+DONTRIP;
 
 		}
 	
@@ -120,7 +121,7 @@ Class HeadshotHitbox : Actor
 					//A_DamageMaster((self.lastHealth - self.Health)*hsfactor,"plasma"); self.lasthealth = self.health;
 				//}
 				//else {
-					hs_SpawnBlood(1);
+					//hs_SpawnBlood(1);
 					A_DamageMaster((self.lastHealth - self.Health)*hsfactor,"head"); self.lasthealth = self.health;
 				//}
 			}
@@ -176,10 +177,23 @@ Default
 	Speed 0;
 	Radius 24;
 	Height 20;
-	BloodType "Brutal_Blood", "SawBlood", "SawBlood";
-	-COUNTKILL +NOTARGET +MISSILE
-	+NOGRAVITY +SHOOTABLE +NOTELEPORT -SOLID +NODAMAGETHRUST
-	+THRUGHOST +NORADIUSDMG +GHOST -COUNTKILL +NOTAUTOAIMED +DONTTHRUST
+	//BloodType "Brutal_Blood", "SawBlood", "SawBlood";
+	    -COUNTKILL;
+		+NOTARGET;
+		+MISSILE;
+		+NOGRAVITY;
+		+SHOOTABLE;
+		+NOTELEPORT;
+		-SOLID;
+		+NODAMAGETHRUST;
+		+THRUGHOST;
+		+NORADIUSDMG;
+		+GHOST;
+		-COUNTKILL;
+		+NOTAUTOAIMED;
+		+DONTTHRUST;
+		+NEVERTARGET;
+		+DONTRIP;
 	
 	
 	
@@ -241,7 +255,7 @@ override void Tick()
 	
 		if(self.health < self.lastHealth)
 			{ 
-			hs_SpawnBlood(1);
+			//hs_SpawnBlood(1);
 			A_DamageMaster((self.lastHealth - self.Health)*0.6,"leg"); self.lasthealth = self.health;
 			}
 		}
@@ -294,7 +308,7 @@ Class HeadshotHitboxMG : Actor
 		Speed 0;
 		Radius 8;
 		Height 18;
-		BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood";
+		//BloodType "Green_Blood", "GreenSawBlood", "GreenSawBlood";
 		-COUNTKILL;
 		+NOTARGET;
 		+MISSILE;
@@ -310,6 +324,7 @@ Class HeadshotHitboxMG : Actor
 		+NOTAUTOAIMED;
 		+DONTTHRUST;
 		+NEVERTARGET;
+		+DONTRIP;
 
 		}
 	
@@ -380,7 +395,7 @@ Class HeadshotHitboxMG : Actor
 					//A_DamageMaster((self.lastHealth - self.Health)*hsfactor,"plasma"); self.lasthealth = self.health;
 				//}
 				//else {
-					hs_SpawnBlood(1);
+					//hs_SpawnBlood(1);
 					A_DamageMaster((self.lastHealth - self.Health)*hsfactor,"head"); self.lasthealth = self.health;
 				//}
 			}
@@ -451,6 +466,7 @@ Class CybersHitBoxN : Actor
 		+NOTAUTOAIMED;
 		+DONTTHRUST;
 		+NEVERTARGET;
+		+DONTRIP;
 
 		}
 	
@@ -521,7 +537,7 @@ Class CybersHitBoxN : Actor
 					//A_DamageMaster((self.lastHealth - self.Health)*hsfactor,"plasma"); self.lasthealth = self.health;
 				//}
 				//else {
-					hs_SpawnBlood(1);
+					//hs_SpawnBlood(1);
 					A_DamageMaster((self.lastHealth - self.Health)*hsfactor,"head"); self.lasthealth = self.health;
 				//}
 			}
@@ -539,4 +555,4 @@ Class CybersHitBoxN : Actor
 			TNT1 A 1;
 			stop;
 		}
-	}	
+	}

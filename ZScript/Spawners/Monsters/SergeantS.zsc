@@ -15,7 +15,7 @@ class ShotgunguyS : SS_ScriptedSpawner replaces ShotgunGuy
 
 
 
-Class ShotgunguySpawner : Actor Replaces ShotgunGuy
+Class ShotgunguySpawner : Actor //Replaces ShotgunGuy
 {
 		Default
 	{

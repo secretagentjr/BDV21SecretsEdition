@@ -38,7 +38,7 @@ ACTOR Revenant1: MonsterBase//Revenant //Replaces Revenant
 	Height 80
 	Mass 500
 	Scale 1.0
-	DropItem "25Credit"
+	//DropItem "25Credit"
 	Tag "Revenant"
 	MeleeRange 100
 	States

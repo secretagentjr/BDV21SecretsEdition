@@ -3,7 +3,7 @@ ACTOR HeadlessZombie: RifleZombie
 Health 150
 Speed 4
 FastSpeed 8
-DropItem "Credit"
+//DropItem "Credit"
 deathsound "none"
 seesound "none"
 	States

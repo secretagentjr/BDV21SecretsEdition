@@ -40,7 +40,7 @@ ACTOR ChaingunGuy1: MonsterBase //Replaces ChaingunGuy
 	AttackSound "weapons/minigunfire"
 	damagefactor "explosiveimpact", 2.0
 	DropItem "DropedChaingunSpawner"
-	DropItem "5Credit"
+	//DropItem "5Credit"
 	Obituary "%o has been mowed down by a Zombie Commando."
 	DamageFactor "CauseSplash", 0.0 DamageFactor "CauseObjectsToSplashSlime", 0.0 DamageFactor "CauseObjectsToSplashNukage", 0.0
 	DamageFactor "CauseObjectsToSplashBlood", 0.0 DamageFactor "CauseObjectsToSplashLava", 0.0

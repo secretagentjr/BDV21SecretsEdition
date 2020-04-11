@@ -40,6 +40,7 @@ ACTOR RifleZombie: MonsterBase //Replaces ZombieMan
 	PainChance "MonsterKnocked", 256
 	damagefactor "HelperMarineFatallity", 3.0
 	damagefactor "Avoid", 1.0 damagefactor "FallInLava", 500.0
+	// lul.
 	damagefactor "SSG", 500.0 damagefactor "PussyGrab", 50.0
 	PainChance "ExplosiveImpact", 256
 	damagefactor "TeleportRemover", 0.0
@@ -65,7 +66,7 @@ ACTOR RifleZombie: MonsterBase //Replaces ZombieMan
 	ActiveSound "grunt/active"
     damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
 	DropItem "RifleDrop"
-	DropItem "Credit"
+	//DropItem "Credit"
 	//DropItem "GrenadeAmmo" 15
 	Obituary "%o has been gunned down by a Zombie Soldier."
 	damagefactor "Taunt", 1.0

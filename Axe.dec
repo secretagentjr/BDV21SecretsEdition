@@ -123,6 +123,12 @@ ACTOR BrutalAxe : BrutalWeapon
 		Goto Ready	
 		
 	Deselect:
+	    TNT1 A 0
+		{
+		A_Giveinventory("ScreenTilt",1);
+		A_Setroll(0, SPF_INTERPOLATE);
+	    A_Takeinventory("ScreenTilt",1);
+	    }
         AXES CBA 1
 		AXEG A 0 A_Takeinventory("PowerBloodOnVisor",1)
 		AXEG A 0 A_Takeinventory("PowerBlueBloodOnVisor",1)
@@ -135,6 +141,12 @@ ACTOR BrutalAxe : BrutalWeapon
 		Wait
 		
 	Select:
+	    TNT1 A 0
+		{
+		A_Giveinventory("ScreenTilt",1);
+		A_Setroll(0, SPF_INTERPOLATE);
+	    A_Takeinventory("ScreenTilt",1);
+	    }
 		AXEG A 0 A_Giveinventory("GoSpecial",1)
 		AXEG A 0 A_Takeinventory("FistsSelected",1)
 		AXEG A 0 A_Takeinventory("SawSelected",1)

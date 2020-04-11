@@ -1,7 +1,7 @@
 ACTOR PistolZombie: RifleZombie
 {
 DropItem "PistolSpawner"
-DropItem "Credit"
+//DropItem "Credit"
 Tag "Pistol Zombie"
 	States
 	{

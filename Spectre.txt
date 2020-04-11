@@ -10,7 +10,7 @@ ACTOR Spectro: BullDemon //Replaces Spectre
 	fastspeed 6
 	Obituary "%o has been sodomized by a Spectre."
 	Tag "Spectre"
-	DropItem "2Credit"
+	//DropItem "2Credit"
 	States
 	{
     Spawn:

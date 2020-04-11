@@ -179,7 +179,7 @@ server	float	q_3airaccel				= 0.8;
 server	float	q_1airaccel				= 1.5;
 
 //New Head Hitbox System
-server float hs_factor = 2.0;
+server float hs_factor = 2;
 server bool	 hs_hitbox 	= true;
 
 // Menu Tips

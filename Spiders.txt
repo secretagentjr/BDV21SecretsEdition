@@ -30,7 +30,7 @@ ACTOR Arachnotron1: Arachnotron //replaces Arachnotron
 	Health 750
 	DeathHeight 4
 	BurnHeight 0
-	DropItem "25Credit"
+	//DropItem "25Credit"
 	Tag "Arachnotron"
 	States
 	{

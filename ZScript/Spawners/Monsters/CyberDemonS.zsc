@@ -6,6 +6,7 @@ class CyberdemonS : SS_ScriptedSpawner replaces Cyberdemon
                                       // And '' is true.
         if(GetCvar("bd_classicmonsters")){return 'VanillaCyberdemon';} 
 		if(GetCvar("bd_disablenewenemies")){return 'TheCyberdemon';}
+		if(X == -1472){return 'CyberdemonBoss';}
 		// Not Really Needed Here, but you never know, i might add more.
 		// '' is false, Spawn Other Enemies.
 

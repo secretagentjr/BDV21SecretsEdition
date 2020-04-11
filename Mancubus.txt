@@ -34,7 +34,7 @@ ACTOR Mancubus : MonsterBaseM//Fatso //Replaces Fatso
 	+THRUGHOST
 	+BOSSDEATH
 	-FASTER
-	DropItem "25Credit"
+	//DropItem "25Credit"
 	DeathHeight 6
 	BurnHeight 0
 

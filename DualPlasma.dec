@@ -123,6 +123,12 @@ ACTOR DUalPlasmaRifles : BrutalWeapon
 		Goto Ready	
 		
 	Deselect:
+	    TNT1 A 0
+		{
+		A_Giveinventory("ScreenTilt",1);
+		A_Setroll(0, SPF_INTERPOLATE);
+	    A_Takeinventory("ScreenTilt",1);
+	    }
 		DUPL A 0 A_Takeinventory("Reloading",1)
 		DUPL A 0 A_Takeinventory("HasPlasmaWeapon",1)
 		DUPL A 0 A_TakeInventory("TossGrenade", 1)
@@ -136,10 +142,17 @@ ACTOR DUalPlasmaRifles : BrutalWeapon
 		Wait
 		
 	Select:
+		TNT1 A 0
+		{
+		A_Giveinventory("ScreenTilt",1);
+		A_Setroll(0, SPF_INTERPOLATE);
+	    A_Takeinventory("ScreenTilt",1);
+	    }
 		DUPL A 0
 	    DUPL A 0 A_Giveinventory("HasPlasmaWeapon",1)
 		DUPL A 0 A_Takeinventory("FistsSelected",1)
 		DUPL A 0 A_Takeinventory("SawSelected",1)
+		RIFG A 0 A_Takeinventory("RifleSelected",1)
 		DUPL A 0 A_Takeinventory("ShotgunSelected",1)
 		DUPL A 0 A_Takeinventory("SSGSelected",1)
 		DUPL A 0 A_Takeinventory("MinigunSelected",1)

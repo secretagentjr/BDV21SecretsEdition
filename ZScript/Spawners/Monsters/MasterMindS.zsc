@@ -6,6 +6,10 @@ class MasterMindS : SS_ScriptedSpawner replaces SpiderMastermind
                                       // And '' is true.
         if(GetCvar("bd_classicmonsters")){return 'VanillaSpiderMastermind';} 
 		if(GetCvar("bd_disablenewenemies")){return 'TheSpiderMastermind';}
+		// Shit Necessary so maps don't Break.
+		if(X == 1600){return 'SuperMastermind';}
+		if(X == -2720){return 'MotherDemon';}
+		if(X == 0){return 'MotherDemon';}
 		// Not Really Needed Here, but you never know, i might add more.
 		// '' is false, Spawn Other Enemies.
 

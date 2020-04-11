@@ -10,7 +10,7 @@ ACTOR Labguy: RifleZombie
 	MaxTargetRange 100
 	+NOBLOCKMONST
 	+DROPOFF
-	DropItem "Credit"
+	//DropItem "Credit"
 	Obituary "%o has been cut down by a zombie labworker."
 	damagefactor "Taunt", 1.0
 	DropItem "none"

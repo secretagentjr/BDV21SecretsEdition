@@ -64,7 +64,7 @@ ACTOR TehLostSoul: LostSoul //Replaces LostSoul
 	damagefactor "ExplosiveImpact", 3.0
 	damagefactor "Shrapnel", 3.0
 	damagefactor "Explosives", 3.0
-	DropItem "1Credit"
+	//DropItem "1Credit"
 	Tag "Lost Soul"
     Alpha 1
 	States

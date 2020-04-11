@@ -237,6 +237,12 @@ ACTOR SSG : BrutalWeapon
 		Goto Ready
 		
 	Deselect:
+	    TNT1 A 0
+		{
+		A_Giveinventory("ScreenTilt",1);
+		A_Setroll(0, SPF_INTERPOLATE);
+	    A_Takeinventory("ScreenTilt",1);
+	    }
 		SHTZ A 0 offset(0,32)
 		SHTZ A 0 A_Takeinventory("Zoomed",1)
         SHTZ A 0 A_ZoomFactor(1.0)
@@ -246,12 +252,19 @@ ACTOR SSG : BrutalWeapon
 		TNT1 A 1 A_Lower
 		Wait
 	Select:
+		TNT1 A 0
+		{
+		A_Giveinventory("ScreenTilt",1);
+		A_Setroll(0, SPF_INTERPOLATE);
+	    A_Takeinventory("ScreenTilt",1);
+	    }
 		SHTZ A 0 A_JumpIfInventory("InspectSSG", 1, 1)
 		Goto InspectSSG
 		SHTZ A 0 offset(0,32)
 		SHTZ A 0 A_Giveinventory("GoSpecial",1)
 		SHTZ A 0 A_Takeinventory("FistsSelected",1)
 		SHTZ A 0 A_Takeinventory("SawSelected",1)
+		RIFG A 0 A_Takeinventory("RifleSelected",1)
 		SHTZ A 0 A_Takeinventory("ShotgunSelected",1)
 		SHTZ A 0 A_Giveinventory("SSGSelected",1)
 		SHTZ A 0 A_Takeinventory("MinigunSelected",1)
@@ -331,7 +344,20 @@ ACTOR SSG : BrutalWeapon
 		TNT1 AAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-19,19), 0, -1, 0, 0, random(-9,9))
 		SHTZ A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
 		SHO9 A 0 A_firebullets (0,0,1,40,"shotpuff",FBF_NORANDOM,300)
-		SHTZ A 0 A_FireBullets (5, 5, 20, 0, "", FBF_NORANDOM,8192,"p_SSG_tracer",-5) // Zscripted Tracer so no lag.
+		//SHTZ A 0 A_FireBullets (5, 5, 20, 0, "", FBF_NORANDOM,8192,"p_shotgun_tracer",-5) // Zscripted Tracer so no lag.
+		TNT1 A 0
+		{
+		A_FireProjectile("p_SSG_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_SSG_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_SSG_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_SSG_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_SSG_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_SSG_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_SSG_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_SSG_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_SSG_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_SSG_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		}
 		//SHTZ A 0 A_FireBullets (2.5, 2.5, 5, 20, "ShotgunPuff2", FBF_NORANDOM,8192,"Tracer",-5)
 		//SHTZ A 0 A_FireBullets (5, 1, 5, 20, "ShotgunPuff", FBF_NORANDOM,8192,"Tracer",-5)
 		//SHTZ A 0 A_FireBullets (2.5, 2.5, 5, 20, "ShotgunPuff2", FBF_NORANDOM,8192,"Tracer",-5)
@@ -374,7 +400,19 @@ AltFire:
 		SHTZ A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
 		SHTZ A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
         //SHTU A 0 A_FireBullets (5, 1, 5, 20, "ShotgunPuff", FBF_NORANDOM,8192,"p_SSG_tracer",-5)
-		SHTU A 0 A_FireBullets (5, 5, 10, 0, "", FBF_NORANDOM,8192,"p_SSG_tracer",-5)
+		TNT1 A 0
+		{
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		}
 		SHT3 A 1 BRIGHT //A_FireBullets (2, 2, 10, 20, "ShotgunPuff", FBF_NORANDOM)
 		
         //TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
@@ -403,7 +441,19 @@ AltFire:
 		SHTZ A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
 		SHTZ A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
         //SHTU A 0 A_FireBullets (5, 1, 5, 20, "ShotgunPuff", FBF_NORANDOM,8192,"DecorativeTracer",-5)
-		SHTU A 0 A_FireBullets (5, 5, 10, 0, "", FBF_NORANDOM,8192,"p_SSG_tracer",-5)
+		TNT1 A 0
+		{
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		A_FireProjectile("p_shotgun_tracer", frandom(-2, 2), 0, 0, 0, 0,frandom(-2, 2));
+		}
 		SHT3 C 1 BRIGHT //A_FireBullets (2, 2, 10, 20, "ShotgunPuff", FBF_NORANDOM)
 
         //TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-3,3), 0, 0, 0, 0, random(-3,3))
@@ -575,7 +625,7 @@ AltFire:
 		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
 	   }
 		//SHTZ A 0 A_JumpIfInventory("HasUnloaded", 1, 2)
-		TNT1 AA 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10, -20)
+		TNT1 A 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10, -20)
 		SHT7 B 1
 		{
 		  A_WeaponReady(WRF_NOFIRE);

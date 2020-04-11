@@ -15,10 +15,12 @@ weaponsection "Brutal_Doom"
 
 setslot 1 DSweap BrutalAxe Chain_Saw Melee_Attacks ClassicFist ClassicSaw
 //setslot 2 BrutalPistol BrutalSMG ClassicPistol ClassicSMG Revolver2 Revolver MP40
-setslot 2 BrutalPistol ClassicPistol ClassicSMG Revolver2 Revolver MP40 
+//setslot 2 BrutalPistol ClassicPistol ClassicSMG Revolver2 Revolver MP40 
+setslot 2 Rifle BrutalPistol ClassicPistol ClassicSMG Revolver2 Revolver MP40 
 setslot 3 AssaultShotgun Shot_Gun SSG ClassicShotgun ClassicSSG
 //setslot 4 Machinegun Rifle MiniGun ClassicChaingun HitlersBuzzsaw
-setslot 4 Rifle MiniGun ClassicChaingun HitlersBuzzsaw
+//setslot 4 Rifle MiniGun ClassicChaingun HitlersBuzzsaw
+setslot 4 MiniGun ClassicChaingun HitlersBuzzsaw
 //setslot 5 GrenadeLauncher Rocket_Launcher ClassicRocketLauncher NukeLauncher
 setslot 5 Rocket_Launcher ClassicRocketLauncher NukeLauncher
 setslot 6 RailGun Plasma_Gun ClassicPlasmaRifle

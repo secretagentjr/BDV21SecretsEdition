@@ -29,7 +29,7 @@ ACTOR ShotgunGuy1: MonsterBase //ShotgunGuy //Replaces ShotgunGuy
 	DropItem "GrenadeAmmo" 15
 	DropItem "ShotgunSpawnerDroped"
 	//DropItem "AmmoShell"
-	DropItem "Credit"
+	//DropItem "Credit"
 	damagetype "Melee"
 	DamageFactor "Head", 1.3
 	damagefactor "Melee", 1.35

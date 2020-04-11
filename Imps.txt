@@ -48,7 +48,7 @@ ACTOR Imp: MonsterBase //Replaces DoomImp
 	+MTHRUSPECIES
 	PainChance "Trample", 255
     Speed 6
-	DropItem "Credit"
+	//DropItem "Credit"
 	FastSpeed 12
 	Tag "Imp"
 	States

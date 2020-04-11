@@ -368,7 +368,7 @@ Class p_SSG_tracer : FastProjectile {
             Stop;
         }
 }
-
+/*
 Class p_SSGA_tracer : FastProjectile {
     protected int ripdepth;         //how much health it can pierce through
     protected actor hitvictim;    //the actor that was hit
@@ -418,4 +418,4 @@ Class p_SSGA_tracer : FastProjectile {
             TNT1 A 1 ;
             Stop;
         }
-}
+}*/

@@ -30,7 +30,7 @@ ACTOR PainElemental1 //Replaces PainElemental
 	damagefactor "Shrapnel", 3.0
 	damagefactor "ExplosiveImpact", 3.0
 	BurnHeight 0
-	DropItem "25Credit"
+	//DropItem "25Credit"
 	Tag "Pain Elemental"
 	States
 	{
