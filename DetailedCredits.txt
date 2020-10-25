@@ -80,8 +80,6 @@ Further Edited by Ali Jr(Wood,Ironsight plate), and Secret(Recoloring)/MrTypical
 Shotgun Pumping frames (SHTN*) by DoomNukem, Modified by Secret(Recolored Pump to red)
 ADS Sprite by DoomNukem, Heavily Edited by Sperglord, Further edited by Secret
 Ammo Sprite By Metalman
-Shotgun Sounds Taken From Brutal Pack V9
-Shotgun Shell & Hand Reload sprite by Benjamin Zuriel
 
 Shellbox Sprite from Doom64, Reshaded by MrTypical
 
@@ -96,10 +94,9 @@ Tweaked by Secret
 
 == RIFLE ==
 Base by Mike12(AR), DoomNukem(DMR), Modified By Carrot
-Reload Frame base by Mike12, Modified by Secret,Mrtypical,Vallena(M203 Grenade Launcher)
+Reload Frame base by Mike12, Modified by Secret,Mrtypical,Daedalus(Grenade Launcher From Complex Doom)
+Magazine By Metalman
 Animation By Secret
-Reload Hand
-MrTypical
 
 
 

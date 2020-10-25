@@ -12,10 +12,10 @@ Version 4.2.4
 #include "zscript/weapons/PISTOL.zsc"
 //#include "zscript/weapons/SubMachinegun.zsc"
 //#include "zscript/weapons/DualSMG.zsc"
+#include "zscript/weapons/Shotgun.zsc"
 #include "zscript/weapons/Minigun.zsc"
 #include "zscript/weapons/tracers.zsc"
 
-//#include "zscript/weapons/Shotgun.zsc"
 //#include "zscript/misc/Footsteps3.txt"
 #include "zscript/misc/tp_tips.zs"
 
