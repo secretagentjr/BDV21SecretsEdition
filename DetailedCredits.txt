@@ -27,6 +27,7 @@ M8F
 Nash Muhandes
 
 Pistol, Rifle,Shotgun sounds by Magmacow of Gamebanana
+Pistol,Rifle Firing Sounds by TiberiumSoul
 SSG Sounds by Navarro & MSKyuuni Of Gamebanana
 
 == PLAYER SPRITES ==

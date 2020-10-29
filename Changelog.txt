@@ -26,14 +26,14 @@ The recoil on tactical class has been entirely deleted.
 
 Implemented a spawning system for hitboxes which is better.
 
-Disabled Weapon Switching & Firing while reloading, but you will go back to
+Disabled Firing while reloading, but you will go back to
 ready state and then fire if using the shotgun.
 
 == PLAYER ==
 Implemented zmovement, Reverted Doomguys mass back to 100.
 
 == PISTOL == 
-Updated Design
+Updated Design,Muzzleflash
 Changed Sounds, Added a Silencer, New Muzzle Flashes, New Anims
 
 == REVOLVER ==
@@ -49,7 +49,7 @@ Updated Design/Animations, Updated Damage/Spread
 Updated Design/Animations, Accuracy/Recoil Tweaks, Doubled The Damage.
 
 == Rifle ==
-Updated Design/Anims, Accuracy/Recoil Tweaks, Doubled the Damage.
+Updated Design/Anims,Muzzleflash, Accuracy/Recoil Tweaks, Doubled the Damage.
 
 == ROCKET LAUNCHER ==
 New Design, Animations, Altfire now charges up a rocket that does 2x

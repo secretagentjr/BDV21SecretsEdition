@@ -28,7 +28,7 @@ setslot 6 RailGun Plasma_Gun ClassicPlasmaRifle
 setslot 7 Unmaker BIG_FUCKING_GUN VanillaBFG9000
 setslot 8 HellishMissileLauncher 
 setslot 9 HandGrenades Flamethrower2 FlameCannon
-setslot 0 AmmoDroper, PDA
+setslot 0 AmmoDroper//, PDA
 
    addkeysection "BrutalDoom - Advanced Actions" BrutalDoomActions    
    
