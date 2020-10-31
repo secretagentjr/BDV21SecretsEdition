@@ -235,7 +235,7 @@ CLASS Shot_Gun : BrutalWeapon
 		Else If(CountInv("Taunting") >=1 ) {return resolvestate("Taunt");}
 		Else If(CountInv("Salute1") >=1 ) {return resolvestate("Salute");}
 		Else If(CountInv("Unloading") >=1 ) {return resolvestate("Unload");}
-		Else If(CountInv("Zoomed") >=1 ) {return resolvestate("REady2");}
+		//Else If(CountInv("Zoomed") >=1 ) {return resolvestate("REady2");}
 		Else If(CountInv("FiredPrimary") >=1 ) {return resolvestate("Fire");}
 		Else {return resolvestate(null);}
 		}
@@ -281,9 +281,138 @@ CLASS Shot_Gun : BrutalWeapon
 	
     Fire:
         SHTN A 0 A_Takeinventory("Reloading",1);
-		SHTN A 0 A_JumpIfInventory("Zoomed",1,"Fire2");
+		//SHTN A 0 A_JumpIfInventory("Zoomed",1,"Fire2");
 		
 		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,2);
+        Goto NoAmmo;
+        TNT1 AAAA 0;
+		// You can't fire during reload, so this way you can go back to ready and fire.
+		TNT1 A 0
+		{
+		 if(Invoker.ReloadingShotgun == true){return resolvestate("FinishedInsertingShellsEmergency");}
+		 return resolvestate(null);
+		}
+		TNT1 AAAAA 0
+		{
+		 A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9));
+		 A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9));
+		}
+		SHTA A 1 BRIGHT
+		{
+        A_AlertMonsters();
+        //A_PlaySound("SGFIRE", 1);
+		A_StartSound("SGFIRE",1,CHANF_OVERLAP,0.5);
+		A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1));
+		A_SpawnItemEx("PlayerMuzzle1",30,5,30);
+		A_Takeinventory("ShotgunAmmo",1);
+		// 5 Shotgun Tracers
+		ZWL_FireHitscan(1, 40, pellets:5, spread:1, damagetype:"", pufftype:"ShotgunPuff",tracertype:"DecorativeTracer",Offset:(0,0,-5));
+		A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
+		//A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
+		//A_FireBullets (2.5, 2.5, 5, 40, "ShotgunPuff", FBF_NORANDOM,8192,"DecorativeTracer",-5);
+		//A_FireBullets (2.5, 2.5, 5, 20, "ShotgunPuff2", FBF_NORANDOM,8192,"Tracer",-5);
+		}
+	    SHTA B 1
+		{
+		if (CountInv("PowerStrength") >= 1 )
+		  {
+		   A_SetPitch(pitch-4, SPF_INTERPOLATE);
+		   //A_SetAngle(angle-0.5, SPF_INTERPOLATE);
+		  }
+		 else
+		  {
+		   A_SetPitch(pitch-2, SPF_INTERPOLATE);
+		   //A_SetAngle(angle-1, SPF_INTERPOLATE);
+		  }
+		}
+		SHTA CCCD 1;
+		SHTN A 1;
+		Goto Pump1;
+	
+   Pump1:	
+       //SHTN A 0 A_JumpIfInventory("Zoomed",1,"PumpFromADS") ;
+	   //TNT1 A 0 A_Giveinventory("ScreenTilt",1);
+	   SHTN BCDEFGHI 1 A_WeaponReady(WRF_NOFIRE);
+   PumpFromADS:
+       //TNT1 A 0 A_Giveinventory("ScreenTilt",1);
+	   SHTN J 1 A_WeaponReady(WRF_NOFIRE);
+	   SHTN A 0 A_FireCustomMissile("ShotCaseSpawn",40,0,-8,-26); // The actor that fires the projectile has a delay of 1 tic
+	   SHTN K 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_PlaySound("weapons/sgpump", 3);
+	   }
+	   SHTN L 1 A_WeaponReady(WRF_NOFIRE);
+	   SHTN M 1 A_WeaponReady(WRF_NOFIRE);
+	   SHTN O 3 A_WeaponReady(WRF_NOFIRE);
+	   SHTN M 1 
+	   {
+	    A_WeaponReady(WRF_NOFIRE);
+		//A_Setroll(roll+0.8, SPF_INTERPOLATE); 
+		A_PlaySound("weapons/sgpump", 3);
+	   }
+	  SHTN L 1 A_WeaponReady(WRF_NOFIRE);
+	  SHTN K 1 A_WeaponReady(WRF_NOFIRE);
+	  SHTN J 1 A_WeaponReady(WRF_NOFIRE);
+	   //SHTN A 0 A_JumpIfInventory("Zoomed",1,"PumpADSFinish");
+	  SHTN IHGFEDCB 1 A_WeaponReady(WRF_NOFIRE);
+	  SHTN A 1 A_WeaponReady();
+	  Goto Ready3;
+	   
+	  /* 
+	   PumpADSFinish:
+	   TNT1 A 0
+	   {
+	   A_Setroll(0, SPF_INTERPOLATE);
+	   //A_Takeinventory("ScreenTilt",1);
+	   A_WeaponReady();
+	   }
+	   SHT8 LKJ 1;
+	   Goto Ready2;
+	  */ 
+	   
+	 
+   Pump2:
+	   TNT1 A 0
+		{
+		 Invoker.ShotgunIsEmpty = false; 
+		}
+	   SHTN Q 1 A_WeaponReady(WRF_NOFIRE);
+	   SHTN J 1 A_WeaponReady(WRF_NOFIRE);
+	   SHTN K 1
+	   {
+		  A_WeaponReady(WRF_NOFIRE);
+		  A_PlaySound("weapons/sgpump", 3);
+	   }
+	   SHTN L 1 A_WeaponReady(WRF_NOFIRE);
+	   SHTN M 1 A_WeaponReady(WRF_NOFIRE);
+	   SHTN O 3 A_WeaponReady(WRF_NOFIRE);
+	   SHTN M 1
+	   {
+	    A_WeaponReady(WRF_NOFIRE);
+		A_Setroll(roll+0.8, SPF_INTERPOLATE); 
+		A_PlaySound("weapons/sgpump", 3);
+	   }
+	  SHTN L 1 A_WeaponReady(WRF_NOFIRE);
+	  SHTN K 1 A_WeaponReady(WRF_NOFIRE);
+	  SHTN J 1 A_WeaponReady(WRF_NOFIRE);
+	  SHTN Q 1 A_WeaponReady(WRF_NOFIRE);
+	  Goto InsertingShells;
+		
+	ReadyToFireAgain:	
+		//SHTN A 6 <-- Old frame
+        SHTN A 1 Offset(10,36); // <-- New frames
+        SHTN A 1 Offset(9,40); //
+        SHTN A 1 Offset(4,40); //
+        SHTN A 1 Offset(0,32); //
+        SHTN A 0 A_Refire;
+		Goto Ready3;
+		
+	Altfire:
+        SHTN A 0 A_Takeinventory("Reloading",1);
+		//SHTN A 0 A_JumpIfInventory("Zoomed",1,"Fire2");
+		
+		SHTN A 0 A_JumpIfInventory("ShotgunAmmo",2,2);
         Goto NoAmmo;
         TNT1 AAAA 0;
 		// You can't fire during reload, so this way you can go back to ready and fire.
@@ -303,208 +432,36 @@ CLASS Shot_Gun : BrutalWeapon
         A_PlaySound("SGFIRE", 1);
 		A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1));
 		A_SpawnItemEx("PlayerMuzzle1",30,5,30);
-		A_Takeinventory("ShotgunAmmo",1);
+		A_Takeinventory("ShotgunAmmo",2);
 		// 5 Shotgun Tracers
-		ZWL_FireHitscan(1, 40, pellets:5, spread:1, damagetype:"", pufftype:"ShotgunPuff",tracertype:"DecorativeTracer",Offset:(0,0,-5));
+		A_FireCustomMissile("Chunk1",random(-2,2),0,15,-18);
+		A_FireCustomMissile("Chunk2",random(-2,2),0,18,13);
+		A_FireCustomMissile("Chunk3",random(-2,2),0,13,5);
+		A_FireCustomMissile("Chunk4",random(-2,2),0,0,-15);
+		A_FireCustomMissile("Chunk1",random(-2,2),0,-13,8);
+		A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
+		//A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
 		//A_FireBullets (2.5, 2.5, 5, 40, "ShotgunPuff", FBF_NORANDOM,8192,"DecorativeTracer",-5);
 		//A_FireBullets (2.5, 2.5, 5, 20, "ShotgunPuff2", FBF_NORANDOM,8192,"Tracer",-5);
-		if (CountInv("PowerStrength") >= 1 )
-		  {
-		   A_SetPitch(pitch-0.1, SPF_INTERPOLATE);
-		   //A_SetAngle(angle-0.1, SPF_INTERPOLATE);
-		  }
-		 else
-		  {
-		   A_SetPitch(pitch-0.05, SPF_INTERPOLATE);
-		   //A_SetAngle(angle-0.01, SPF_INTERPOLATE);
-		  }
 		}
-	    SHTA C 1
+	    SHTA B 1
 		{
 		if (CountInv("PowerStrength") >= 1 )
 		  {
-		   A_SetPitch(pitch-0.5, SPF_INTERPOLATE);
+		   A_SetPitch(pitch-8, SPF_INTERPOLATE);
 		   //A_SetAngle(angle-0.5, SPF_INTERPOLATE);
 		  }
 		 else
 		  {
-		   A_SetPitch(pitch-1, SPF_INTERPOLATE);
+		   A_SetPitch(pitch-4, SPF_INTERPOLATE);
 		   //A_SetAngle(angle-1, SPF_INTERPOLATE);
 		  }
 		}
+		SHTA CD 1;
+		SHTN A 1;
 		Goto Pump1;
 	
-   Pump1:	
-       SHTN A 0 A_JumpIfInventory("Zoomed",1,"PumpFromADS") ;
-	   TNT1 A 0 A_Giveinventory("ScreenTilt",1);
-	   SHTN BCDEFGHI 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
-	   }
-   PumpFromADS:
-       TNT1 A 0 A_Giveinventory("ScreenTilt",1);
-	   SHTN J 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
-	   }
-	   SHTN A 0 A_FireCustomMissile("ShotCaseSpawn",40,0,-8,-26); // The actor that fires the projectile has a delay of 1 tic
-	   SHTN K 1
-	   {
-		  //A_Giveinventory("ScreenTilt",1);
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll-0.4, SPF_INTERPOLATE); 
-				 A_PlaySound("weapons/sgpump", 3);
-	   }
-	   SHTN L 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll-0.4, SPF_INTERPOLATE);  
-	   }
-	   SHTN M 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll-0.8, SPF_INTERPOLATE); 
-	   }
-	   SHTN NOP 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll-0.1, SPF_INTERPOLATE); 
-	   }
-	   SHTN PON 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll+0.1, SPF_INTERPOLATE); 
-	   }
-	   SHTN M 1
-	   {
-	    A_WeaponReady(WRF_NOFIRE);
-		A_Setroll(roll+0.8, SPF_INTERPOLATE); 
-		A_PlaySound("weapons/sgpump", 3);
-	   }
-	  SHTN L 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll+0.4, SPF_INTERPOLATE);  
-	   }
-	   SHTN K 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll+0.4, SPF_INTERPOLATE); 
-	   }
-	   SHTN J 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
-	   }
-	   SHTN A 0 A_JumpIfInventory("Zoomed",1,"PumpADSFinish");
-	   SHTN IHGFEDCB 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll-0.2, SPF_INTERPOLATE); 
-	   }
-	   SHTN A 1
-	   {
-	   A_Setroll(0, SPF_INTERPOLATE);
-	   A_Takeinventory("ScreenTilt",1);
-	   A_WeaponReady();
-	   }
-	   Goto Ready3;//ReadyToFireAgain
-	   
-	   PumpADSFinish:
-	   TNT1 A 0
-	   {
-	   A_Setroll(0, SPF_INTERPOLATE);
-	   A_Takeinventory("ScreenTilt",1);
-	   A_WeaponReady();
-	   }
-	   SHT8 LKJ 1;
-	   Goto Ready2;
-	   
-	 
-   Pump2:
-       //SHTN A 0 A_Takeinventory("ShotgunWasEmpty",1);
-	   TNT1 A 0
-		{
-		 Invoker.ShotgunIsEmpty = false; 
-		}
-	   //TNT1 A 0 A_Giveinventory("ScreenTilt",1)
-	   SHTN Q 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
-	   }
-	   SHTN J 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
-	   }
-	   SHTN A 0 A_FireCustomMissile("ShotCaseSpawn",40,0,-8,-26); // The actor that fires the projectile has a delay of 1 tic
-	   SHTN K 1
-	   {
-		  //A_Giveinventory("ScreenTilt",1);
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll-0.4, SPF_INTERPOLATE); 
-				 A_PlaySound("weapons/sgpump", 3);
-	   }
-	   SHTN L 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll-0.4, SPF_INTERPOLATE);  
-	   }
-	   SHTN M 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll-0.8, SPF_INTERPOLATE); 
-	   }
-	   SHTN NOP 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll-0.1, SPF_INTERPOLATE); 
-	   }
-	   SHTN PON 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll+0.1, SPF_INTERPOLATE); 
-	   }
-	   SHTN M 1
-	   {
-	    A_WeaponReady(WRF_NOFIRE);
-		A_Setroll(roll+0.8, SPF_INTERPOLATE); 
-		A_PlaySound("weapons/sgpump", 3);
-	   }
-	   SHTN L 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll+0.4, SPF_INTERPOLATE);  
-	   }
-	   SHTN K 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll+0.4, SPF_INTERPOLATE); 
-	   }
-	   SHTN J 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll+0.2, SPF_INTERPOLATE); 
-	   }
-	   SHTN Q 1
-	   {
-		  A_WeaponReady(WRF_NOFIRE);
-		  A_Setroll(roll-0.2, SPF_INTERPOLATE); 
-	   }
-	   Goto InsertingShells;
-		
-	ReadyToFireAgain:	
-		//SHTN A 6 <-- Old frame
-        SHTN A 1 Offset(10,36); // <-- New frames
-        SHTN A 1 Offset(9,40); //
-        SHTN A 1 Offset(4,40); //
-        SHTN A 1 Offset(0,32); //
-        SHTN A 0 A_Refire;
-		Goto Ready3;
-		
+	/*
 	Fire2:
 		SHTN A 0 A_Takeinventory("Reloading",1);
         SHTN A 0 A_JumpIfInventory("ShotgunAmmo",1,1);
@@ -528,7 +485,9 @@ CLASS Shot_Gun : BrutalWeapon
 		SHT8 A 1;
 		SHT8 JKL 1;
 		Goto Pump1;
-
+	*/	
+	
+	/*
 	AltFire:
         SHTN A 0;
 		SHTN A 0 A_Giveinventory("GoSpecial",1);
@@ -571,6 +530,8 @@ CLASS Shot_Gun : BrutalWeapon
 		SHTN A 0 A_Giveinventory("GoSpecial",1);
 		SHT8 DE 1;
         Goto Ready;
+	
+	*/
 		
 	
 	/*

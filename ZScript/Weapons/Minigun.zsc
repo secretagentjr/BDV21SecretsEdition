@@ -237,9 +237,10 @@ DEFAULT
 			//A_Takeinventory("MinigunAmmo",1);
 			A_Takeinventory("MinigunAmmo",1);
 			//A_Takeinventory("MinigunAmmo",1);
-			A_PlaySound("CHGNSHOT", 1);
+			//A_PlaySound("CHGNSHOT", 1);
+			A_StartSound("CHGNSHOT",1,CHANF_OVERLAP,0.5);
 			A_PlaySound("FARMGN", 5);
-			ZWL_FireHitscan(0.5, 40, pellets:1, spread:0.5, damagetype:"", pufftype:"MachineGunBulletPuff",tracertype:"DecorativeTracer",Offset:(0,0,-5));
+			ZWL_FireHitscan(1, 40, pellets:1, spread:1, damagetype:"", pufftype:"MachineGunBulletPuff",tracertype:"DecorativeTracer",Offset:(0,0,-5));
 			//ZWL_FireHitscan(0, 0, pellets:1, spread:2, damagetype:"", pufftype:"",tracertype:"p_minigun_tracer",Offset:(0,0,-5));
 			//A_FireProjectile("p_minigun_tracer", frandom(-3, 3), 0, 0, 0, 0,frandom(-3, 3));
 			//A_FireProjectile("p_minigun_tracer", frandom(-3, 3), 0, 0, 0, 0,frandom(-3, 3));
@@ -266,9 +267,9 @@ DEFAULT
 			{
 			//A_Takeinventory("MinigunAmmo",1);
 			A_Takeinventory("MinigunAmmo",1);
-			A_PlaySound("CHGNSHOT", 1);
+			A_StartSound("CHGNSHOT",1,CHANF_OVERLAP,0.5);
 			A_PlaySound("FARMGN", 5);
-			ZWL_FireHitscan(0.5, 40, pellets:1, spread:0.5, damagetype:"", pufftype:"MachineGunBulletPuff",tracertype:"DecorativeTracer",Offset:(0,0,-5));
+			ZWL_FireHitscan(1, 40, pellets:1, spread:1, damagetype:"", pufftype:"MachineGunBulletPuff",tracertype:"DecorativeTracer",Offset:(0,0,-5));
 			//ZWL_FireHitscan(0, 0, pellets:1, spread:2, damagetype:"", pufftype:"",tracertype:"p_minigun_tracer",Offset:(0,0,-5));
 			//ZWL_FireHitscan(0, 0, pellets:1, spread:2, damagetype:"", pufftype:"",tracertype:"p_minigun_tracer",Offset:(0,0,-5));
 			//A_FireProjectile("p_minigun_tracer", frandom(-3, 3), 0, 0, 0, 0,frandom(-3, 3));

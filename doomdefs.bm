@@ -77,32 +77,6 @@ brightmap sprite BG2GO0
 	map "brightmaps/BFG10K/B10BO0.png"
 }
 
-
-brightmap sprite BFGCA0
-{
-	map "brightmaps/doom/BFGC0.png"
-	disablefullbright
-}
-
-brightmap sprite BFGCB0
-{
-	map "brightmaps/doom/BFGC0.png"
-	disablefullbright
-}
-
-brightmap sprite BFGCC0
-{
-	map "brightmaps/doom/BFGC0.png"
-	disablefullbright
-}
-
-brightmap sprite BFGCD0
-{
-	map "brightmaps/doom/BFGC0.png"
-	disablefullbright
-}
-
-
 brightmap sprite PLSTB0
 {
 	map "brightmaps/doom/PLSTB0.png"
@@ -112,12 +86,6 @@ brightmap sprite PLSTB0
 brightmap sprite PLSTA0
 {
 	map "brightmaps/doom/PLSTA0.png"
-	disablefullbright
-}
-
-brightmap sprite CHAFA0
-{
-	map "brightmaps/doom/CHAFA0.png"
 	disablefullbright
 }
 
@@ -282,6 +250,10 @@ brightmap Texture SPACM4
 
 brightmap sprite CELLB0 {	map "brightmaps/doom/CELLB0.png" }
 
+// Pistol
+brightmap sprite PLSTA0 {map "brightmaps/doom/PLSTA0.png" disablefullbright}
+brightmap sprite PLSTB0 {map "brightmaps/doom/PLSTB0.png" disablefullbright}
+
 // ssg
 brightmap sprite SHOFA0 {	map "brightmaps/doom/SSG/SHOFA0.png" disablefullbright}
 brightmap sprite SHT3A0 {	map "brightmaps/doom/SSG/SHT3A0.png" disablefullbright}
@@ -292,3 +264,19 @@ brightmap sprite SHTZA0 {	map "brightmaps/doom/SSG/SHTZA0.png" disablefullbright
 brightmap sprite SHTAA0 {	map "brightmaps/doom/Shotgun/SHTAA0.png" disablefullbright}
 brightmap sprite SHT8A0 {	map "brightmaps/doom/Shotgun/SHT8A0.png" disablefullbright}
 brightmap sprite SHT8B0 {	map "brightmaps/doom/Shotgun/SHT8B0.png" disablefullbright}
+
+// Chaingun
+brightmap sprite CHAFA0 {map "brightmaps/doom/CHAFA0.png" disablefullbright}
+
+// Plasmarifle
+brightmap sprite PLSTA0 {	map "brightmaps/doom/PR/PLSTA0.png" disablefullbright}
+brightmap sprite PLSAA0 {	map "brightmaps/doom/PR/PLSAA0.png" disablefullbright}
+brightmap sprite PLSAB0 {	map "brightmaps/doom/PR/PLSAB0.png" disablefullbright}
+brightmap sprite PLSAC0 {	map "brightmaps/doom/PR/PLSAC0.png" disablefullbright}
+brightmap sprite PLSAD0 {	map "brightmaps/doom/PR/PLSAD0.png" disablefullbright}
+
+// BFG
+brightmap sprite BFGCA0 {map "brightmaps/doom/BFGA0.png" disablefullbright}
+brightmap sprite BFGCB0 {map "brightmaps/doom/BFGB0.png" disablefullbright}
+brightmap sprite BFGCC0 {map "brightmaps/doom/BFGC0.png" disablefullbright}
+brightmap sprite BFGCD0 {map "brightmaps/doom/BFGD0.png" disablefullbright}

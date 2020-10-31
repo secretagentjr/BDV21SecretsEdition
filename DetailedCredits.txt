@@ -10,6 +10,7 @@ Credits: Valve Software (wood plank sounds),
 Turtle Rock Studios (the rest of the sounds), 
 The Zombie Killer (the idea even wrt to the implementation like speed-based sound volume)
 
+New Plasmarifle Muzzleflash sprites by Metalman(Unsure who made the others)
 
 == HitBox System Code ==
 PA1NK1LLER
