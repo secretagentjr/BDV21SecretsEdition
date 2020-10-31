@@ -166,22 +166,80 @@ States
 	}
 }
 
-ACTOR GunFireSmoke
+ACTOR GunFireSmoke: ExplosionSmoke
 {
+	Alpha 0.25
 	Scale 0.2
-	PROJECTILE
-	+MISSILE
-	+THRUACTORS
-	Speed 12
+	Renderstyle Add
+  Speed 8
     States
     {
     Spawn:
         SMOK A 0
-	Live:
-		TNT1 A 2
-		SM6K ABCDEFG 1
+        Goto Death
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_JUmp(256, "Death1", "Death2", "Death3", "Death4")
+		
+	Death1:	
+		TNT1 A 0
+		TNT1 A 0 A_CustomMissile("GunFireSmoke1", 7, 0, 180, 0, 0)
+		Stop
+		
+	Death2:	
+		TNT1 A 0
+		TNT1 A 0 A_CustomMissile("GunFireSmoke2", 7, 0, 180, 0, 0)
+		Stop
+		
+	Death3:	
+		TNT1 A 0
+		TNT1 A 0 A_CustomMissile("GunFireSmoke3", 7, 0, 180, 0, 0)
+		Stop	
+		
+	Death4:	
+		TNT1 A 0
+		TNT1 A 0 A_CustomMissile("GunFireSmoke4", 7, 0, 180, 0, 0)
+		Stop	
+		
+    }
+}
+
+ACTOR GunFireSmoke1: GunFireSmoke
+{
+	Alpha 0.3
+	Scale 0.2
+	Renderstyle Add
+  Speed 8
+    States
+    {
+    Spawn:
+        SMOK A 0
+        Goto Death
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_Stop
+		tnt1 a 0 a_rECOIL(-2)
+		SMOK ABCDEFGHIJKLMNOPQ 1
+		
 Stop
     }
+}
+
+ACTOR GunFireSmoke2: GunFireSmoke1
+{
+	Scale -0.21
+}
+
+ACTOR GunFireSmoke3: GunFireSmoke1
+{
+	XScale -0.21
+	YScale 0.21
+}
+
+ACTOR GunFireSmoke4: GunFireSmoke1
+{
+	XScale 0.2
+	YScale -0.2
 }
 
 
