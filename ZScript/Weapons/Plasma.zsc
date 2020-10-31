@@ -193,6 +193,7 @@ CLASS Plasma_Gun : BrutalWeapon
 		PLSN A 0 A_SetPitch(Pitch-0.5);
 		PLST A 1 BRIGHT //A_FireCustomMissile("Plasma_Ball", 0, 1, 0, -5);
 		{
+		A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
 		ZWL_FireProjectile("Plasma_Ball", 0, -1, offset:(0,0,-5), flags:ZPF_AddPlayerVel);
 		}
 		PLSN A 0 A_ZoomFactor(1.0);
@@ -206,6 +207,7 @@ CLASS Plasma_Gun : BrutalWeapon
 		PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0);
 		PLST A 1 //A_FireCustomMissile("PlasmaBallDM", 0, 1, 0, 0);
 		{
+		A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
 		ZWL_FireProjectile("PlasmaBallDM", 0, -1, offset:(0,0,-5), flags:ZPF_AddPlayerVel);
 		}
 		PLSN A 0 A_ZoomFactor(1.0);
@@ -244,21 +246,26 @@ CLASS Plasma_Gun : BrutalWeapon
 		{
 		 A_weaponoffset(0, 32);
 		 A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0);
+		 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
 		}
 		PLSA B 1
 		{
 		 A_weaponoffset(0, 33);
 		 A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0);
+		 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
 		}
 		PLSA C 1
 		{
 		 A_weaponoffset(1, 32);
 		 A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0);
+		 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
 		}
 		PLSA D 1
 		{
 		 A_weaponoffset(-1, 32);
 		 A_Takeinventory("PlasmaAmmo",1);
+		 A_Takeinventory("DoublePlasmaAmmo",1);
+		 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
 		 invoker.ChargedAltFire++;
 		}
 		TNT1 A 0
@@ -342,6 +349,82 @@ CLASS Plasma_Gun : BrutalWeapon
 				break;
             }
         }
+		
+		TNT1 A 0
+        {
+         switch(invoker.ChargedAltFire)
+            {
+			    /* 
+				Here's how to scale recoil with it too.
+				*/                            
+				case 50: A_SetPitch(Pitch-0.25);
+				case 49: A_SetPitch(Pitch-0.25);
+				case 48: A_SetPitch(Pitch-0.25);
+				case 47: A_SetPitch(Pitch-0.25);
+				case 46: A_SetPitch(Pitch-0.25);
+				case 45: A_SetPitch(Pitch-0.25);
+				case 44: A_SetPitch(Pitch-0.25);
+				case 43: A_SetPitch(Pitch-0.25);
+				case 42: A_SetPitch(Pitch-0.25);
+				case 41: A_SetPitch(Pitch-0.25);
+				case 40: A_SetPitch(Pitch-0.25);
+				case 39: A_SetPitch(Pitch-0.25);
+				case 38: A_SetPitch(Pitch-0.25);
+				case 37: A_SetPitch(Pitch-0.25);
+				case 36: A_SetPitch(Pitch-0.25);
+				case 35: A_SetPitch(Pitch-0.25);
+				case 34: A_SetPitch(Pitch-0.25);
+				case 33: A_SetPitch(Pitch-0.25);
+				case 32: A_SetPitch(Pitch-0.25);
+				case 31: A_SetPitch(Pitch-0.25);
+				case 30: A_SetPitch(Pitch-0.25);
+				case 29: A_SetPitch(Pitch-0.25);
+				case 28: A_SetPitch(Pitch-0.25);
+				case 27: A_SetPitch(Pitch-0.25);
+				case 26: A_SetPitch(Pitch-0.25);
+				case 25: A_SetPitch(Pitch-0.25);
+				case 24: A_SetPitch(Pitch-0.25);
+				case 23: A_SetPitch(Pitch-0.25);
+				case 22: A_SetPitch(Pitch-0.25);
+				case 21: A_SetPitch(Pitch-0.25);
+				case 20: A_SetPitch(Pitch-0.25);
+				case 19: A_SetPitch(Pitch-0.25);
+				case 18: A_SetPitch(Pitch-0.25);
+				case 17: A_SetPitch(Pitch-0.25);
+				case 16: A_SetPitch(Pitch-0.25);
+				case 15: A_SetPitch(Pitch-0.25);
+				case 14: A_SetPitch(Pitch-0.25);
+				case 13: A_SetPitch(Pitch-0.25);
+				case 12: A_SetPitch(Pitch-0.25);
+				case 11: A_SetPitch(Pitch-0.25);
+				case 10: A_SetPitch(Pitch-0.25);
+				case 9: A_SetPitch(Pitch-0.25);
+				case 8: A_SetPitch(Pitch-0.25);
+				case 7: A_SetPitch(Pitch-0.25);
+				case 6: A_SetPitch(Pitch-0.25);
+				case 5: A_SetPitch(Pitch-0.25);
+				case 4: A_SetPitch(Pitch-0.25);
+				case 3: A_SetPitch(Pitch-0.25);
+				case 2: A_SetPitch(Pitch-0.25);
+                case 1: 
+				A_SetPitch(Pitch-0.25);
+                break;
+				Case 0:
+				break;
+				default:
+				break;
+            }
+        }
+		
+		PLST A 1 BRIGHT A_Recoil(3);
+		PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn",-5,0,0,0);
+        PLSN KLKJ 1;
+        PLSN BCD 1;
+		PLSN EEEEEEEEEEEE 3 A_FireCustomMissile("SmokeSpawner",0,0,10,5);
+		PLSN DCB 1;
+        PLSN A 0 A_PlaySound("BEPBEP");
+		PLSN A 0 A_PlaySound("BEPBEP", 6);
+		Goto Ready;
 
 	    //PLSN A 0 A_PlaySound("PLSFULL", 6, 0.8, 1);
 	    //PLSN A 0 A_ReFire;
@@ -351,17 +434,21 @@ CLASS Plasma_Gun : BrutalWeapon
 
 AltHold:
 	
-	PLSN A 0 A_PlaySound("PLSFULL", 6, 0.8, 1);
+	PLSN A 0 A_StartSound("PLSFULL",1,CHANF_NOSTOP,1);
 	PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0);
+	PLSN A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
 	PLSA A 1 BRIGHT offset (0, 32);
 	
 	PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0);
+	PLSN A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
 	PLSA C 1 BRIGHT offset (0, 33);
 	
 	PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0);
+	PLSN A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
 	PLSA A 1 BRIGHT offset (1, 32);
 	
 	PLSN A 0 A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0);
+	PLSN A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
 	PLSA C 1 BRIGHT offset (-1, 32);
 	PLSN A 0 A_ReFire;	
 	Goto LetsRock;
