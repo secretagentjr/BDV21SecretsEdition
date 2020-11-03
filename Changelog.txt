@@ -22,12 +22,17 @@ A_GunFlash is now used for kicking
 You can now Perform a four hit melee combo while having any weapon out, except
 the fists.
 
-The recoil on tactical class has been entirely deleted.
+tactical class and purist class have been removed.
 
 Implemented a spawning system for hitboxes which is better.
 
 Disabled Firing while reloading, but you will go back to
 ready state and then fire if using the shotgun.
+
+Portable Backpack giving extra ammo capacity upon further uses is back. toggleable as always.
+Slam fire is an option for the shotgun, enabled by default.
+Recoil Scaling for everything besides the BFG and Rocket launcher(Of that weapons that are active and can be used)
+Plasma Launcher altfire can now be set to anywhere from 10-50 cells upon max charge.
 
 == PLAYER ==
 Implemented zmovement, Reverted Doomguys mass back to 100.
@@ -52,8 +57,7 @@ Updated Design/Animations, Accuracy/Recoil Tweaks, Doubled The Damage.
 Updated Design/Anims,Muzzleflash, Accuracy/Recoil Tweaks, Doubled the Damage.
 
 == ROCKET LAUNCHER ==
-New Design, Animations, Altfire now charges up a rocket that does 2x
-The Damage and has 2x the speed.
+New Design, Animations
 The Rocket Speed Has Been Doubled.
 Backblast removed because it was causing issues.
 
@@ -63,9 +67,6 @@ Restored V20B plasma rifles, Updated Anims
 == BFG ==
 BFG Now uses it's own ammo type, Projectile Speed has been increased.
 Updated The Design of the BFG
-
-== MONSTERS == All Code Has Been Improved Upon, at least when they are on active.
-(Or at least, i intend too, it's not quite fully done yet.)
 
 Increased the hp/armor bonus limit to 9999, and armor bonuses to 5,
 to resemble actual fragments of armor.

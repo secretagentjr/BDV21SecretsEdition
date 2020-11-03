@@ -1,4 +1,4 @@
-ACTOR Nazi: MonsterBaseM//WolfensteinSS 2549
+ACTOR Nazi: MonsterBase//WolfensteinSS 2549
 {
 	//$category "BD Monsters"
 	Game Doom

@@ -393,7 +393,7 @@ ACTOR ChaingunSpawner: CustomInventory
 
 ACTOR SMGSpawner: CustomInventory
 {
- scale 1.0
+ scale 0.5
  radius 24
  height 24
  +THRUACTORS +FORCEXYBILLBOARD

@@ -53,7 +53,7 @@ Default
 		Stop;
 	Pickup:
 	    TNT1 A 0 
-		{;
+		{
 		if (GetCvar("bd_serum")) {A_GiveInventory("VitalitySerum");}
 		}
 		Stop;
@@ -72,23 +72,21 @@ class PBackpack : CustomInventory
 	//"Mana",			// Mana reserves, like a backpack's gonna do anything to that
 	//"EmperorAmmo"	// An addon weapon's magazine
 	// All of the ammo for weapon actors/magazines.
-	// this isn't working atm.
-	"BDPistolAmmo"
-	"BDSMGAmmo"
-	"BDDualSMGAmmo"
-	"RifleAmmo"
-	"ShotgunAmmo"
-	"SSGAmmo"
+	"BDPistolAmmo",
+	"BDSMGAmmo",
+	"BDDualSMGAmmo",
+	"RifleAmmo",
+	"ShotgunAmmo",
+	"SSGAmmo",
 	"AssaultShotgunAmmo"
-	"MinigunAmmo"
-	"RocketRounds"
-	"PlasmaAmmo"
+	"MinigunAmmo",
+	"RocketRounds",
+	"PlasmaAmmo",
 	"DoublePlasmaAmmo"
-	"BFGBattery"
-	"MP40Ammo"
+	"BFGBattery",
+	"MP40Ammo",
 	"DualMP40Ammo"
-	"GLAmmo"
-	"RailgunAmmo"
+	"RailgunAmmo",
 	"RevolverAmmo"
 	};
 	
@@ -117,8 +115,7 @@ class PBackpack : CustomInventory
 		Loop;
 	//Pickup:
 	Use:
-		TNT1 A 0; //ACS_NamedExecuteAlways("HammerspaceBackpack");
-		/*
+		TNT1 A 0 //ACS_NamedExecuteAlways("HammerspaceBackpack");
 		{
 			// Only augment ammo max amount if the CVar is set.
 			if(bd_blackholebackpack)
@@ -138,7 +135,7 @@ class PBackpack : CustomInventory
 						{
 							if(thisammotype.GetClassName() == invoker.GC_AmmoBlacklist[blacklist])
 							{
-								 //Blacklisted ammotype, skip it.
+								// Blacklisted ammotype, skip it.
 								invoker.SkipThisType = TRUE;
 							}
 						}
@@ -149,7 +146,7 @@ class PBackpack : CustomInventory
 							// Only increase max ammo with hammerspace if we're above backpack max.
 							if(thisammotype.MaxAmount >= thisammotype.BackpackMaxAmount)
 							{
-								// Plus 10% of backpack max. because backpacks are kind of rare.
+								// Plus 10% of backpack max.
 								thisammotype.MaxAmount += thisammotype.BackpackMaxAmount * 0.1;
 							}
 						}
@@ -157,22 +154,20 @@ class PBackpack : CustomInventory
 						invoker.SkipThisType = FALSE;
 					}
 				}
-			}*/
-			TNT1 A 0 A_GiveInventory("Backpack", 1); // Always hand off a backpack.
-			TNT1 A 0 
+			}
+			A_GiveInventory("Backpack", 1); // Always hand off a backpack.
+		}
+		    TNT1 A 0 
 			{
-			if(CVar.GetCVar("bd_serum",Player).GetBool())
+			if(CVar.GetCVar("bd_serum",Player).GetBool());
 			{
 			 A_GiveInventory("UACSerum", 1); // Health Boost.
 			}
 			}
-			TNT1 A 0 A_GiveInventory("Medikit",  1);   // Healing.
-		//}
+		TNT1 A 0 A_GiveInventory("Medikit",  1);   // Healing.
 		Stop;
 	}
 }
-
-
 
 class BackpackSpawnerS : SS_ScriptedSpawner replaces BackPack
 {

@@ -53,18 +53,17 @@ class tp_ListMenuNote : ListMenuItem
         //"if __name__ == \"__main__\":\n"
         //"    print(\"Hello, World!\")");
 
-    //add("\"Never send a human to do a machine’s job.\"\n"
-        //" - Agent Smith, The Matrix");
+    add("\"Never send a human to do a machine’s job.\"\n"
+        " - Agent Smith, The Matrix");
 				
 	add("Shoot Revenant Rockets to make them less annoying.");
-		
 	add("The backpack is now portable due to... Blackhole technology????");
-	
 	add("Megaspheres spawn a soulsphere and armorsphere now");
-	
 	add("SoulSpheres and ArmorSpheres don't pickup above 200 health");
-	
     add("Potions sometimes spawn in place of medikits or stimpacks.");
+	add("Check Gameplay Options, some fun stuff is hidden in there");
+	add("Turn slam fire on if you're having a tough time");
+	add("The chaingun and BFG are super viable for cleaning rooms out");
 	
     Super.Init();
     return self;

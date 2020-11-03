@@ -361,7 +361,7 @@ Class HeadshotHitboxMG : Actor
 		Super.Tick();
 													// special cvars control behaviour of the hitbox
 		bINVISIBLE = !hs_hitbox;					// debug visible hitbox also gives a good reference point on where to shoot
-		hsfactor = hs_factor;						// factor of which the damage is multiplied. 
+		hsfactor = hs_factorMed;						// factor of which the damage is multiplied. 
 		HitBoxTimerNew = Level.MapTime;
 		
 		if(abs(HitBoxTimerNew - HitBoxTimerOld) > 350) {
@@ -503,7 +503,7 @@ Class CybersHitBoxN : Actor
 		Super.Tick();
 													// special cvars control behaviour of the hitbox
 		bINVISIBLE = !hs_hitbox;					// debug visible hitbox also gives a good reference point on where to shoot
-		hsfactor = hs_factor;						// factor of which the damage is multiplied. 
+		hsfactor = hs_factorCyberDemon;						// factor of which the damage is multiplied. 
 		HitBoxTimerNew = Level.MapTime;
 		
 		if(abs(HitBoxTimerNew - HitBoxTimerOld) > 350) {

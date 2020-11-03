@@ -27,9 +27,8 @@ M8F
 == Tilt++ ==
 Nash Muhandes
 
-Pistol, Rifle,Shotgun sounds by Magmacow of Gamebanana
-Pistol,Rifle Firing Sounds by TiberiumSoul
-SSG Sounds by Navarro & MSKyuuni Of Gamebanana
+Pistol, Rifle,Shotgun,SMG,sounds by Magmacow of Gamebanana
+SSG Sounds by Magmacow & Navarro(Firing Sounds Magmacow)
 
 == PLAYER SPRITES ==
 Firing and moving sprites, Meatshields, wounded marine, jumping, rifle bashing, by Sgt Mark IV
@@ -72,7 +71,7 @@ Base Sprite by MrTypical, Reload Sprites by Galdoc,recolored by secret
 Ammo Sprites from copcap RE2 
 
 == SMG ==
-SMG by Sergeant_Mark_IV, based on the Alpha Doom SMG sprites.
+SMG by kofeinoe_zerno (Koff), Respect animation by Moa Dixon,Empty Reload anim by Moa Dixon(kofeinoe_zerno (Koff),Bolt slap animation)
 
 == SHOTGUN ==
 New Pump Sounds by Squig
@@ -91,8 +90,6 @@ SSG Reload Frames by ID, Heavily Edited by MrtypicalSF
 SSG G Frame by MrTypicalSF
 Animation By Secret
 SSG Sounds Taken From Brutal Pack V9
-SSG Inspection Base Frames by Fistful of Frags Team, SomeOtherDoomGuy and jdredalert,
-Tweaked by Secret
 
 == RIFLE ==
 Base by Mike12(AR), DoomNukem(DMR), Modified By Carrot
