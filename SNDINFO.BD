@@ -109,15 +109,23 @@ PSRLIN PSRLIN
 CLIPIN CLIPIN
 CLIPOUT CLIPOUT
 weapons/rifle DSRIFLE1
-$volume weapons/rifle 0.5
+//$volume weapons/rifle 0.5
 SGFIRE SGFIRE
-$volume SGFIRE 0.5
+//$volume SGFIRE 0.5
 insertshell SHELL_IN
 weapons/sgpump STNPFW1
 weapons/sgpump2 STNPBK1
 BOLT BOLT
 BLTFRW BLTFRW
 BLTBCK BLTBCK
+SMGBLTB  SMGBLTB
+SMGBFW SMGBFW
+SMGMAGIN SMGMAGIN
+SMGMAGOT SMGMAGOT
+assaultrifle/grenade		DSGRFIR2
+assaultrifle/grenadeopen	DSARGOP
+assaultrifle/grenadeload	DSARGLO
+assaultrifle/grenadeclose	DSARGCL
 //CLIPINS CLIPINS
 //CLICKIN CLICKIN
 //CHAMBR CHAMBR

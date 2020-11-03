@@ -6,13 +6,14 @@ CLASS MiniGun : BrutalWeapon
 //Bool Revvedup;
 // As you fire it, the
 //Int OverHeatCounter;
+float Recoil;
 DEFAULT
 {
 	//Game Doom;
 	//SpawnID 28;
 	Weapon.SelectionOrder 700;
 	Weapon.AmmoType1 "MinigunAmmo";
-	//Weapon.AmmoType2 "MinigunAmmo"
+	//Weapon.AmmoType2 "MinigunAmmo";
 	Weapon.AmmoGive 0;
 	Weapon.AmmoUse1 0;
 	+WEAPON.NOAUTOAIM;
@@ -22,8 +23,15 @@ DEFAULT
 	Inventory.PickupMessage "You got the Minigun!";
 	Obituary "%o was mowed down by %k's Minigun.";
 	AttackSound "none";
+	Inventory.Icon "MGUNA0";
 	Scale 0.9;
 }
+
+action void A_MinigunRecoil ()
+    {
+	    // Set the recoil amount
+        Invoker.Recoil = CVar.GetCVar('bd_Minigunrecoilscale', Player).Getfloat();
+	}
 	States
 	{
 	Spawn:
@@ -34,6 +42,7 @@ DEFAULT
 		 
 		 Ready: 
 		 Ready3:
+		  TNT1 A 0 A_MinigunRecoil();
 		  CHAG A 0;
 		  CHAG A 1
 		  {
@@ -50,6 +59,7 @@ DEFAULT
 		  Loop;
 		 
 		Ready2:
+		  TNT1 A 0 A_MinigunRecoil();
 	      CHAG ABCD 1
 		  {
 		  A_WeaponReady();
@@ -238,54 +248,41 @@ DEFAULT
 			A_Takeinventory("MinigunAmmo",1);
 			//A_Takeinventory("MinigunAmmo",1);
 			//A_PlaySound("CHGNSHOT", 1);
-			A_StartSound("CHGNSHOT",1,CHANF_OVERLAP,0.5);
+			A_StartSound("CHGNSHOT",1,CHANF_DEFAULT,1);
 			A_PlaySound("FARMGN", 5);
-			ZWL_FireHitscan(1, 40, pellets:1, spread:1, damagetype:"", pufftype:"MachineGunBulletPuff",tracertype:"DecorativeTracer",Offset:(0,0,-5));
+			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
+			ZWL_FireHitscan(1, 40, pellets:1, spread:1, damagetype:"", pufftype:"MachineGunBulletPuff",tracertype:"PistolTracer",Offset:(0,0,-5));
 			//ZWL_FireHitscan(0, 0, pellets:1, spread:2, damagetype:"", pufftype:"",tracertype:"p_minigun_tracer",Offset:(0,0,-5));
 			//A_FireProjectile("p_minigun_tracer", frandom(-3, 3), 0, 0, 0, 0,frandom(-3, 3));
 			//A_FireProjectile("p_minigun_tracer", frandom(-3, 3), 0, 0, 0, 0,frandom(-3, 3));
 			//ZWL_FireHitscan(0, 0, pellets:1, spread:2, damagetype:"", pufftype:"",tracertype:"p_minigun_tracer",Offset:(0,0,-5));
 			A_Firecustommissile("50CaseSpawn",0,0,-12,-18);
 			A_SpawnItemEx("PlayerMuzzle2",30,5,27);
-			A_SetPitch(pitch-1);
+			A_SetPitch(pitch-Invoker.Recoil, SPF_INTERPOLATE);
 			//A_FireCustomMissile("DecorativeTracer", random(-1,1), 0, 0, 0, 0, random(-1,1));
 		    }
-			CHAG A 0
-			{
-			If(CountInv("MinigunAmmo") <=0 ) {return resolvestate("NoAmmo");}
-			Else {return resolvestate(null);}
-			}
 			CHAG A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, 0, 0);
-			CHAF B 1; //BRIGHT;
-			CHAG A 0
-			{
-			If(CountInv("MinigunAmmo") <=0 ) {return resolvestate("NoAmmo");}
-			Else {return resolvestate(null);}
-			}
+			CHAF B 1 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0); //BRIGHT;
 			CHAG A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, 0, 0);
 			CHAF C 1 BRIGHT
 			{
 			//A_Takeinventory("MinigunAmmo",1);
 			A_Takeinventory("MinigunAmmo",1);
-			A_StartSound("CHGNSHOT",1,CHANF_OVERLAP,0.5);
+			A_StartSound("CHGNSHOT",1,CHANF_DEFAULT,1);
 			A_PlaySound("FARMGN", 5);
-			ZWL_FireHitscan(1, 40, pellets:1, spread:1, damagetype:"", pufftype:"MachineGunBulletPuff",tracertype:"DecorativeTracer",Offset:(0,0,-5));
+			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
+			ZWL_FireHitscan(1, 40, pellets:1, spread:1, damagetype:"", pufftype:"MachineGunBulletPuff",tracertype:"PistolTracer",Offset:(0,0,-5));
 			//ZWL_FireHitscan(0, 0, pellets:1, spread:2, damagetype:"", pufftype:"",tracertype:"p_minigun_tracer",Offset:(0,0,-5));
 			//ZWL_FireHitscan(0, 0, pellets:1, spread:2, damagetype:"", pufftype:"",tracertype:"p_minigun_tracer",Offset:(0,0,-5));
 			//A_FireProjectile("p_minigun_tracer", frandom(-3, 3), 0, 0, 0, 0,frandom(-3, 3));
 			//A_FireProjectile("p_minigun_tracer", frandom(-3, 3), 0, 0, 0, 0,frandom(-3, 3));
 			A_Firecustommissile("50CaseSpawn",0,0,-12,-18);
 			A_SpawnItemEx("PlayerMuzzle2",30,5,27);
-			A_SetPitch(pitch-0.5);
+			A_SetPitch(pitch-Invoker.Recoil, SPF_INTERPOLATE);
 			//A_FireCustomMissile("DecorativeTracer", random(-1,1), 0, 0, 0, 0, random(-1,1));
 		    }
-			CHAF D 1; //BRIGHT;
-			CHAG A 1;
-		    CHAG A 0
-			{
-			If(CountInv("MinigunAmmo") <=0 ) {return resolvestate("NoAmmo");}
-			Else {return resolvestate(null);}
-			}
+			CHAF D 1 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
+			CHAG A 1 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 1, 0, 0);
 			CHAG A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, 0, 0);
 			TNT1 A 0 A_Refire;
 			Goto Ready;
@@ -296,6 +293,29 @@ DEFAULT
 			CHAG A 0 A_TakeInventory("MiniGun", 1);
 			TNT1 A 10;
 			Goto Ready;
+		
+	Flashkick:
+	    CHGS DCB 1;
+	    CHGS A 13;
+		CHGS BCD 1;
+		Stop;
+		
+	AirFlashkick:
+	    CHGS DCB 1;
+	    CHGS A 14;
+		CHGS BCD 1;
+		Stop;
+	
+	SlideFlashKick:
+	    CHGS DCB 1;
+	    CHGS A 13;
+		Stop;
+	
+	SlideFlashKickStop:
+	    CHGS A 10;
+		CHGS BCD 1;
+		Stop;
+		
 		}
 }
 

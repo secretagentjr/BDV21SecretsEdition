@@ -197,10 +197,10 @@ OptionMenu "BrutalDoomOptionsGame"
   
   
    Title "Gameplay Options"
-   StaticText "All changes made here have imediate effect."
+   StaticText "All changes made here have immediate effect."
    StaticText " "
    
-   //Option "Expanding BackpackAmmo", "bd_blackholebackpack", "YesOrNo"
+   Option "Expanding BackpackAmmo", "bd_blackholebackpack", "YesOrNo"
    Option "Health Increase From Backpack", "bd_serum", "YesOrNo"
    //Option "TacticalReloading", "bd_tacticalreloadanim", "YesOrNo"
    //StaticText "Disable the tactical reloading animation for faster reloading."
@@ -211,6 +211,17 @@ OptionMenu "BrutalDoomOptionsGame"
    
    Command "Enable Reloading for all weapons",			"take turboreload"
    Command "Disable Reloading for all weapons",			"give turboreload"
+   
+   Option "Disable Pistol Selection once SMG Is found", "bd_smgdisablespistol", "YesOrNo"
+   Option "Shotgun Slam Fire", "bd_slamfire", "YesOrNo"
+   ZMoveSlider	"Pistol Recoil Amount",	"", "bd_pistolrecoilscale",		0.1, 1,		0.1
+   ZMoveSlider	"SMG Recoil Amount",	"", "bd_smgrecoilscale",		0.1, 1,		0.1
+   ZMoveSlider	"Rifle Recoil Amount",	"", "bd_riflerecoilscale",		0.1, 1,		0.1
+   ZMoveSlider	"Shotgun Recoil Amount","Altfire is Amplified 2x", "bd_shotgunrecoilscale",		0.1, 3,		0.1
+   ZMoveSlider	"SSG Recoil Amount","Primary Fire Is Amplified 2x", "bd_SSGrecoilscale",		0.1, 3,		0.1
+   ZMoveSlider	"Minigun Recoil Amount","Altfire is Amplified 2x", "bd_Minigunrecoilscale",		0.1, 1,		0.1
+   ZMoveSlider	"Max Plasma Charge Amount",	"Amount to charge when using plasma altfire", "bd_plasmashotgunamount",		10,		50,		1
+   ZMoveSlider	"Plasma Rifle Recoil Amount",	"", "bd_plasmarecoilscale",		0.1, 1,		0.1
    
    Command "Enable Auto-Reload",			"take NoAutoReload"
    Command "Disable Auto-Reload",			"give NoAutoReload"

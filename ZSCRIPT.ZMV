@@ -11,7 +11,7 @@ Version 4.2.4
 #include "zscript/weapons/DEFAULTWEAPON.zsc"
 #include "zscript/weapons/PISTOL.zsc"
 #include "zscript/weapons/RIFLE.zsc"
-//#include "zscript/weapons/SubMachinegun.zsc"
+#include "zscript/weapons/SubMachinegun.zsc"
 //#include "zscript/weapons/DualSMG.zsc"
 #include "zscript/weapons/Shotgun.zsc"
 #include "zscript/weapons/SSG.zsc"

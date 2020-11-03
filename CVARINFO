@@ -5,6 +5,24 @@ user int bd_morebloodmist	= 0;
 
 user int bd_enablesprint = 0;
 
+// Shotgun Slamfire
+user int bd_slamfire = 1;
+
+// SMG and Plasmarifle altfire
+
+user int bd_smgdisablespistol = 1;
+user int bd_plasmashotgunamount	= 10;
+
+// RECOIL
+
+user float bd_pistolrecoilscale = 0.1;
+user float bd_SMGrecoilscale = 0.2;
+user float bd_riflerecoilscale = 0.4;
+user float bd_shotgunrecoilscale = 1;
+user float bd_SSGrecoilscale = 1;
+user float bd_Minigunrecoilscale = 0.5;
+user float bd_plasmarecoilscale = 0.5;
+
 server int zdoombrutalblood	= 2;
 server int zdoombrutaljanitor = 0;
 
@@ -180,6 +198,8 @@ server	float	q_1airaccel				= 1.5;
 
 //New Head Hitbox System
 server float hs_factor = 2;
+server float hs_factorMed = 1.1; // 10% instead of 100%
+server float hs_factorCyberDemon = 1.25; // 25% for cyberdemon
 server bool	 hs_hitbox 	= true;
 
 // Menu Tips

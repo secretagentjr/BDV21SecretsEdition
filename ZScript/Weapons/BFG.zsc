@@ -12,6 +12,7 @@ CLASS BIG_FUCKING_GUN : BrutalWeapon
 	Weapon.AmmoGive 0;
 	Weapon.AmmoType1 "BFGAmmo";
 	//Weapon.AmmoType2 "BFGBattery";
+	//Weapon.AmmoType2 "BFGAmmo";
     Inventory.PickupSound "BFGREADY";
 	//DamageType Desintegrate
 	+FORCEXYBILLBOARD;
@@ -262,6 +263,28 @@ CLASS BIG_FUCKING_GUN : BrutalWeapon
 		Goto FinishBFGReload;
 	
 	*/
+	
+	Flashkick:
+	    BFGS DC 1;
+	    BFGS B 14;
+		BFGS CD 1;
+		Stop;
+		
+	AirFlashkick:
+	    BFGS DC 1;
+	    BFGS B 16;
+		BFGS CD 1;
+		Stop;
+	
+	SlideFlashKick:
+	    BFGS DC 1;
+	    BFGS B 14;
+		Stop;
+	
+	SlideFlashKickStop:
+	    BFGS B 11;
+		BFGS CD 1;
+		Stop;
 		
 
 	

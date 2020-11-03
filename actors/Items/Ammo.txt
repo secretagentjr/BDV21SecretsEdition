@@ -952,7 +952,7 @@ ACTOR BDPistolAmmo : Ammo
    Inventory.MaxAmount 16
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 16
-   Inventory.Icon PISTG0
+   Inventory.Icon PISAG0
 }
 
 

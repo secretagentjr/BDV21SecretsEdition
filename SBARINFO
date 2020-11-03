@@ -68,8 +68,8 @@ InInventory sbartype2, 1
 		drawimage ammoicon2, 240, 181;
 		drawnumber 4, DIGINUMBER, red, ammo2, 250, 185, 0;
 		
-		drawimage "CREDA", 240, 230;
-		drawnumber 4, DIGINUMBER, blue, ammo Credit, 250, 220, 0;
+		//drawimage "CREDA", 240, 230;
+		//drawnumber 4, DIGINUMBER, blue, ammo Credit, 250, 220, 0;
 		
 		drawimage ammoicon1, 300, 181;
 		drawnumber 4, DIGINUMBER, red, ammo1, 310, 185, 0;
@@ -140,8 +140,8 @@ InInventory sbartype3, 1
 //Ammo
 		drawnumber 4, BIGFONT, red, ammo2, 250, 185, 0;
 		drawnumber 4, BIGFONT, red, ammo1, 310, 185, 0;
-		drawimage "CREDA", 250, 230;
-		drawnumber 4, DIGINUMBER, blue, ammo Credit, 250, 220, 0;
+		//drawimage "CREDA", 250, 230;
+		//drawnumber 4, DIGINUMBER, blue, ammo Credit, 250, 220, 0;
 
 		drawimage "ARTICAS2", 0, 124;
 		
@@ -214,8 +214,8 @@ InInventory sbartype4, 1
 	DrawNumber 3, DIGIFONT_LARGE, DoomNukemStatusBarGreen, Ammo1, Alignment(left), fillzeros, 257, 172;
 	}
 	
-	drawimage "CREDA", 257, 230;
-	drawnumber 4, DIGINUMBER, blue, ammo Credit, 250, 220, 0;
+	//drawimage "CREDA", 257, 230;
+	//drawnumber 4, DIGINUMBER, blue, ammo Credit, 250, 220, 0;
 	
 	// level stats
 	Alpha 0.75
@@ -347,8 +347,8 @@ InInventory not sbartype4, 1
 		drawimage ammoicon1, 330, 181;
 		drawnumber 4, DIGINUMBER, red, ammo1, 340, 185, 0;
 		
-		drawimage "CREDA", 330, 155;
-		drawnumber 4, DIGINUMBER, blue, ammo Credit, 310, 155, 0;
+		//drawimage "CREDA", 330, 155;
+		//drawnumber 4, DIGINUMBER, blue, ammo Credit, 310, 155, 0;
 
 		drawimage "ARTICAS2", 0, 124;
 
